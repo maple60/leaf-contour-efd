@@ -7,14 +7,13 @@ if not exist ".venv" (
     echo Creating virtual environment with uv...
     uv venv
 )
-
 call .venv\Scripts\activate
 
 REM === Step 2: Sync project dependencies ===
 echo Syncing environment...
 uv sync
 
-REM === Step 2: Ensure SAM2 exists ===
+REM === Step 3: Ensure SAM2 exists ===
 if not exist "sam2" (
     echo SAM2 not found. Cloning from GitHub...
     git clone https://github.com/facebookresearch/sam2.git
@@ -25,7 +24,7 @@ if not exist "sam2" (
     )
 )
 
-REM === Step 3: Install SAM2 in editable mode ===
+REM === Step 4: Install SAM2 in editable mode ===
 if exist "sam2" (
     echo Installing SAM2 in editable mode...
     cd sam2
@@ -43,8 +42,7 @@ if exist "sam2\checkpoints" (
     echo [Info] sam2\checkpoints directory not found. Skipping checkpoint download.
 )
 
-
-REM === Step 4: Run the Leaf Shape Tool ===
+REM === Step 6: Run the Leaf Shape Tool ===
 echo Launching Leaf Shape Tool...
 leaf-shape-tool
 

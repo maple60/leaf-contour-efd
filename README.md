@@ -84,11 +84,12 @@ uv venv
 .venv\Scripts\activate       # source .venv/bin/activate  (macOS/Linux)
 uv sync
 git clone https://github.com/facebookresearch/sam2.git
-cd sam2 && uv pip install -e .
+cd sam2
+uv pip install -e .
 cd ..
 ```
 
-If you plan to use Segment Anything 2 (SAM2) for segmentation, make sure its checkpoints are downloaded into `sam2/checkpoints/`.
+If you plan to use Segment Anything Model 2 (SAM2) for segmentation, make sure its checkpoints are downloaded into `sam2/checkpoints/`.
 For details about each model, refer to the following page:
 
 - [Model Description - facebookresearch/sam2](https://github.com/facebookresearch/sam2#:~:text=(state)%3A%0A%20%20%20%20%20%20%20%20...-,Model%20Description,-SAM%202.1%20checkpoints)

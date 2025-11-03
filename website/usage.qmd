@@ -55,7 +55,7 @@ flowchart TD
 ```
 :::
 
-Each step is explained in detail below (@sec-step-by-step).
+Each step is explained in detail [below](@sec-step-by-step).
 
 ---
 
@@ -64,7 +64,7 @@ Each step is explained in detail below (@sec-step-by-step).
 ### Launch the Application
 
 After installation, start the application.  
-The **napari viewer** window will appear as shown below.
+The **[napari](https://napari.org/stable/) viewer** window will appear as shown below.
 
 ![Initial window](assets/initial_window.webp){fig-alt="Initial window" fig-align="center" #fig-initial-window}
 
@@ -83,8 +83,7 @@ Shortcut: **Ctrl + O** (Windows / Linux) or **Cmd + O** (macOS).
 Supported formats include `.jpg`, `.png`, `.tif`, and `.bmp`.
 :::
 
-When loaded, the image appears as a new layer named after the file,  
-and an **ROIs** layer is automatically created on top of it.
+When loaded, the image appears as a new layer named after the file, and an **ROIs** layer is automatically created on top of it.
 
 ![Image loaded](assets/image_loaded.webp){fig-alt="Image loaded" fig-align="center" #fig-image-loaded}
 
@@ -99,11 +98,9 @@ Once the scale is set, the enclosed area of each contour will be recorded in cm�
 
 #### Set Scale Using a Scale Bar
 
-1. Click **Add Layer** to create a *Scale Measurement* shapes layer.
+1. Click **Add Layer** to create a **Scale Measurement** shapes layer ![](assets/icons\new_shapes.svg){width="24"}.
 2. Set the **mode** to `px/cm`.
-3. Zoom in on the scale bar and confirm that **Add lines** 
-
-{width="24"} is selected.
+3. Zoom in on the scale bar and confirm that **Add lines** ![](assets/icons\line.svg){width="24"} is selected.
 4. Drag a line along the known scale bar length.
 5. Enter the real length and unit (default: 1 cm).
 6. Click **Set Scale** to apply.
@@ -207,9 +204,7 @@ To extract the leaf contour, convert the rotated image to a binary mask.
 ::: callout-note
 ## About Binarization
 
-*Binarization* converts a grayscale image into two tones — typically white (object) and black (background) —  
-based on pixel intensity.  
-This enhances contrast and allows precise contour extraction.
+*Binarization* converts a grayscale image into two tones — typically white (object) and black (background) — based on pixel intensity. This enhances contrast and allows precise contour extraction.
 
 The tool supports both manual and automatic thresholding, including **Otsu’s method** [@otsu1979].
 :::
@@ -219,7 +214,7 @@ Two methods are available:
 -   Otsu's method [@otsu1979]: 
     A statistical thresholding algorithm that automatically finds the optimal threshold from the image histogram.
 -   Segment Anything Model 2 (SAM2) [@ravi2024sam2segmentimages]: 
-    A deep-learning segmentation model developed by Meta.
+    A deep-learning segmentation model developed by [Meta](https://www.meta.com/about/).
     It performs well on complex or noisy backgrounds.
 
 For clean scanned images (dark leaf on white background), Otsu’s method is typically sufficient and faster.  
@@ -279,9 +274,9 @@ Available tools:
 
 | Tool | Use |
 | --- | --- |
-| **Paint brush** | Fill missing or small areas |
-| **Polygon tool** | Add or correct large regions |
-| **Label eraser** | Remove unwanted areas |
+| **Paint brush** ![](assets\icons\paint.svg){width="24"}| Fill missing or small areas |
+| **Polygon tool** ![](assets\icons\polygon.svg){width="24"}| Add or correct large regions |
+| **Label eraser** ![](assets\icons\erase.svg){width="24"}| Remove unwanted areas |
 
 
 #### Editing with Paint Brush
@@ -327,7 +322,7 @@ Once the mask is finalized, extract the contour.
 
 1. Select `ROI_XX_rotated_<method>_labels`.
 2. In the **Contour Extraction Widget**, click **Extract Contour**.
-3. The contour (cyan outline) will appear, and a new layer `ROI_XX_rotated_<method>_labels_contour` will be added(@fig-contour).
+3. The contour (cyan outline) will appear, and a new layer `ROI_XX_rotated_<method>_labels_contour` will be added (@fig-contour).
 
 ![Extracted contour](assets/contoru_extraction.webp){fig-alt="Extracted contour" fig-align="center" #fig-contour}
 

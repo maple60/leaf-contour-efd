@@ -57,6 +57,8 @@ flowchart TD
 
 Each step is explained in detail below (@sec-step-by-step).
 
+---
+
 ## Step-by-Step Guide {#sec-step-by-step}
 
 ### Launch the Application
@@ -65,6 +67,8 @@ After installation, start the application.
 The **napari viewer** window will appear as shown below.
 
 ![Initial window](assets/initial_window.webp){fig-alt="Initial window" fig-align="center" #fig-initial-window}
+
+---
 
 ### Load an Image {#sec-load-image}
 
@@ -83,6 +87,8 @@ When loaded, the image appears as a new layer named after the file,
 and an **ROIs** layer is automatically created on top of it.
 
 ![Image loaded](assets/image_loaded.webp){fig-alt="Image loaded" fig-align="center" #fig-image-loaded}
+
+---
 
 ### (Optional) Set the Scale {#sec-set-scale}
 
@@ -118,6 +124,8 @@ For scanned leaves, a resolution of **300–400 dpi** is typically sufficient, b
 
 For images without fine serrations, even **50 dpi** may be adequate [@neto2006a]。
 :::
+
+---
 
 ### Crop Region of Interest (ROI) {#sec-crop-ROI}
 
@@ -156,6 +164,8 @@ which helps exclude irrelevant background regions.
 - **Output Folder:** Default = `output/cropped_images/`. Use **Choose directory** to change.
 :::
 
+---
+
 ### Add Landmarks and Rotate Image
 
 Add two landmarks (base and tip) using the **Landmark Tool**.  
@@ -187,6 +197,8 @@ A new rotated image layer (`ROI_XX_rotated`) will appear.
 - **Save rotated image:** Enable or disable saving rotated images (default: on).
 - **Output Folder:** Default = `output/rotated_images/`. Use **Choose directory** to change.
 :::
+
+---
 
 ### Generate a Binarized Mask
 
@@ -252,6 +264,8 @@ You may also export both masks for later analysis.
 ![Comparison between two methods](assets/binarization_comparison.webp){fig-alt="Added landmarks" #fig-comparison-between-two-methods}
 :::
 
+---
+
 ### Edit Binarized Mask (if needed)
 
 If the automatically generated mask requires refinement:
@@ -305,6 +319,8 @@ To exclude the petiole and keep only the lamina, erase the connecting region bet
 Since contour extraction later uses the *largest connected component*, it is unnecessary to fill every small gap completely.
 :::
 
+---
+
 ### Extract Contour
 
 Once the mask is finalized, extract the contour.
@@ -329,6 +345,8 @@ If the contour is incorrect, delete `ROI_XX_rotated_<method>_labels_contour` and
 - **Save final (edited) mask:** Enable or disable saving the manually corrected mask (default: on).
 - **Save chosen blob mask:** Default = `output/binarized_images/`. Use **Choose directory** to change.
 :::
+
+---
 
 ### Reset and Continue
 
@@ -375,6 +393,8 @@ The default folder structure is as follows:
 | `metadata` | Metadata in `.json` and `.csv` formats |
 | `rois` | ROI overview images (resized to ½ of the original) |
 | `rotated_images` | Cropped images rotated based on landmarks |
+
+---
 
 ### Metadata File
 
@@ -455,11 +475,15 @@ CSV files use **UTF-8** encoding.
 When opening in Microsoft Excel, select “Import Text/CSV” and specify UTF-8 encoding to prevent garbled characters.
 :::
 
+---
+
 ## Recommended Workflow for Users
 
 1. Launch the tool and load an image.
 2. Follow Steps 1–9 for each ROI.
 3. Use exported data directly for analysis in **R** (e.g., with [**Momocs**](https://momx.github.io/Momocs/) package [@Bonhomme2014momocs]) in [R](https://www.r-project.org/) or [**Python**](https://www.python.org/) (e.g. [PyEFD](https://pyefd.readthedocs.io/en/latest/)).
+
+---
 
 ## References
 

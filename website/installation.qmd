@@ -1,0 +1,219 @@
+---
+title: "Installation"
+---
+
+::: {.callout-note}
+## 🇯🇵 日本語版 / Available in Japanese
+
+日本語で読みたい方は [こちらのページ](installation_ja.qmd) をご覧ください。
+:::
+
+
+There are three ways to install and use the Leaf Shape Analysis Tool:
+
+- **Standalone app** (the easiest option for general users)  
+- **Setup script** (for users who prioritize reproducibility)  
+- **Manual setup** (for developers)
+
+The methods are listed from easiest to most advanced.
+
+---
+
+## Standalone App (Recommended for Most Users)
+
+Download the latest release from the [Releases](https://github.com/maple60/morphometrics-tool/releases) page on GitHub.  
+On Windows, run `LeafShapeTool.exe`;  
+on macOS, open `LeafShapeTool.app`.
+
+No Python environment is required.
+
+---
+
+## Setup Script (Reproducible Setup)
+
+Clone the GitHub repository and launch the tool using the provided setup script.
+
+### Windows
+
+```bash
+git clone https://github.com/maple60/morphometrics-tool.git
+cd morphometrics-tool
+setup\setup_windows.bat
+```
+
+### macOS / Linux
+
+```bash
+git clone https://github.com/maple60/morphometrics-tool.git
+cd morphometrics-tool
+bash setup/setup_unix.sh
+```
+
+### If Git Is Not Installed
+
+Check the official installation guide:
+
+- [Install - git](https://git-scm.com/install/)
+
+Alternatively, you can download the following GitHub repositories as ZIP files and extract them manually:
+
+- [Leaf Shape Analysis Tool - GitHub](https://github.com/maple60/morphometrics-tool)
+- [SAM 2: Segment Anything in Images and Videos - GitHub](https://github.com/facebookresearch/sam2)
+
+---
+
+## Manual Setup (For Developers)
+
+If you prefer to build the environment from scratch, follow the steps below.
+
+### 1. Prerequisites
+
+Make sure the following software is installed:
+
+| Software                   | Description                                                         | Check Command                    |
+| -------------------------- | ------------------------------------------------------------------- | -------------------------------- |
+| **Python (≥ 3.12)**        | Base environment                                                    | `python --version`               |
+| **uv**                     | Used for virtual environment management and dependency installation | `uv --version`                   |
+| **Git**                    | Required to clone the SAM2 repository                               | `git --version`                  |
+| **curl** or **PowerShell** | Used to download SAM2 checkpoint data                               | `curl --version` or `powershell` |
+
+On macOS / Linux, `wget` or `curl` can be used instead of PowerShell.
+
+### 2. Move to the Project Directory
+
+```bash
+cd path/to/morphometrics-tool
+```
+
+::: {.callout-tip}
+## Opening a Command Prompt (Windows)
+
+In Windows Explorer, open the project folder and type `cmd` in the address bar to open a command prompt in that location.
+:::
+
+::: {.callout-tip}
+## Python Is Not Strictly Required
+
+Since `uv` manages the virtual environment automatically, Python does not need to be preinstalled on your system.
+:::
+
+### 3. Create and Activate Virtual Environment
+
+```bash
+uv venv
+```
+
+Then activate the environment:
+
+- Windows:
+
+```bash
+.venv\Scripts\activate
+```
+
+- macOS / Linux:
+
+```bash
+source .venv/bin/activate
+```
+
+The `.venv` directory will be created automatically inside the project folder.
+
+### 4. Sync Project Dependencies
+
+```bash
+uv sync
+```
+
+This command installs all packages defined in `uv.lock`.  
+If `uv.lock` is not found, dependencies will be resolved from `pyproject.toml` and a new lock file will be generated. 
+
+::: {.callout-tip}
+## Alternative for `pip` Users
+
+A `requirements.txt` file is also included.  
+If you prefer `pip`, you can install dependencies with:
+
+```bash
+pip install -r requirements.txt
+```
+
+Using `uv sync` is strongly recommended for reproducibility,  
+but this alternative can be used when `uv` is unavailable.
+:::
+
+### 5. Clone and Install SAM2
+
+#### Step 5.1 — Clone the SAM2 Repository
+
+```bash
+git clone https://github.com/facebookresearch/sam2.git
+```
+
+#### Step 5.2 — Install SAM2 in Editable Mode
+
+```bash
+cd sam2
+uv pip install -e .
+cd ..
+```
+
+::: {.callout-tip}
+## What Is Editable Mode?
+
+Installing in editable mode allows direct modification of the source code without reinstalling the package each time.
+:::
+
+### 6. Download SAM2 Checkpoints
+
+SAM2 models require several checkpoint files.  
+Download the following files manually and place them under `sam2/checkpoints/`.
+
+For details about each model, refer to the following page:
+
+- [Model Description - facebookresearch/sam2](https://github.com/facebookresearch/sam2#:~:text=(state)%3A%0A%20%20%20%20%20%20%20%20...-,Model%20Description,-SAM%202.1%20checkpoints)
+
+If you are using macOS, Linux, or Windows with Bash available,  
+you can download all checkpoints automatically with:
+
+```bash
+cd checkpoints && \
+./download_ckpts.sh && \
+cd ..
+```
+
+### 7. Launch the Leaf Shape Tool
+
+Once the environment is ready, launch the tool with:
+
+```bash
+leaf-shape-tool
+```
+
+Or, run it directly from the source directory:
+
+```bash
+python -m leaf_shape_tool
+```
+
+### If uv Is Not Installed
+
+Install `uv` via `pip` before running the setup commands:
+
+```bash
+pip install uv
+```
+
+For more details, see the official documentation:
+
+- [Installing uv - uv](https://docs.astral.sh/uv/getting-started/installation/)
+
+### If Git Is Not Installed
+
+Check the official installation guide:
+
+- [Install - git](https://git-scm.com/install/)
+
+Alternatively, download and extract the following repository manually:
+
+- [SAM 2: Segment Anything in Images and Videos - GitHub](https://github.com/facebookresearch/sam2)

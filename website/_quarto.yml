@@ -26,8 +26,8 @@ website:
     contents:
       - section: "Basics"
         contents:
-        - text: "Preparation"
-          href: preparation.qmd
+        - text: "Installation"
+          href: installation.qmd
         - text: "Usage"
           href: usage.qmd
         - text: "Analysis"
@@ -55,3 +55,4 @@ format:
     number-sections: false
     link-external-icon: true
     link-external-newwindow: true
+    lang: en

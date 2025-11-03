@@ -1,32 +1,122 @@
 ---
-title: "Leaf Shape Analysis Tool"
+title: "Home"
+lang: en
+format:
+  html:
+    mermaid:
+      theme: forest
+bibliography: references.bib
 ---
 
-A [napari](https://napari.org/stable/)-based graphical user interface (GUI) for fully reproducible extraction, orientation, and morphometric analysis of leaf outlines.
-
-This tool enables users to perform each processing step interactively—from setting image scale to computing normalized Elliptic Fourier Descriptors (EFDs)—within a single environment.
+A **[**napari**](https://napari.org/stable/)-based graphical user interface (GUI)** for fully reproducible extraction, orientation, and morphometric analysis of leaf outlines.  
+This tool allows researchers to perform every processing step interactively — from setting image scale to exporting normalized Elliptic Fourier Descriptors (EFDs) — all within a single, unified environment.
 
 ## Key Features
 
-| Step | Widget                                         | Description                                                                                                                                           |
-| ---- | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1️⃣  | (Optional) **Set Scale** (`set_scale.py`)                 | Define the physical scale of images using either DPI or a measured reference line (mm/cm/µm). Updates all visible layers and napari’s scale bar.      |
-| 2️⃣  | **Crop ROI** (`crop_rectangle.py`)             | Define rectangular/polygonal regions of interest (ROIs) interactively and crop them. Generates numbered ROI layers and corresponding landmark layers. |
-| 3️⃣  | **Point Tools** (`make_points_tool_widget.py`) | Add and label landmark points (e.g., *base* and *tip*) for each ROI. Supports auto-advancing label assignment, undo, and count display.               |
-| 4️⃣  | **Rotate Image** (`rotate_image.py`)           | Rotate each ROI image based on base–tip landmarks so that the biological orientation (base → tip) is consistently rightward.                          |
-| 5️⃣  | **Binarize Image** (`binarize_image.py`)       | Generate binary masks using [Otsu's thresholding method](https://en.wikipedia.org/wiki/Otsu%27s_method) or [SAM2](https://ai.meta.com/sam2/) segmentation. Metadata (thresholds, methods, manual edits) are preserved.                       |
-| 6️⃣  | **Extract Contour** (`extract_contour.py`)     | Extract the largest external contour, visualize it, and export coordinates (CSV) and structured metadata (JSON/CSV).                                  |
-| 7️⃣  | **Compute EFDs** (`calculate_efd.py`)          | Calculate Elliptic Fourier Descriptors (EFDs), including *true normalization* (Wu et al. 2024), and export coefficients to CSV.                       |
-| 8️⃣  | **Clear Viewer** (`clear_viewer.py`)           | Reset the viewer safely while preserving base images or ROIs, with optional automatic screenshot export.                                              |
+- **User-friendly yet fully reproducible workflow**  
+  A complete graphical interface built on [napari](https://napari.org/stable/) enables users to perform every step — from image loading to EFD export — without writing code.  
+  All parameters, transformations, and processing histories are **automatically stored as structured metadata (JSON/CSV)**, ensuring full reproducibility.
 
-## Workflow Overview
+- **Biologically consistent leaf orientation**  
+  Leaf images are **aligned based on manually defined base–tip landmarks**, guaranteeing consistent orientation across samples.  
+  This allows for direct comparison of leaf outlines across individuals, species, and populations.
 
+- **True Elliptic Fourier Descriptors (EFDs)**  
+  Supports both conventional and *true normalized* EFDs (following @wu2024reliablesuperiorellipticfourier), allowing morphometric analysis that preserves biologically meaningful orientation and symmetry.
+
+- **Flexible and editable segmentation options**  
+  Provides both traditional Otsu thresholding [@otsu1979] and deep-learning–based [SAM2](https://ai.meta.com/sam2/) segmentation [@ravi2024sam2segmentimages], ensuring robust contour extraction under diverse imaging conditions.  
+  Users can interactively adjust threshold values or manually refine segmentation masks using [napari](https://napari.org/stable/index.html)’s built-in painting, polygon, and erasing tools, achieving precise control while maintaining reproducibility.
+
+- **Comprehensive metadata export**  
+  Every processing step — scale calibration, ROI cropping, landmark placement, rotation, binarization, contour extraction, and EFD computation — is saved in machine-readable form, supporting transparent and reproducible shape analysis pipelines.
+
+## Installation
+
+There are three ways to install and run the Leaf Shape Analysis Tool.
+Choose the method that best fits your environment.
+
+| Method             | Description                                                                          | Recommended for        |
+| ------------------ | ------------------------------------------------------------------------------------ | ---------------------- |
+| **Standalone App** | Ready-to-use executable for Windows and macOS. No Python required.                   | General users          |
+| **Setup Script**   | Automatically creates a reproducible environment via `uv` and installs dependencies. | Reproducible workflows |
+| **Manual Setup**   | Build the environment from scratch for development or debugging.                     | Developers             |
+
+### 1. Standalone App (Recommended) (**In preparation**)
+
+Download the latest release from the [Releases page](https://github.com/maple60/morphometrics-tool/releases/new)
+
+- On **Windows**: run `LeafShapeTool.exe`
+- On **macOS**: open `LeafShapeTool.app`
+
+No Python installation is required.
+
+### 2. Setup Script
+
+Clone the repository and launch the tool using the provided script.
+
+```bash
+git clone https://github.com/maple60/morphometrics-tool.git
+cd morphometrics-tool
+```
+- Windows
+
+```bash
+setup\setup_windows.bat
+```
+
+- macOS / Linux (In preparation)
+
+```bash
+bash setup/setup_unix.sh
+```
+
+This script automatically:
+
+- Creates a virtual environment (`uv venv`)
+- Installs all dependencies from `uv.lock`
+- Clones and installs [SAM2](https://github.com/facebookresearch/sam2)
+- Verifies checkpoints for SAM2 models
+- Launches the tool
+
+### 3. Manual Setup (Developers)
+
+If you prefer to configure everything manually:
+
+```bash
+uv venv
+.venv\Scripts\activate       # source .venv/bin/activate  (macOS/Linux)
+uv sync
+git clone https://github.com/facebookresearch/sam2.git
+cd sam2
+uv pip install -e .
+cd ..
+```
+
+If you plan to use Segment Anything Model 2 (SAM2) for segmentation, make sure its checkpoints are downloaded into `sam2/checkpoints/`.
+For details about each model, refer to the following page:
+
+- [Model Description - facebookresearch/sam2](https://github.com/facebookresearch/sam2#:~:text=(state)%3A%0A%20%20%20%20%20%20%20%20...-,Model%20Description,-SAM%202.1%20checkpoints)
+
+After installation, launch the tool with:
+
+```bash
+leaf-shape-tool
+```
+
+::: {.callout-note}
+For full setup instructions (including uv, git, and checkpoint downloads), see the [Installation Guide](https://maple60.github.io/morphometrics-tool/installation.html).
+:::
+
+## Workflow & Usage
+
+::: {style="text-align: center;"}
 ```{mermaid}
 ---
 config:
   layout: dagre
 ---
-flowchart TB
+flowchart TD
     A["Load image"] --> B{"Set scale?"}
     B -- Yes --> B1["Set the scale"]
     B -- No --> C["Add ROI layer"]
@@ -46,32 +136,41 @@ flowchart TB
     N -- Yes --> A
     N -- No --> O["Done"]
 ```
+:::
 
-## Installation
+Each processing step corresponds to a dedicated GUI widget,  
+and all results (images, contours, metadata, EFDs) are automatically exported to the `output/` directory.
 
-There are several ways to install and use the Leaf Shape Analysis Tool.
-Please choose the method that best suits your environment.
-
-- **Standalone app** (the easiest option for general users)  
-- **Setup script** (for users who prioritize reproducibility)  
-- **Manual setup** (for developers)
-
-For more details, see the [Installation page](installation.qmd).
-
-## License
-
-This project is licensed under the **BSD-3-Clause license**
-
-See the [LICENSE](https://github.com/maple60/morphometrics-tool/blob/main/LICENSE) file for details.
-
-## Acknowledgements
-
-Built on the open-source frameworks [napari](https://napari.org/stable/), [magicgui](https://pyapp-kit.github.io/magicgui/), [OpenCV](https://opencv.org/), [NumPy](https://numpy.org/), and [pandas](https://pandas.pydata.org/).
-
-We thank the developers and the open science community for making this ecosystem possible.
+For a detailed step-by-step guide, please refer to the [Usage page](https://maple60.github.io/morphometrics-tool/usage.html).
 
 ## Citation
 
-If you use this tool in your research, please cite:
+Currently **in preparation**
 
-**To be written later.**
+## Acknowledgements
+
+This tool is built upon the following open-source frameworks:
+
+- [napari](https://napari.org/stable/): interactive image viewer framework  
+- [scikit-image](https://scikit-image.org/): image processing library  
+- [numpy](https://numpy.org/): numerical computation library  
+- [pandas](https://pandas.pydata.org/): data analysis library  
+- [matplotlib](https://matplotlib.org/): visualization and plotting library  
+
+The design and implementation of this tool were inspired by the methodology and GUI software developed by [-@wu2024reliablesuperiorellipticfourier], particularly the *ElliShape* interface ([https://www.plantplus.cn/ElliShape/](https://www.plantplus.cn/ElliShape/)).
+
+We also acknowledge the contributions of many other open-source tools and studies  
+that have advanced automated leaf image analysis.  
+A summary of related software can be found on the [Related Tools page](https://maple60.github.io/morphometrics-tool/related_tools.html).
+
+We express our sincere gratitude to the open-source community and all contributors  
+whose work made this tool possible.
+
+## License 
+
+Distributed under the BSD 3-Clause License. See [LICENSE](https://github.com/maple60/morphometrics-tool/blob/main/LICENSE) for more information.
+
+## References
+
+::: {#refs}
+:::

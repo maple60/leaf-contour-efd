@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Leaf Shape Analysis Tool</title>
+<title>Home – Leaf Shape Analysis Tool</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -66,6 +121,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<meta name="mermaid-theme" content="forest">
 <script src="site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
@@ -119,7 +175,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Leaf Shape Analysis Tool</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Home</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -196,11 +252,17 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#key-features" id="toc-key-features" class="nav-link active" data-scroll-target="#key-features">Key Features</a></li>
-  <li><a href="#workflow-overview" id="toc-workflow-overview" class="nav-link" data-scroll-target="#workflow-overview">Workflow Overview</a></li>
-  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
-  <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
-  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a>
+  <ul class="collapse">
+  <li><a href="#standalone-app-recommended-in-preparation" id="toc-standalone-app-recommended-in-preparation" class="nav-link" data-scroll-target="#standalone-app-recommended-in-preparation">1. Standalone App (Recommended) (<strong>In preparation</strong>)</a></li>
+  <li><a href="#setup-script" id="toc-setup-script" class="nav-link" data-scroll-target="#setup-script">2. Setup Script</a></li>
+  <li><a href="#manual-setup-developers" id="toc-manual-setup-developers" class="nav-link" data-scroll-target="#manual-setup-developers">3. Manual Setup (Developers)</a></li>
+  </ul></li>
+  <li><a href="#workflow-usage" id="toc-workflow-usage" class="nav-link" data-scroll-target="#workflow-usage">Workflow &amp; Usage</a></li>
   <li><a href="#citation" id="toc-citation" class="nav-link" data-scroll-target="#citation">Citation</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/maple60/morphometrics-tool/edit/main/website/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/morphometrics-tool/blob/main/website/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/morphometrics-tool/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -209,7 +271,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Leaf Shape Analysis Tool</h1>
+<h1 class="title">Home</h1>
 </div>
 
 
@@ -226,64 +288,125 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>A <a href="https://napari.org/stable/">napari</a>-based graphical user interface (GUI) for fully reproducible extraction, orientation, and morphometric analysis of leaf outlines.</p>
-<p>This tool enables users to perform each processing step interactively—from setting image scale to computing normalized Elliptic Fourier Descriptors (EFDs)—within a single environment.</p>
+<p>A <strong><a href="https://napari.org/stable/"><strong>napari</strong></a>-based graphical user interface (GUI)</strong> for fully reproducible extraction, orientation, and morphometric analysis of leaf outlines.<br>
+This tool allows researchers to perform every processing step interactively — from setting image scale to exporting normalized Elliptic Fourier Descriptors (EFDs) — all within a single, unified environment.</p>
 <section id="key-features" class="level2">
 <h2 class="anchored" data-anchor-id="key-features">Key Features</h2>
+<ul>
+<li><p><strong>User-friendly yet fully reproducible workflow</strong><br>
+A complete graphical interface built on <a href="https://napari.org/stable/">napari</a> enables users to perform every step — from image loading to EFD export — without writing code.<br>
+All parameters, transformations, and processing histories are <strong>automatically stored as structured metadata (JSON/CSV)</strong>, ensuring full reproducibility.</p></li>
+<li><p><strong>Biologically consistent leaf orientation</strong><br>
+Leaf images are <strong>aligned based on manually defined base–tip landmarks</strong>, guaranteeing consistent orientation across samples.<br>
+This allows for direct comparison of leaf outlines across individuals, species, and populations.</p></li>
+<li><p><strong>True Elliptic Fourier Descriptors (EFDs)</strong><br>
+Supports both conventional and <em>true normalized</em> EFDs (following <span class="citation" data-cites="wu2024reliablesuperiorellipticfourier">Wu et al. (<a href="#ref-wu2024reliablesuperiorellipticfourier" role="doc-biblioref">2024</a>)</span>), allowing morphometric analysis that preserves biologically meaningful orientation and symmetry.</p></li>
+<li><p><strong>Flexible and editable segmentation options</strong><br>
+Provides both traditional Otsu thresholding <span class="citation" data-cites="otsu1979">(<a href="#ref-otsu1979" role="doc-biblioref">Otsu 1979</a>)</span> and deep-learning–based <a href="https://ai.meta.com/sam2/">SAM2</a> segmentation <span class="citation" data-cites="ravi2024sam2segmentimages">(<a href="#ref-ravi2024sam2segmentimages" role="doc-biblioref">Ravi et al. 2024</a>)</span>, ensuring robust contour extraction under diverse imaging conditions.<br>
+Users can interactively adjust threshold values or manually refine segmentation masks using <a href="https://napari.org/stable/index.html">napari</a>’s built-in painting, polygon, and erasing tools, achieving precise control while maintaining reproducibility.</p></li>
+<li><p><strong>Comprehensive metadata export</strong><br>
+Every processing step — scale calibration, ROI cropping, landmark placement, rotation, binarization, contour extraction, and EFD computation — is saved in machine-readable form, supporting transparent and reproducible shape analysis pipelines.</p></li>
+</ul>
+</section>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<p>There are three ways to install and run the Leaf Shape Analysis Tool. Choose the method that best fits your environment.</p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 67%">
+<col style="width: 17%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>Step</th>
-<th>Widget</th>
+<th>Method</th>
 <th>Description</th>
+<th>Recommended for</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>1️⃣</td>
-<td>(Optional) <strong>Set Scale</strong> (<code>set_scale.py</code>)</td>
-<td>Define the physical scale of images using either DPI or a measured reference line (mm/cm/µm). Updates all visible layers and napari’s scale bar.</td>
+<td><strong>Standalone App</strong></td>
+<td>Ready-to-use executable for Windows and macOS. No Python required.</td>
+<td>General users</td>
 </tr>
 <tr class="even">
-<td>2️⃣</td>
-<td><strong>Crop ROI</strong> (<code>crop_rectangle.py</code>)</td>
-<td>Define rectangular/polygonal regions of interest (ROIs) interactively and crop them. Generates numbered ROI layers and corresponding landmark layers.</td>
+<td><strong>Setup Script</strong></td>
+<td>Automatically creates a reproducible environment via <code>uv</code> and installs dependencies.</td>
+<td>Reproducible workflows</td>
 </tr>
 <tr class="odd">
-<td>3️⃣</td>
-<td><strong>Point Tools</strong> (<code>make_points_tool_widget.py</code>)</td>
-<td>Add and label landmark points (e.g., <em>base</em> and <em>tip</em>) for each ROI. Supports auto-advancing label assignment, undo, and count display.</td>
-</tr>
-<tr class="even">
-<td>4️⃣</td>
-<td><strong>Rotate Image</strong> (<code>rotate_image.py</code>)</td>
-<td>Rotate each ROI image based on base–tip landmarks so that the biological orientation (base → tip) is consistently rightward.</td>
-</tr>
-<tr class="odd">
-<td>5️⃣</td>
-<td><strong>Binarize Image</strong> (<code>binarize_image.py</code>)</td>
-<td>Generate binary masks using <a href="https://en.wikipedia.org/wiki/Otsu%27s_method">Otsu’s thresholding method</a> or <a href="https://ai.meta.com/sam2/">SAM2</a> segmentation. Metadata (thresholds, methods, manual edits) are preserved.</td>
-</tr>
-<tr class="even">
-<td>6️⃣</td>
-<td><strong>Extract Contour</strong> (<code>extract_contour.py</code>)</td>
-<td>Extract the largest external contour, visualize it, and export coordinates (CSV) and structured metadata (JSON/CSV).</td>
-</tr>
-<tr class="odd">
-<td>7️⃣</td>
-<td><strong>Compute EFDs</strong> (<code>calculate_efd.py</code>)</td>
-<td>Calculate Elliptic Fourier Descriptors (EFDs), including <em>true normalization</em> (Wu et al.&nbsp;2024), and export coefficients to CSV.</td>
-</tr>
-<tr class="even">
-<td>8️⃣</td>
-<td><strong>Clear Viewer</strong> (<code>clear_viewer.py</code>)</td>
-<td>Reset the viewer safely while preserving base images or ROIs, with optional automatic screenshot export.</td>
+<td><strong>Manual Setup</strong></td>
+<td>Build the environment from scratch for development or debugging.</td>
+<td>Developers</td>
 </tr>
 </tbody>
 </table>
+<section id="standalone-app-recommended-in-preparation" class="level3">
+<h3 class="anchored" data-anchor-id="standalone-app-recommended-in-preparation">1. Standalone App (Recommended) (<strong>In preparation</strong>)</h3>
+<p>Download the latest release from the <a href="https://github.com/maple60/morphometrics-tool/releases/new">Releases page</a></p>
+<ul>
+<li>On <strong>Windows</strong>: run <code>LeafShapeTool.exe</code></li>
+<li>On <strong>macOS</strong>: open <code>LeafShapeTool.app</code></li>
+</ul>
+<p>No Python installation is required.</p>
 </section>
-<section id="workflow-overview" class="level2">
-<h2 class="anchored" data-anchor-id="workflow-overview">Workflow Overview</h2>
+<section id="setup-script" class="level3">
+<h3 class="anchored" data-anchor-id="setup-script">2. Setup Script</h3>
+<p>Clone the repository and launch the tool using the provided script.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/maple60/morphometrics-tool.git</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> morphometrics-tool</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Windows</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">setup\setup_windows.bat</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>macOS / Linux (In preparation)</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> setup/setup_unix.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This script automatically:</p>
+<ul>
+<li>Creates a virtual environment (<code>uv venv</code>)</li>
+<li>Installs all dependencies from <code>uv.lock</code></li>
+<li>Clones and installs <a href="https://github.com/facebookresearch/sam2">SAM2</a></li>
+<li>Verifies checkpoints for SAM2 models</li>
+<li>Launches the tool</li>
+</ul>
+</section>
+<section id="manual-setup-developers" class="level3">
+<h3 class="anchored" data-anchor-id="manual-setup-developers">3. Manual Setup (Developers)</h3>
+<p>If you prefer to configure everything manually:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv\Scripts\activate</span>       <span class="co"># source .venv/bin/activate  (macOS/Linux)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/facebookresearch/sam2.git</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> sam2</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> pip install <span class="at">-e</span> .</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you plan to use Segment Anything Model 2 (SAM2) for segmentation, make sure its checkpoints are downloaded into <code>sam2/checkpoints/</code>. For details about each model, refer to the following page:</p>
+<ul>
+<li><a href="https://github.com/facebookresearch/sam2#:~:text=(state)%3A%0A%20%20%20%20%20%20%20%20...-,Model%20Description,-SAM%202.1%20checkpoints">Model Description - facebookresearch/sam2</a></li>
+</ul>
+<p>After installation, launch the tool with:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">leaf-shape-tool</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For full setup instructions (including uv, git, and checkpoint downloads), see the <a href="https://maple60.github.io/morphometrics-tool/installation.html">Installation Guide</a>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="workflow-usage" class="level2">
+<h2 class="anchored" data-anchor-id="workflow-usage">Workflow &amp; Usage</h2>
+<div style="text-align: center;">
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -293,7 +416,7 @@ ul.task-list li input[type="checkbox"] {
 config:
   layout: dagre
 ---
-flowchart TB
+flowchart TD
     A["Load image"] --&gt; B{"Set scale?"}
     B -- Yes --&gt; B1["Set the scale"]
     B -- No --&gt; C["Add ROI layer"]
@@ -318,33 +441,53 @@ flowchart TB
 </div>
 </div>
 </div>
-</section>
-<section id="installation" class="level2">
-<h2 class="anchored" data-anchor-id="installation">Installation</h2>
-<p>There are several ways to install and use the Leaf Shape Analysis Tool. Please choose the method that best suits your environment.</p>
-<ul>
-<li><strong>Standalone app</strong> (the easiest option for general users)<br>
-</li>
-<li><strong>Setup script</strong> (for users who prioritize reproducibility)<br>
-</li>
-<li><strong>Manual setup</strong> (for developers)</li>
-</ul>
-<p>For more details, see the <a href="./installation.html">Installation page</a>.</p>
-</section>
-<section id="license" class="level2">
-<h2 class="anchored" data-anchor-id="license">License</h2>
-<p>This project is licensed under the <strong>BSD-3-Clause license</strong></p>
-<p>See the <a href="https://github.com/maple60/morphometrics-tool/blob/main/LICENSE">LICENSE</a> file for details.</p>
-</section>
-<section id="acknowledgements" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<p>Built on the open-source frameworks <a href="https://napari.org/stable/">napari</a>, <a href="https://pyapp-kit.github.io/magicgui/">magicgui</a>, <a href="https://opencv.org/">OpenCV</a>, <a href="https://numpy.org/">NumPy</a>, and <a href="https://pandas.pydata.org/">pandas</a>.</p>
-<p>We thank the developers and the open science community for making this ecosystem possible.</p>
+</div>
+<p>Each processing step corresponds to a dedicated GUI widget,<br>
+and all results (images, contours, metadata, EFDs) are automatically exported to the <code>output/</code> directory.</p>
+<p>For a detailed step-by-step guide, please refer to the <a href="https://maple60.github.io/morphometrics-tool/usage.html">Usage page</a>.</p>
 </section>
 <section id="citation" class="level2">
 <h2 class="anchored" data-anchor-id="citation">Citation</h2>
-<p>If you use this tool in your research, please cite:</p>
-<p><strong>To be written later.</strong></p>
+<p>Currently <strong>in preparation</strong></p>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p>This tool is built upon the following open-source frameworks:</p>
+<ul>
+<li><a href="https://napari.org/stable/">napari</a>: interactive image viewer framework<br>
+</li>
+<li><a href="https://scikit-image.org/">scikit-image</a>: image processing library<br>
+</li>
+<li><a href="https://numpy.org/">numpy</a>: numerical computation library<br>
+</li>
+<li><a href="https://pandas.pydata.org/">pandas</a>: data analysis library<br>
+</li>
+<li><a href="https://matplotlib.org/">matplotlib</a>: visualization and plotting library</li>
+</ul>
+<p>The design and implementation of this tool were inspired by the methodology and GUI software developed by <span class="citation" data-cites="wu2024reliablesuperiorellipticfourier">(<a href="#ref-wu2024reliablesuperiorellipticfourier" role="doc-biblioref">2024</a>)</span>, particularly the <em>ElliShape</em> interface (<a href="https://www.plantplus.cn/ElliShape/">https://www.plantplus.cn/ElliShape/</a>).</p>
+<p>We also acknowledge the contributions of many other open-source tools and studies<br>
+that have advanced automated leaf image analysis.<br>
+A summary of related software can be found on the <a href="https://maple60.github.io/morphometrics-tool/related_tools.html">Related Tools page</a>.</p>
+<p>We express our sincere gratitude to the open-source community and all contributors<br>
+whose work made this tool possible.</p>
+</section>
+<section id="license" class="level2">
+<h2 class="anchored" data-anchor-id="license">License</h2>
+<p>Distributed under the BSD 3-Clause License. See <a href="https://github.com/maple60/morphometrics-tool/blob/main/LICENSE">LICENSE</a> for more information.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-otsu1979" class="csl-entry" role="listitem">
+Otsu, Nobuyuki. 1979. <span>“A Threshold Selection Method from Gray-Level Histograms.”</span> <em>IEEE Transactions on Systems, Man, and Cybernetics</em> 9 (1): 62–66. <a href="https://doi.org/10.1109/TSMC.1979.4310076">https://doi.org/10.1109/TSMC.1979.4310076</a>.
+</div>
+<div id="ref-ravi2024sam2segmentimages" class="csl-entry" role="listitem">
+Ravi, Nikhila, Valentin Gabeur, Yuan-Ting Hu, Ronghang Hu, Chaitanya Ryali, Tengyu Ma, Haitham Khedr, et al. 2024. <span>“SAM 2: Segment Anything in Images and Videos.”</span> <a href="https://arxiv.org/abs/2408.00714">https://arxiv.org/abs/2408.00714</a>.
+</div>
+<div id="ref-wu2024reliablesuperiorellipticfourier" class="csl-entry" role="listitem">
+Wu, Hui, Jia-Jie Yang, Chao-Qun Li, Jin-Hua Ran, Ren-Hua Peng, and Xiao-Quan Wang. 2024. <span>“Reliable and Superior Elliptic Fourier Descriptor Normalization and Its Application Software ElliShape with Efficient Image Processing.”</span> <a href="https://arxiv.org/abs/2412.10795">https://arxiv.org/abs/2412.10795</a>.
+</div>
+</div>
 
 
 </section>

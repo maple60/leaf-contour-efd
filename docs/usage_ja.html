@@ -266,7 +266,10 @@ window.Quarto = {
   <li><a href="#メタデータファイル" id="toc-メタデータファイル" class="nav-link" data-scroll-target="#メタデータファイル"><span class="header-section-number">3.1</span> メタデータファイル</a></li>
   <li><a href="#メタデータの構造json" id="toc-メタデータの構造json" class="nav-link" data-scroll-target="#メタデータの構造json"><span class="header-section-number">3.2</span> メタデータの構造（JSON）</a></li>
   </ul></li>
-  <li><a href="#推奨操作順序" id="toc-推奨操作順序" class="nav-link" data-scroll-target="#推奨操作順序"><span class="header-section-number">4</span> 推奨操作順序</a></li>
+  <li><a href="#推奨操作順序" id="toc-推奨操作順序" class="nav-link" data-scroll-target="#推奨操作順序"><span class="header-section-number">4</span> 推奨操作順序</a>
+  <ul class="collapse">
+  <li><a href="#アイコンのクレジット" id="toc-アイコンのクレジット" class="nav-link" data-scroll-target="#アイコンのクレジット"><span class="header-section-number">4.1</span> アイコンのクレジット</a></li>
+  </ul></li>
   <li><a href="#参考文献" id="toc-参考文献" class="nav-link" data-scroll-target="#参考文献"><span class="header-section-number">5</span> 参考文献</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/maple60/morphometrics-tool/edit/main/website/usage_ja.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/maple60/morphometrics-tool/blob/main/website/usage_ja.qmd" class="toc-action"><i class="bi empty"></i>ソースコード</a></li><li><a href="https://github.com/maple60/morphometrics-tool/issues/new" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></nav>
@@ -344,7 +347,7 @@ flowchart TD
 <section id="アプリケーションの起動" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="アプリケーションの起動"><span class="header-section-number">2.1</span> アプリケーションの起動</h3>
 <p>インストール後、アプリケーションを起動します。 起動すると、napari ビューア ウィンドウが表示されます。</p>
-<div id="fig-initial-window" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Initial window">
+<div id="fig-initial-window" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Initial window" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-initial-window-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="assets/initial_window.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="図&nbsp;1: 初期画面"><img src="assets/initial_window.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Initial window"></a>
@@ -360,7 +363,7 @@ flowchart TD
 <h3 data-number="2.2" class="anchored" data-anchor-id="sec-load-image"><span class="header-section-number">2.2</span> 画像の読み込み</h3>
 <p>メニューバーから <strong>File &gt; Open</strong> を選択するか、画像をビューアにドラッグ＆ドロップして開きます。<br>
 ショートカットキー：<strong>Ctrl + O</strong>（Windows / Linux）または <strong>Cmd + O</strong>（macOS）</p>
-<div id="fig-fig-open-image" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="How to open a image">
+<div id="fig-fig-open-image" class="quarto-float quarto-figure quarto-figure-center anchored" alt="How to open a image" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-fig-open-image-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="assets/open_image.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="図&nbsp;2: File > Open"><img src="assets/open_image.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="How to open a image"></a>
@@ -384,7 +387,7 @@ flowchart TD
 </div>
 </div>
 <p>画像を読み込むと、ファイル名をレイヤ名とする画像レイヤが追加され、その上に <strong>ROIs</strong> レイヤが自動的に作成されます。</p>
-<div id="fig-image-loaded" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Image loaded">
+<div id="fig-image-loaded" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Image loaded" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-image-loaded-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="assets/image_loaded.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="図&nbsp;3: 画像読み込み後"><img src="assets/image_loaded.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Image loaded"></a>
@@ -408,7 +411,7 @@ flowchart TD
 <li>実際の長さと単位（デフォルトは 1 cm）を入力します。</li>
 <li><strong>Set Scale</strong> をクリックします。</li>
 </ol>
-<div id="fig-set-scale-px-cm-mode" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Set scale (px/cm mode)">
+<div id="fig-set-scale-px-cm-mode" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Set scale (px/cm mode)" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-set-scale-px-cm-mode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="assets/set_scale_px_cm_mode.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="図&nbsp;4: スケール設定 (px/cmモード)"><img src="assets/set_scale_px_cm_mode.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Set scale (px/cm mode)"></a>
@@ -425,7 +428,7 @@ flowchart TD
 <li><strong>mode</strong> を <code>dpi</code> に設定します（デフォルト）。</li>
 <li><strong>DPI</strong> フィールドに画像の解像度を入力します（デフォルトは 300 dpi）。</li>
 </ol>
-<div id="fig-set-scale-dpi-mode" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Set scale (dpi mode)">
+<div id="fig-set-scale-dpi-mode" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Set scale (dpi mode)" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-set-scale-dpi-mode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="assets/set_scale_dpi_mode.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="図&nbsp;5: スケール設定 (dpiモード)"><img src="assets/set_scale_dpi_mode.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Set scale (dpi mode)"></a>
@@ -474,7 +477,7 @@ ROIとは
 <p>ROI（Region of Interest）とは、画像全体のうち解析対象となる領域を指します。 葉形解析では、スキャン画像中の葉部分のみを切り出した領域が ROI に相当します。 ROI を指定することで、不要な背景の影響を除外できます。</p>
 </div>
 </div>
-<div id="fig-draw-ROI-rectangle" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Draw ROI rectangle">
+<div id="fig-draw-ROI-rectangle" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Draw ROI rectangle" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-draw-ROI-rectangle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="assets/roi_extraction.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="図&nbsp;6: ROIの矩形描画"><img src="assets/roi_extraction.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Draw ROI rectangle"></a>
@@ -792,7 +795,7 @@ ROIとは
 <li>マスク外周に沿って水色の輪郭が表示され、<br>
 新たなレイヤー <code>ROI_XX_rotated_&lt;method&gt;_labels_contour</code> が追加されます。</li>
 </ol>
-<div id="fig-contour" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Extracted contour">
+<div id="fig-contour" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Extracted contour" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-contour-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="assets/contoru_extraction.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="図&nbsp;9: 輪郭の抽出"><img src="assets/contoru_extraction.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Extracted contour"></a>
@@ -1087,6 +1090,11 @@ Excel で開く際は、「データ」タブ → 「テキストまたはCSVか
 <strong>Python</strong>（例： <a href="https://pyefd.readthedocs.io/en/latest/">PyEFD</a>）で解析に使用できます。</li>
 </ol>
 <hr>
+<section id="アイコンのクレジット" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="アイコンのクレジット"><span class="header-section-number">4.1</span> アイコンのクレジット</h3>
+<p>使用している一部のインターフェースアイコン（例：Add Shapes, Paint, Erase, Polygon）は、<a href="https://github.com/napari/napari">napari</a> プロジェクトに由来するものであり、<a href="https://github.com/napari/napari/blob/main/LICENSE">BSD 3-Clause License</a> の下で配布されています。 本ドキュメントでは、説明および教育目的で使用しています。</p>
+<hr>
+</section>
 </section>
 <section id="参考文献" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="参考文献"><span class="header-section-number">5</span> 参考文献</h2>

@@ -32,7 +32,7 @@
     "href": "usage_ja.html#推奨操作順序",
     "title": "使用方法",
     "section": "4 推奨操作順序",
-    "text": "4 推奨操作順序\n\nツールを起動し、画像を読み込みます。\n\n各 ROI についてステップ 1–9 の手順を順に実行します。\n\n出力されたファイルは、そのまま R（例： Momocs (Bonhomme ほか 2014)）や\nPython（例： PyEFD）で解析に使用できます。"
+    "text": "4 推奨操作順序\n\nツールを起動し、画像を読み込みます。\n\n各 ROI についてステップ 1–9 の手順を順に実行します。\n\n出力されたファイルは、そのまま R（例： Momocs (Bonhomme ほか 2014)）や\nPython（例： PyEFD）で解析に使用できます。\n\n\n\n4.1 アイコンのクレジット\n使用している一部のインターフェースアイコン（例：Add Shapes, Paint, Erase, Polygon）は、napari プロジェクトに由来するものであり、BSD 3-Clause License の下で配布されています。 本ドキュメントでは、説明および教育目的で使用しています。"
   },
   {
     "objectID": "usage_ja.html#参考文献",
@@ -189,51 +189,58 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Leaf Shape Analysis Tool",
+    "title": "Home",
     "section": "",
-    "text": "A napari-based graphical user interface (GUI) for fully reproducible extraction, orientation, and morphometric analysis of leaf outlines.\nThis tool enables users to perform each processing step interactively—from setting image scale to computing normalized Elliptic Fourier Descriptors (EFDs)—within a single environment."
+    "text": "A napari-based graphical user interface (GUI) for fully reproducible extraction, orientation, and morphometric analysis of leaf outlines.\nThis tool allows researchers to perform every processing step interactively — from setting image scale to exporting normalized Elliptic Fourier Descriptors (EFDs) — all within a single, unified environment."
   },
   {
     "objectID": "index.html#key-features",
     "href": "index.html#key-features",
-    "title": "Leaf Shape Analysis Tool",
+    "title": "Home",
     "section": "Key Features",
-    "text": "Key Features\n\n\n\nStep\nWidget\nDescription\n\n\n\n\n1️⃣\n(Optional) Set Scale (set_scale.py)\nDefine the physical scale of images using either DPI or a measured reference line (mm/cm/µm). Updates all visible layers and napari’s scale bar.\n\n\n2️⃣\nCrop ROI (crop_rectangle.py)\nDefine rectangular/polygonal regions of interest (ROIs) interactively and crop them. Generates numbered ROI layers and corresponding landmark layers.\n\n\n3️⃣\nPoint Tools (make_points_tool_widget.py)\nAdd and label landmark points (e.g., base and tip) for each ROI. Supports auto-advancing label assignment, undo, and count display.\n\n\n4️⃣\nRotate Image (rotate_image.py)\nRotate each ROI image based on base–tip landmarks so that the biological orientation (base → tip) is consistently rightward.\n\n\n5️⃣\nBinarize Image (binarize_image.py)\nGenerate binary masks using Otsu’s thresholding method or SAM2 segmentation. Metadata (thresholds, methods, manual edits) are preserved.\n\n\n6️⃣\nExtract Contour (extract_contour.py)\nExtract the largest external contour, visualize it, and export coordinates (CSV) and structured metadata (JSON/CSV).\n\n\n7️⃣\nCompute EFDs (calculate_efd.py)\nCalculate Elliptic Fourier Descriptors (EFDs), including true normalization (Wu et al. 2024), and export coefficients to CSV.\n\n\n8️⃣\nClear Viewer (clear_viewer.py)\nReset the viewer safely while preserving base images or ROIs, with optional automatic screenshot export."
-  },
-  {
-    "objectID": "index.html#workflow-overview",
-    "href": "index.html#workflow-overview",
-    "title": "Leaf Shape Analysis Tool",
-    "section": "Workflow Overview",
-    "text": "Workflow Overview\n\n\n\n\n\n---\nconfig:\n  layout: dagre\n---\nflowchart TB\n    A[\"Load image\"] --&gt; B{\"Set scale?\"}\n    B -- Yes --&gt; B1[\"Set the scale\"]\n    B -- No --&gt; C[\"Add ROI layer\"]\n    B1 --&gt; C\n    C --&gt; D[\"Add landmarks\"]\n    D --&gt; E[\"Rotate image\"]\n    E --&gt; F[\"Binarize image\"]\n    F --&gt; G{\"Edit needed?\"}\n    G -- Yes --&gt; G1[\"Edit the binarized label layer\"]\n    G1 --&gt; H[\"Extract contour\"]\n    G -- No --&gt; H\n    H --&gt; J[\"Reset viewer\"]\n    J --&gt; L{\"Process next ROI?\"}\n    L -- Yes --&gt; C\n    L -- No --&gt; M[\"Reset all layers\"]\n    M --&gt; N{\"Process next image?\"}\n    N -- Yes --&gt; A\n    N -- No --&gt; O[\"Done\"]"
+    "text": "Key Features\n\nUser-friendly yet fully reproducible workflow\nA complete graphical interface built on napari enables users to perform every step — from image loading to EFD export — without writing code.\nAll parameters, transformations, and processing histories are automatically stored as structured metadata (JSON/CSV), ensuring full reproducibility.\nBiologically consistent leaf orientation\nLeaf images are aligned based on manually defined base–tip landmarks, guaranteeing consistent orientation across samples.\nThis allows for direct comparison of leaf outlines across individuals, species, and populations.\nTrue Elliptic Fourier Descriptors (EFDs)\nSupports both conventional and true normalized EFDs (following Wu et al. (2024)), allowing morphometric analysis that preserves biologically meaningful orientation and symmetry.\nFlexible and editable segmentation options\nProvides both traditional Otsu thresholding (Otsu 1979) and deep-learning–based SAM2 segmentation (Ravi et al. 2024), ensuring robust contour extraction under diverse imaging conditions.\nUsers can interactively adjust threshold values or manually refine segmentation masks using napari’s built-in painting, polygon, and erasing tools, achieving precise control while maintaining reproducibility.\nComprehensive metadata export\nEvery processing step — scale calibration, ROI cropping, landmark placement, rotation, binarization, contour extraction, and EFD computation — is saved in machine-readable form, supporting transparent and reproducible shape analysis pipelines."
   },
   {
     "objectID": "index.html#installation",
     "href": "index.html#installation",
-    "title": "Leaf Shape Analysis Tool",
+    "title": "Home",
     "section": "Installation",
-    "text": "Installation\nThere are several ways to install and use the Leaf Shape Analysis Tool. Please choose the method that best suits your environment.\n\nStandalone app (the easiest option for general users)\n\nSetup script (for users who prioritize reproducibility)\n\nManual setup (for developers)\n\nFor more details, see the Installation page."
+    "text": "Installation\nThere are three ways to install and run the Leaf Shape Analysis Tool. Choose the method that best fits your environment.\n\n\n\n\n\n\n\n\nMethod\nDescription\nRecommended for\n\n\n\n\nStandalone App\nReady-to-use executable for Windows and macOS. No Python required.\nGeneral users\n\n\nSetup Script\nAutomatically creates a reproducible environment via uv and installs dependencies.\nReproducible workflows\n\n\nManual Setup\nBuild the environment from scratch for development or debugging.\nDevelopers\n\n\n\n\n1. Standalone App (Recommended) (In preparation)\nDownload the latest release from the Releases page\n\nOn Windows: run LeafShapeTool.exe\nOn macOS: open LeafShapeTool.app\n\nNo Python installation is required.\n\n\n2. Setup Script\nClone the repository and launch the tool using the provided script.\ngit clone https://github.com/maple60/morphometrics-tool.git\ncd morphometrics-tool\n\nWindows\n\nsetup\\setup_windows.bat\n\nmacOS / Linux (In preparation)\n\nbash setup/setup_unix.sh\nThis script automatically:\n\nCreates a virtual environment (uv venv)\nInstalls all dependencies from uv.lock\nClones and installs SAM2\nVerifies checkpoints for SAM2 models\nLaunches the tool\n\n\n\n3. Manual Setup (Developers)\nIf you prefer to configure everything manually:\nuv venv\n.venv\\Scripts\\activate       # source .venv/bin/activate  (macOS/Linux)\nuv sync\ngit clone https://github.com/facebookresearch/sam2.git\ncd sam2\nuv pip install -e .\ncd ..\nIf you plan to use Segment Anything Model 2 (SAM2) for segmentation, make sure its checkpoints are downloaded into sam2/checkpoints/. For details about each model, refer to the following page:\n\nModel Description - facebookresearch/sam2\n\nAfter installation, launch the tool with:\nleaf-shape-tool\n\n\n\n\n\n\nNote\n\n\n\nFor full setup instructions (including uv, git, and checkpoint downloads), see the Installation Guide."
   },
   {
-    "objectID": "index.html#license",
-    "href": "index.html#license",
-    "title": "Leaf Shape Analysis Tool",
-    "section": "License",
-    "text": "License\nThis project is licensed under the BSD-3-Clause license\nSee the LICENSE file for details."
-  },
-  {
-    "objectID": "index.html#acknowledgements",
-    "href": "index.html#acknowledgements",
-    "title": "Leaf Shape Analysis Tool",
-    "section": "Acknowledgements",
-    "text": "Acknowledgements\nBuilt on the open-source frameworks napari, magicgui, OpenCV, NumPy, and pandas.\nWe thank the developers and the open science community for making this ecosystem possible."
+    "objectID": "index.html#workflow-usage",
+    "href": "index.html#workflow-usage",
+    "title": "Home",
+    "section": "Workflow & Usage",
+    "text": "Workflow & Usage\n\n\n\n\n\n\n---\nconfig:\n  layout: dagre\n---\nflowchart TD\n    A[\"Load image\"] --&gt; B{\"Set scale?\"}\n    B -- Yes --&gt; B1[\"Set the scale\"]\n    B -- No --&gt; C[\"Add ROI layer\"]\n    B1 --&gt; C\n    C --&gt; D[\"Add landmarks\"]\n    D --&gt; E[\"Rotate image\"]\n    E --&gt; F[\"Binarize image\"]\n    F --&gt; G{\"Edit needed?\"}\n    G -- Yes --&gt; G1[\"Edit the binarized label layer\"]\n    G1 --&gt; H[\"Extract contour\"]\n    G -- No --&gt; H\n    H --&gt; J[\"Reset viewer\"]\n    J --&gt; L{\"Process next ROI?\"}\n    L -- Yes --&gt; C\n    L -- No --&gt; M[\"Reset all layers\"]\n    M --&gt; N{\"Process next image?\"}\n    N -- Yes --&gt; A\n    N -- No --&gt; O[\"Done\"]\n\n\n\n\n\n\n\nEach processing step corresponds to a dedicated GUI widget,\nand all results (images, contours, metadata, EFDs) are automatically exported to the output/ directory.\nFor a detailed step-by-step guide, please refer to the Usage page."
   },
   {
     "objectID": "index.html#citation",
     "href": "index.html#citation",
-    "title": "Leaf Shape Analysis Tool",
+    "title": "Home",
     "section": "Citation",
-    "text": "Citation\nIf you use this tool in your research, please cite:\nTo be written later."
+    "text": "Citation\nCurrently in preparation"
+  },
+  {
+    "objectID": "index.html#acknowledgements",
+    "href": "index.html#acknowledgements",
+    "title": "Home",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nThis tool is built upon the following open-source frameworks:\n\nnapari: interactive image viewer framework\n\nscikit-image: image processing library\n\nnumpy: numerical computation library\n\npandas: data analysis library\n\nmatplotlib: visualization and plotting library\n\nThe design and implementation of this tool were inspired by the methodology and GUI software developed by (2024), particularly the ElliShape interface (https://www.plantplus.cn/ElliShape/).\nWe also acknowledge the contributions of many other open-source tools and studies\nthat have advanced automated leaf image analysis.\nA summary of related software can be found on the Related Tools page.\nWe express our sincere gratitude to the open-source community and all contributors\nwhose work made this tool possible."
+  },
+  {
+    "objectID": "index.html#license",
+    "href": "index.html#license",
+    "title": "Home",
+    "section": "License",
+    "text": "License\nDistributed under the BSD 3-Clause License. See LICENSE for more information."
+  },
+  {
+    "objectID": "index.html#references",
+    "href": "index.html#references",
+    "title": "Home",
+    "section": "References",
+    "text": "References\n\n\nOtsu, Nobuyuki. 1979. “A Threshold Selection Method from Gray-Level Histograms.” IEEE Transactions on Systems, Man, and Cybernetics 9 (1): 62–66. https://doi.org/10.1109/TSMC.1979.4310076.\n\n\nRavi, Nikhila, Valentin Gabeur, Yuan-Ting Hu, Ronghang Hu, Chaitanya Ryali, Tengyu Ma, Haitham Khedr, et al. 2024. “SAM 2: Segment Anything in Images and Videos.” https://arxiv.org/abs/2408.00714.\n\n\nWu, Hui, Jia-Jie Yang, Chao-Qun Li, Jin-Hua Ran, Ren-Hua Peng, and Xiao-Quan Wang. 2024. “Reliable and Superior Elliptic Fourier Descriptor Normalization and Its Application Software ElliShape with Efficient Image Processing.” https://arxiv.org/abs/2412.10795."
   },
   {
     "objectID": "installation_ja.html",
@@ -352,7 +359,7 @@
     "href": "usage.html#recommended-workflow-for-users",
     "title": "Usage",
     "section": "4 Recommended Workflow for Users",
-    "text": "4 Recommended Workflow for Users\n\nLaunch the tool and load an image.\nFollow Steps 1–9 for each ROI.\nUse exported data directly for analysis in R (e.g., with Momocs package (Bonhomme et al. 2014)) in R or Python (e.g. PyEFD).",
+    "text": "4 Recommended Workflow for Users\n\nLaunch the tool and load an image.\nFollow Steps 1–9 for each ROI.\nUse exported data directly for analysis in R (e.g., with Momocs package (Bonhomme et al. 2014)) in R or Python (e.g. PyEFD).\n\n\n\n4.1 Icon Credits\nIcons such as Add Shapes, Paint, Erase, and Polygon used in the Usage section are derived from the napari open-source project (© napari contributors), distributed under the BSD 3-Clause License. They have been used here solely for illustrative purposes.",
     "crumbs": [
       "Home",
       "Basics",

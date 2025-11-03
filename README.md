@@ -8,8 +8,7 @@ This tool allows researchers to perform every processing step interactively — 
 ## Key Features
 
 - **User-friendly yet fully reproducible workflow**  
-
-A complete graphical interface built on [napari](https://napari.org/stable/) enables users to perform every step — from image loading to EFD export — without writing code.  
+  A complete graphical interface built on [napari](https://napari.org/stable/) enables users to perform every step — from image loading to EFD export — without writing code.  
   All parameters, transformations, and processing histories are **automatically stored as structured metadata (JSON/CSV)**, ensuring full reproducibility.
 
 - **Biologically consistent leaf orientation**  
@@ -20,7 +19,7 @@ A complete graphical interface built on [napari](https://napari.org/stable/) ena
   Supports both conventional and *true normalized* EFDs (following [Wu et al., 2024](https://doi.org/10.48550/arXiv.2412.10795)), allowing morphometric analysis that preserves biologically meaningful orientation and symmetry.
 
 - **Flexible and editable segmentation options**  
-  Provides both traditional [Otsu thresholding](https://ieeexplore.ieee.org/document/4310076/) and deep-learning–based [SAM2](https://ai.meta.com/sam2/) segmentation ([Ravi et al., 2024](https://arxiv.org/abs/2408.00714)), ensuring robust contour extraction under diverse imaging conditions.  
+  Provides both traditional Otsu thresholding ([Otsu, 1979](https://ieeexplore.ieee.org/document/4310076/)) and deep-learning–based [SAM2](https://ai.meta.com/sam2/) segmentation ([Ravi et al., 2024](https://arxiv.org/abs/2408.00714)), ensuring robust contour extraction under diverse imaging conditions.  
   Users can interactively adjust threshold values or manually refine segmentation masks using *[napari](https://napari.org/stable/index.html)*’s built-in painting, polygon, and erasing tools, achieving precise control while maintaining reproducibility.
 
 - **Comprehensive metadata export**  
@@ -60,7 +59,7 @@ cd morphometrics-tool
 setup\setup_windows.bat
 ```
 
-macOS / Linux (In preparation)
+- macOS / Linux (In preparation)
 
 ```bash
 bash setup/setup_unix.sh
@@ -83,7 +82,8 @@ uv venv
 .venv\Scripts\activate       # source .venv/bin/activate  (macOS/Linux)
 uv sync
 git clone https://github.com/facebookresearch/sam2.git
-cd sam2 && uv pip install -e . && cd ..
+cd sam2 && uv pip install -e .
+cd ..
 ```
 
 If you plan to use Segment Anything 2 (SAM2) for segmentation, make sure its checkpoints are downloaded into `sam2/checkpoints/`.
@@ -91,7 +91,7 @@ For details about each model, refer to the following page:
 
 - [Model Description - facebookresearch/sam2](https://github.com/facebookresearch/sam2#:~:text=(state)%3A%0A%20%20%20%20%20%20%20%20...-,Model%20Description,-SAM%202.1%20checkpoints)
 
-After installation, launch the tool with one of the following:
+After installation, launch the tool with:
 
 ```bash
 leaf-shape-tool
@@ -100,11 +100,7 @@ leaf-shape-tool
 > [!NOTE]
 > For full setup instructions (including uv, git, and checkpoint downloads), see the [Installation Guide](https://maple60.github.io/morphometrics-tool/installation.html).
 
-### Optional: SAM2 Model
-
-If you plan to use Segment Anything 2 (SAM2) for segmentation, make sure its checkpoints are downloaded into:
-
-## Workflow
+## Workflow & Usage
 
 ```mermaid
 ---
@@ -135,17 +131,34 @@ flowchart LR
 Each processing step corresponds to a dedicated GUI widget,  
 and all results (images, contours, metadata, EFDs) are automatically exported to the `output/` directory.
 
+For a detailed step-by-step guide, please refer to the [Usage page](https://maple60.github.io/morphometrics-tool/usage.html).
+
 ## Citation
 
 Currently **in preparation**
 
 ## Acknowledgements
 
-Built upon open-source frameworks including [napari](https://napari.org/), [scikit-image](https://scikit-image.org/), [numpy](https://numpy.org/), [pandas](https://pandas.pydata.org/), and [matplotlib](https://matplotlib.org/).
+This tool is built upon the following open-source frameworks:
+
+- [napari](https://napari.org/stable/): interactive image viewer framework  
+- [scikit-image](https://scikit-image.org/): image processing library  
+- [numpy](https://numpy.org/): numerical computation library  
+- [pandas](https://pandas.pydata.org/): data analysis library  
+- [matplotlib](https://matplotlib.org/): visualization and plotting library  
+
+The design and implementation of this tool were inspired by the methodology and GUI software developed by [Wu et al. (2024)](https://doi.org/10.48550/arXiv.2412.10795), particularly the *ElliShape* interface ([https://www.plantplus.cn/ElliShape/](https://www.plantplus.cn/ElliShape/)).
+
+We also acknowledge the contributions of many other open-source tools and studies  
+that have advanced automated leaf image analysis.  
+A summary of related software can be found on the [Related Tools page](https://maple60.github.io/morphometrics-tool/related_tools.html).
+
+We express our sincere gratitude to the open-source community and all contributors  
+whose work made this tool possible.
 
 ## License 
 
-Distributed under the BSD 3-Clause License. See [LICENSE](LICENCE) for more information.
+Distributed under the BSD 3-Clause License. See [LICENSE](https://github.com/maple60/morphometrics-tool/blob/main/LICENSE) for more information.
 
 ## References
 

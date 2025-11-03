@@ -1,6 +1,8 @@
 # Leaf Shape Analysis Tool
 
-[English README is here (README.md)](README.md)
+[English README is here (README.md)](https://github.com/maple60/morphometrics-tool/tree/main)
+
+**ドキュメントサイト:** [https://maple60.github.io/morphometrics-tool/](https://maple60.github.io/morphometrics-tool/)
 
 [**napari**](https://napari.org/stable/) を基盤としたグラフィカルユーザーインターフェース（GUI）で、葉の輪郭抽出・方向補正・楕円フーリエ記述子(elliptic Fourier descriptor) の算出を再現可能な形で実行できます。
 
@@ -21,7 +23,7 @@
 
 - **柔軟かつ編集可能なセグメンテーション機能**  
     伝統的な大津の二値化手法 ([Otsu, 1979](https://ieeexplore.ieee.org/document/4310076/)) と、深層学習ベースの [SAM2](https://ai.meta.com/sam2/) セグメンテーション ([Ravi et al., 2024](https://arxiv.org/abs/2408.00714)) の両方を提供し、多様な画像条件下での堅牢な輪郭抽出を実現します。  
-    さらに、閾値の再調整や、*[napari](https://napari.org/stable/index.html)* のペイント、ポリゴン、消しゴムツールを用いてセグメンテーションマスクを手動で微調整でき、正確な制御と再現性を両立します。
+    さらに、閾値の再調整や、[napari](https://napari.org/stable/index.html) のペイント、ポリゴン、消しゴムツールを用いてセグメンテーションマスクを手動で微調整でき、正確な制御と再現性を両立します。
 - **完全なメタデータ出力**  
     スケール設定、ROI抽出、ランドマーク指定、回転、二値化、輪郭抽出、EFD算出といったすべての処理過程が機械可読な形式（JSON/CSV）で保存され、透明性と再現性の高い解析パイプラインを実現します。
 
@@ -90,7 +92,7 @@ cd ..
 SAM2 を利用する場合は、チェックポイントを sam2/checkpoints/ に配置してください。
 モデルの詳細は以下のページを参照してください：
 
-- - [Model Description - facebookresearch/sam2](https://github.com/facebookresearch/sam2#:~:text=(state)%3A%0A%20%20%20%20%20%20%20%20...-,Model%20Description,-SAM%202.1%20checkpoints)
+- [Model Description - facebookresearch/sam2](https://github.com/facebookresearch/sam2#:~:text=(state)%3A%0A%20%20%20%20%20%20%20%20...-,Model%20Description,-SAM%202.1%20checkpoints)
 
 インストールが完了したら、以下の方法で起動します：
 

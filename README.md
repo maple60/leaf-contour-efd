@@ -2,6 +2,8 @@
 
 [**日本語のREADMEはこちら (Japanese README is here)**](README_ja.md)
 
+**Full documentation:** [https://maple60.github.io/morphometrics-tool/](https://maple60.github.io/morphometrics-tool/)
+
 A **[**napari**](https://napari.org/stable/)-based graphical user interface (GUI)** for fully reproducible extraction, orientation, and morphometric analysis of leaf outlines.  
 This tool allows researchers to perform every processing step interactively — from setting image scale to exporting normalized Elliptic Fourier Descriptors (EFDs) — all within a single, unified environment.
 
@@ -20,7 +22,7 @@ This tool allows researchers to perform every processing step interactively — 
 
 - **Flexible and editable segmentation options**  
   Provides both traditional Otsu thresholding ([Otsu, 1979](https://ieeexplore.ieee.org/document/4310076/)) and deep-learning–based [SAM2](https://ai.meta.com/sam2/) segmentation ([Ravi et al., 2024](https://arxiv.org/abs/2408.00714)), ensuring robust contour extraction under diverse imaging conditions.  
-  Users can interactively adjust threshold values or manually refine segmentation masks using *[napari](https://napari.org/stable/index.html)*’s built-in painting, polygon, and erasing tools, achieving precise control while maintaining reproducibility.
+  Users can interactively adjust threshold values or manually refine segmentation masks using [napari](https://napari.org/stable/index.html)’s built-in painting, polygon, and erasing tools, achieving precise control while maintaining reproducibility.
 
 - **Comprehensive metadata export**  
   Every processing step — scale calibration, ROI cropping, landmark placement, rotation, binarization, contour extraction, and EFD computation — is saved in machine-readable form, supporting transparent and reproducible shape analysis pipelines.

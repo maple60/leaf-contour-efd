@@ -1,20 +1,31 @@
 ---
+title: "Usage"
+lang: en
 format:
   html:
     mermaid:
       theme: forest
-title: "Usage"
 lightbox: true
 bibliography: references.bib
 number-sections: true
 ---
 
-This section describes how to use the Leaf Shape Analysis Tool through the graphical user interface (GUI). All operations — from ROI cropping to EFD export — can be completed within a single interactive window.
+::: {.callout-note}
+## 🇯🇵 日本語版 / Available in Japanese
+
+日本語で読みたい方は [こちらのページ](usage_ja.qmd) をご覧ください。  
+Please see the [Japanese version](usage_ja.qmd) for reading in Japanese.
+:::
+
+This section describes how to use the **Leaf Shape Analysis Tool** through its graphical user interface (GUI).  
+All steps — from ROI cropping to EFD export — can be performed interactively within a single window.
+
+---
 
 ## Workflow Overview
 
-The overall workflow is summarized below.
-Each step can be performed through the dedicated GUI widgets.
+The overall workflow is summarized below.  
+Each step can be performed through the corresponding GUI widget.
 
 ::: {style="text-align: center;"}
 ```{mermaid}
@@ -44,374 +55,353 @@ flowchart TD
 ```
 :::
 
-From next section (@sec-step-by-step), each step will be explained in detail.
+Each step is explained in detail below (@sec-step-by-step).
 
 ## Step-by-Step Guide {#sec-step-by-step}
 
 ### Launch the Application
 
-After installation, start the application.\
-Once launched, the napari viewer window will appear.
+After installation, start the application.  
+The **napari viewer** window will appear as shown below.
 
 ![Initial window](assets/initial_window.webp){fig-alt="Initial window" fig-align="center" #fig-initial-window}
 
 ### Load an Image {#sec-load-image}
 
-Open an image file from the menu bar (\[File\] \> \[Open\]) or drag & drop it directly into the viewer. ショートカットキーは Ctrl+O (Windows/Linux) または Cmd+O (Mac) です。
+To load an image, select **File > Open** from the menu bar, or simply drag and drop a file into the viewer.  
+Shortcut: **Ctrl + O** (Windows / Linux) or **Cmd + O** (macOS).
 
-![\[File\] \> \[Open\]](assets/open_image.webp){fig-alt="How to open a image" fig-align="center" #fig-fig-open-image}
+![File > Open](assets/open_image.webp){fig-alt="How to open a image" fig-align="center" #fig-fig-open-image}
 
-::: {.callout-note title="Supported Image Formats"}
+::: {.callout-note}
+## Supported Image Formats
+
 Supported formats include `.jpg`, `.png`, `.tif`, and `.bmp`.
 :::
 
-画像を読み込むと、画像のファイル名をレイヤ名とした画像レイヤが追加されます。 また、その上に自動的に ROIs レイヤも追加されます。
+When loaded, the image appears as a new layer named after the file,  
+and an **ROIs** layer is automatically created on top of it.
 
 ![Image loaded](assets/image_loaded.webp){fig-alt="Image loaded" fig-align="center" #fig-image-loaded}
 
-### (Optional) Set the Scale
+### (Optional) Set the Scale {#sec-set-scale}
 
-If your image contains a scale bar, you can define the pixel-to-cm ratio using the Scale Setter widget. 画像中にスケールバーが存在していたり、画像のdpi (dot per inch; 1ピクセル当たりのインチ数)情報が正確である場合は、左下のウィジェットからスケール設定を行うことができます。 これは任意です。 スケールを設定すると、輪郭取得後に、輪郭に囲まれた面積が cm$^2$ データに保存されます。
+If your image includes a scale bar or accurate DPI information,  
+you can define the pixel-to-centimeter ratio using the **Scale Setter widget**.  
+This step is optional.  
+Once the scale is set, the enclosed area of each contour will be recorded in cm² in the exported data.
 
-#### スケールバーで設定する場合
+#### Set Scale Using a Scale Bar
 
-画像中にスケールバーが存在する場合は、以下の手順でスケールを設定できます。
+1. Click **Add Layer** to create a *Scale Measurement* shapes layer.
+2. Set the **mode** to `px/cm`.
+3. Zoom in on the scale bar and confirm that **Add lines** 
 
-1.  \[Add Layer\] をクリックします。Scale Measurement という シェープレイヤー ![](assets/icons\new_shapes.svg){width="24"} が追加されます
-2.  \[mode\]を "px/cm" に設定します
-3.  スケールバーを拡大し、\[Add lines\] ![](assets/icons\rectangle.svg){width="24"} ツールが選択されていることを確認します
-4.  画像中のスケールバーの既知の長さに沿ってクリック＆ドラッグで線を引きます
-5.  \[Real length\] と \[Unit\] に、スケールバーの実際の長さと単位を入力します。デフォルトでは 1 cm に設定されています。
-6.  \[Set Scalse\] ボタンをクリックします。これでスケールが設定されます。
+{width="24"} is selected.
+4. Drag a line along the known scale bar length.
+5. Enter the real length and unit (default: 1 cm).
+6. Click **Set Scale** to apply.
 
 ![Set scale (scale bar mode)](assets/set_scale_px_cm_mode.webp){fig-alt="Set scale (px/cm mode)" fig-align="center" #fig-set-scale-px-cm-mode}
 
-#### dpi情報で設定する場合
+#### Set Scale Using DPI
 
-1.  \[mode\]を "dpi" に設定します（デフォルトで設定されています）
-2.  \[DPI\] に画像のdpi情報を入力します。デフォルトでは 300 dpi に設定されています
+- Set **mode** to `dpi` (default).
+- Enter the image DPI in the **DPI** field (default: 300 dpi).
 
 ![Set scale (dpi mode)](assets/set_scale_dpi_mode.webp){fig-alt="Set scale (dpi mode)" fig-align="center" #fig-set-scale-dpi-mode}
 
 ::: callout-tip
-## スキャン画像の解像度について
+## Recommended Scan Resolution
 
-葉のスキャン画像を取得する場合は、スキャン速度やファイルサイズのバランスも考えると、解像度は300－400 dpiで十分なことが多いです。\
-[e.g. @shi2021; @viscosi2009]\
-ただし、細かい鋸歯がない場合は、50dpi 程度でも種の分類に十分な場合もあります [@neto2006a]。
+For scanned leaves, a resolution of **300–400 dpi** is typically sufficient, balancing detail, speed, and file size [e.g. @shi2021; @viscosi2009].
+
+For images without fine serrations, even **50 dpi** may be adequate [@neto2006a]。
 :::
 
 ### Crop Region of Interest (ROI) {#sec-crop-ROI}
 
-Use the Crop Rectangle widget to define a region of interest (ROI). Click “Add ROI Layer” to draw a rectangular selection over the target leaf area.
+Use the **Crop Rectangle widget** to define a region of interest (ROI).  
+Click **Add ROI Layer** and draw a rectangular selection around the target leaf.
 
-1.  ROIs レイヤーが選択されていることを確認します
-2.  \[Add rectangle\] ![](assets/icons\rectangle.svg){width="24"}ツールが選択されていることを確認し、輪郭を取得したい対象物の周囲に矩形を描きます
-3.  \[Add ROI layer\] をクリックします
-4.  矩形の部分が切り抜かれた"ROI_01" という画像レイヤーと、その上に"ROI_01_landmarks"というポイントレイヤーが作成されます
+1.  Confirm that the **ROIs** layer is active.
+2.  Select the **Add rectangle** tool ![](assets/icons\rectangle.svg){width="24"} and draw a rectangle over the target object.
+3.  Click **Add ROI Layer**.
+4.  A cropped image layer named `ROI_01` and a point layer `ROI_01_landmarks` will be created automatically.
 
 ::: callout-note
-## ROIとは
+## What Is ROI?
 
-ROI（Region of Interest）は、画像全体の中で「関心のある領域」や「解析対象となる部分」を指す用語です。\
-たとえば葉の形状解析では、スキャン画像のうち葉の部分だけを切り出した領域をROIと呼びます。\
-ROIを指定することで、解析対象を限定し、不要な背景などの影響を除くことができます。
+ROI (*Region of Interest*) refers to the specific part of an image selected for analysis.  
+In leaf-shape studies, the ROI typically corresponds to the leaf area cropped from the scanned image,  
+which helps exclude irrelevant background regions.
 :::
 
 ![Draw ROI rectangle](assets/roi_extraction.webp){fig-alt="Draw ROI rectangle" fig-align="center" #fig-draw-ROI-rectangle}
 
 ::: callout-tip
-## 操作について
+## Navigation
 
--   **ズームイン・ズームアウト**はマウスホイールで行えます。 **パン**をしたい場合は、\[Move camera\] ツール ![](assets/icons\pan_arrows.svg){width="24"}を使用して、画像をドラッグして移動できます。
-
--   \[Add rectangle\] ![](assets/icons\rectangle.svg){width="24"} ツールが選択されている状態でも、スペースキーを押しながらドラッグしてパン操作が可能ですが、挙動がやや不安定です。\
-    画像の上にカーソルを置いた状態で、スペースキーを押したときに、カーソルが十字から通常のカーソルに変化する場合は、ドラッグによるパン操作が可能です。
-
--   間違えた矩形を描画した場合は、\[Delete selected shapes\] ![](assets/icons/delete_shape.svg){width="24"} ツールで矩形を消去し、再度矩形を追加してください。
-
--   \[Next ROI index\] に次のROI番号が表示されており、ROIを作成すると自動で増加します。途中の番号から開始したい場合は手動で変更することが可能です。
+- **Zoom** using the mouse wheel.
+- **Pan** using the **Move camera** ![](assets/icons\pan_arrows.svg){width="24"}
+- While in **Add rectangle** mode ![](assets/icons\rectangle.svg){width="24"}, you can also pan by **holding the spacebar while dragging** (though the behavior may vary).
+- To delete an incorrect rectangle, use **Delete selected shapes** tool ![](assets/icons/delete_shape.svg){width="24"}.
+- The **Next ROI index** field increments automatically after each ROI, but can be adjusted manually.
 :::
 
 ::: callout-note
-## 保存オプション
+## Saving Options"
 
--   \[Save cropped image\] でROI部分を保存するかどうかを設定できます。デフォルトではオンになっています。保存をしない場合は、チェックを外してください。
-
--   \[Output Folder\] で保存先を設定できます。デフォルトでは、`output/cropped_images` に保存されます。保存先を変更したい場合は、\[Choose directory\] をクリックして変更することが可能です。
+-  **Save cropped image:** Enable or disable saving cropped ROIs (default: on).
+- **Output Folder:** Default = `output/cropped_images/`. Use **Choose directory** to change.
 :::
 
-### Add Landmarks and Rotation
+### Add Landmarks and Rotate Image
 
-Add two landmarks (base and tip) using the Landmark Tool.\
-These are used to align the biological orientation of each leaf.
+Add two landmarks (base and tip) using the **Landmark Tool**.  
+These define the biological orientation of the leaf.
 
-1.  ROI_XX_landmarks レイヤが選択されていることを確認します (XXは01から始まるROI番号です)
-2.  解析対象の基部(base)をクリックします
-3.  解析対象の先端(tip)をクリックします
-4.  \[Rotate Image Based on Points\] をクリックします
-5.  基部が左(-x 方向)、先端が右(+x 方向)、基部と先端を結んだ直線がx軸とのなす角が0度になるように回転され、回転後の画像が "ROI_XX_rotated" (XX は 01から始まるROI番号)というレイヤー名で追加されます
+1. Select the `ROI_XX_landmarks` layer (XX = ROI index).
+2. Click the **base** point.
+3. Click the **tip** point.
+4. Click **Rotate Image Based on Points**.
+5. The image will be rotated so that the base points left (−x) and the tip points right (+x).  
+A new rotated image layer (`ROI_XX_rotated`) will appear.
 
 ![Added landmarks](assets/add_landmarks.webp){fig-alt="Added landmarks" #fig-added-landmarks}
 
 ::: callout-tip
-## 操作について
+## Interaction Tips
 
--   \[Add points\] ツール ![](assets/icons\add.svg){width="24"} が選択された状態で、左クリックをするとランドマークが追加されますが、ドラッグすると、画像を移動することができます
-
-<!-- -->
-
--   基部(base)にランドマークを追加すると、自動的に次のランドマークのラベルが先端(tip)に進みます
-
--   次のランドマークのラベルを変更したいときは、左の \[label\] を変更します
-
--   \[auto advance\] は、ランドマークを追加した後、自動でラベルを進めるかの設定です。デフォルトではオンになっています
-
--   \[Undo last point\] をクリックすると、最後に追加したランドマークが消去されます
-
--   \[Clear points\] をクリックすると、現在のランドマークがすべて消去されます
+- Use **Add points** tool ![](assets/icons\add.svg){width="24"} to add landmarks.
+- The label automatically advances from *base* to *tip*.
+- Use the **label** dropdown to change the current label manually.
+- **Auto advance** toggles automatic label progression (default: on).
+- **Undo last point** removes the most recent landmark.
+- **Clear points** deletes all current landmarks.
 :::
 
 ::: callout-note
-## 保存オプション
+## Saving Options
 
--   \[Save rotated image\] で回転後の画像を保存するかどうかを設定できます。デフォルトではオンになっています。保存をしない場合は、チェックを外してください。
--   \[Output Folder\] で保存先を設定できます。デフォルトでは、`output/rotated_images` に保存されます。保存先を変更したい場合は、\[Choose directory\] をクリックして変更することが可能です。
+- **Save rotated image:** Enable or disable saving rotated images (default: on).
+- **Output Folder:** Default = `output/rotated_images/`. Use **Choose directory** to change.
 :::
 
-### Generate Binarized Mask
+### Generate a Binarized Mask
 
-輪郭を取得する領域を確定させるため、回転画像から二値化マスク画像を作成します。
+To extract the leaf contour, convert the rotated image to a binary mask.
 
 ::: callout-note
-## 二値化処理
+## About Binarization
 
-二値化とは、画像をグレースケール（白黒の濃淡）に変換し、画素の明るさ（輝度値）を基準にして白と黒の2色に分類する処理です。\
-一般的には、白が対象領域（葉などの解析対象）、黒が背景となるように分離します。\
-この処理によって、形の輪郭を明確に抽出できるようになります。
+*Binarization* converts a grayscale image into two tones — typically white (object) and black (background) —  
+based on pixel intensity.  
+This enhances contrast and allows precise contour extraction.
 
-二値化の方法には、手動で閾値を設定する方法のほか、画像のヒストグラムから自動で最適な閾値を求める「Otsu法」[@otsu1979]などがあります。
+The tool supports both manual and automatic thresholding, including **Otsu’s method** [@otsu1979].
 :::
 
-本ソフトウェアでは、以下の二つの方法を採用しています。
+Two methods are available:
 
-Generate a binary mask using one of the following methods:
+-   Otsu's method [@otsu1979]: 
+    A statistical thresholding algorithm that automatically finds the optimal threshold from the image histogram.
+-   Segment Anything Model 2 (SAM2) [@ravi2024sam2segmentimages]: 
+    A deep-learning segmentation model developed by Meta.
+    It performs well on complex or noisy backgrounds.
 
--   Otsu's method [@otsu1979]: 画素値のヒストグラムに基づいて、自動的に最適な閾値を求める統計的二値化手法。
+For clean scanned images (dark leaf on white background), Otsu’s method is typically sufficient and faster.  
+If the leaf is faint or the background complex, SAM2 may yield better segmentation.
 
--   Segment Anything Model 2 (SAM2) [@ravi2024sam2segmentimages]: Meta社が開発した、深層学習モデルを用いた高精度な画像セグメンテーション手法。複雑な背景でも対象を自動で抽出できます。
+#### Using Otsu’s Method
 
-スキャン画像など、白い背景に対して葉が濃い色で写っている場合は、Otsu法で十分なことが多いです。\
-一方、葉が薄く写っている場合や、背景が複雑な場合は、SAM2を使用すると良い結果が得られることがあります。
-
-経験的に、通常の葉のスキャン画像を用いる場合、Otsu法のほうが高速かつ細かい鋸歯を捉えやすい傾向があります。\
-最初には Otsu法を試し、うまくいかない場合にSAM2を試すことをお勧めします。
-
-#### Otsuの方法で二値化する場合
-
-1. 右側の \[Binarization Widget\]の\[method\]から、\[Otsu\]を選択します
-2. \[Binarize image\]をクリックします
-3. "ROI_XX_rotated_Otsu_labels" (XX は 01から始まるROI番号) というラベルレイヤーが追加され、二値化されたマスクが表示されます。対象の領域がオレンジ色で重ねて表示されます
-4. \[method\]の下に\[threshold\]のスライダーが表示され、閾値を手動で調整することが可能です。\
-   スライダーを動かすと、二値化の閾値が変化し、マスクがリアルタイムで更新されます。
+1. In the **Binarization Widget**, set **method = Otsu**.
+2. Click **Binarize image**.
+3. A new label layer `ROI_XX_rotated_Otsu_labels` will appear with the binary mask (orange overlay).
+4. Adjust the **threshold** slider to fine-tune the result.
 
 ![Binarized by Otsu's method](assets/binarization.webp){fig-alt="Added landmarks" #fig-binarized-by-otsu}
 
-#### SAM2で二値化する場合
+#### Using SAM2
 
-1. 右側の \[Binarization Widget\]の\[method\]から、\[SAM2\]を選択します
-2. \[Binarize image\]をクリックします
-3. "ROI_XX_rotated_SAM2_labels" (XX は 01から始まるROI番号) というラベルレイヤーが追加され、二値化されたマスクが表示されます。対象の領域が青色で重ねて表示されます
+1. In the **Binarization Widget**, set **method = SAM2**.
+2. Click **Binarize image**.
+3. A label layer `ROI_XX_rotated_SAM2_labels` will appear (blue overlay).
 
 ::: {.callout-caution}
-## 注意点
+## Note
 
-技術的な問題により、スタンドアローン版では現在SAM2は利用できません。\
-SAM2を使用したい場合は、Python版を利用してください。申し訳ございません。将来的に対応させたいと思っております。
+Due to technical limitations, SAM2 is currently **not available in the standalone version**.  
+To use SAM2, please run the Python version instead.
 :::
 
 ::: callout-note
-## 保存オプション
+## Saving Options
 
--   \[Save binarized image\] で二値化マスク画像を保存するかどうかを設定できます。デフォルトではオンになっています。保存をしない場合は、チェックを外してください。
--   \[Output Folder\] で保存先を設定できます。デフォルトでは、`output/binarized_images` に保存されます。保存先を変更したい場合は、\[Choose directory\] をクリックして変更することが可能です。
+- **Save binarized image:** Enable or disable saving binary masks (default: on).
+- **Output Folder:** Default = `output/binarized_images/`. Use **Choose directory** to change.
 :::
 
 ::: {.callout-tip}
-## 手法の比較について
+## Comparing Methods
 
-両方の結果を比較したい場合は、同じROIに対してそれぞれの手法で二値化を行い、結果を比較してください。\
-この際、"ROI_XX_rotated" (XX は 01から始まるROI番号) レイヤーを選択した状態で、二値化を実行してください。\
+You can compare Otsu and SAM2 results visually: run both methods on the same ROI — orange masks (Otsu) and blue masks (SAM2) are semi-transparent (opacity = 0.5), allowing easy overlay comparison (@fig-comparison-between-two-methods).  
 
-Otsu法はオレンジ、SAM2は青色でマスクが表示され、透過度を0.5に設定しているため、重ねて視覚的に比較することができます。\
-また、二値化マスク画像をそれぞれ保存することで、後で詳細に比較することも可能です。
+You may also export both masks for later analysis.
+
+![Comparison between two methods](assets/binarization_comparison.webp){fig-alt="Added landmarks" #fig-comparison-between-two-methods}
 :::
 
 ### Edit Binarized Mask (if needed)
 
-もし自動で生成された二値マスクに修正が必要な場合は、以下の修正をおこないます:
+If the automatically generated mask requires refinement:
 
--   閾値の調整（大津の方法の場合のみ）: スライダーを動かして、二値化の閾値を調整します。
--   ラベルレイヤーの編集: napariのラベル編集ツールを使用して、マスクの追加や削除を行います。
+- Adjust the threshold (Otsu only).
+- Edit the label layer manually using napari’s painting tools.
 
-基本的には3種類のツールを使用して、二値化マスクを手動で修正できます:
+Available tools:
 
-- paint brush ツール: 欠けている部分の細かい修正に適しています
-- polygon tool: 大きな領域を一度に追加したり、直線的に補完したりしたい場合に適しています。
-- label eraser ツール: 不要な部分を削除するのに適しています。
+<head></head>
 
-#### Paint brush ツールでの編集
+| Tool | Use |
+| --- | --- |
+| **Paint brush** | Fill missing or small areas |
+| **Polygon tool** | Add or correct large regions |
+| **Label eraser** | Remove unwanted areas |
 
-1. "ROI_XX_rotated_`<method>`_labels" レイヤー (XX は 01から始まるROI番号、`<method>` は Otsu または SAM2) を選択します
-2. 左上の [layer controls] から [paint brush] ツール ![](assets\icons\paint.svg){width="24"} を選択します。
-3. 欠けている部分や、マスクが必要な部分をクリック＆ドラッグして塗りつぶします
+
+#### Editing with Paint Brush
+
+1. Select `ROI_XX_rotated_<method>_labels`.
+2. Choose **paint brush** tool ![](assets\icons\paint.svg){width="24"}.
+3. Click and drag to fill or correct missing regions.
 
 ::: {.callout-tip}
-## ツールの設定について
+## Brush Settings
 
-[layer controls] では、ブラシの設定を変更できます:  
+You can adjust in **layer controls**:
 
-- opacity: ブラシの不透明度を変更します。デフォルトは 0.5 です
-- brush size: ブラシの太さを変更します。デフォルトは 10 ピクセルです
-
-ほかの設定は基本的には変更する必要はありません。
+- *Opacity* (default = 0.5)
+- *Brush size* (default = 10 px)
 :::
 
-#### Polygon tool での編集
+#### Editing with Polygon Tool
 
-1. "ROI_XX_rotated_`<method>`_labels" レイヤー (XX は 01から始まるROI番号、`<method>` は Otsu または SAM2) を選択します
-2. 左上の [layer controls] から [polygon] ツール ![](assets\icons\polygon.svg){width="24"} を選択します。
-3. マスクを追加したい領域の周囲をクリックして多角形を描きます。ダブルクリックで多角形を閉じます。右クリックでひとつ前の頂点に戻ります
-4. 多角形が閉じたら、自動的にその領域がマスクとして追加されます
+1. Select `ROI_XX_rotated_<method>_labels`.
+2. Choose **polygon** tool ![](assets\icons\polygon.svg){width="24"}.
+3. Click around the desired area to form a polygon; double-click to close it.
+    The enclosed region will be added to the mask.
 
-::: {.callout-tip}
-## ツールの設定について
+#### Editing with Label Eraser
 
-[layer controls] では、ブラシの設定を変更できます:  
-
-- opacity: ブラシの不透明度を変更します。デフォルトは 0.5 です
-- brush size: ブラシの太さを変更します。デフォルトは 10 ピクセルです
-
-ほかの設定は基本的には変更する必要はありません。
-:::
-
-#### Label eraser ツールでの編集
-
-1. "ROI_XX_rotated_`<method>`_labels" レイヤー (XX は 01から始まるROI番号、`<method>` は Otsu または SAM2) を選択します
-2. 左上の [layer controls] から [label eraser] ツール ![](assets\icons\erase.svg){width="24"} を選択します。
-3. 不要なマスク部分をクリック＆ドラッグして削除します
+1. Select `ROI_XX_rotated_<method>_labels`.
+2. Choose **label eraser** tool ![](assets\icons\erase.svg){width="24"}.
+3. Click and drag to remove unwanted mask regions.
 
 ::: {.callout-tip}
-## ツールの設定について
+## Editing Guidance
 
-[layer controls] では、ブラシの設定を変更できます:
-- opacity: ブラシの不透明度を変更します。デフォルトは 0.5 です
-- brush size: ブラシの太さを変更します。デフォルトは 10 ピクセルです
-ほかの設定は基本的には変更する必要はありません。
-:::
-
-::: {.callout-tip}
-## 修正についての補足説明
-
-葉柄を含めずに葉身のみの輪郭を取得したい場合にも、label eraser ツールは有効です。  
-葉柄部分をクリック＆ドラッグして削除することで、葉身のみの輪郭を取得できます。
-
-このとき、葉柄を完全に削除するのではなく、葉身とつながっている部分を切り離すように削除するだけで十分です。
-なぜなら、この操作後に実施する輪郭抽出では、**ROI内の最大の連結成分が抽出される**ためです。
-
-そのため、paint brush ツールや polygon ツールによるマスクへの追加編集でも、完全に穴を埋めるように修正する必要はありません。
-輪郭が閉じるようにつながっていれば、輪郭が正しく抽出されます。
+To exclude the petiole and keep only the lamina, erase the connecting region between the leaf and petiole.  
+Since contour extraction later uses the *largest connected component*, it is unnecessary to fill every small gap completely.
 :::
 
 ### Extract Contour
 
-マスクが確定したら、輪郭を抽出します。
+Once the mask is finalized, extract the contour.
 
-1. "ROI_XX_rotated_`<method>`_labels" レイヤー (XX は 01から始まるROI番号、`<method>` は Otsu または SAM2) を選択します
-2. \[Contour Extraction WIdget\] の \[Extract Contour\] をクリックします
-3. 輪郭がマスクの外周に沿って抽出されて水色で表示され、"ROI_XX_rotated_`<method>`labels_contour" (XX は 01から始まるROI番号、`<method>` は Otsu または SAM2) というラベルレイヤーが追加されます (@fig-contour)
+1. Select `ROI_XX_rotated_<method>_labels`.
+2. In the **Contour Extraction Widget**, click **Extract Contour**.
+3. The contour (cyan outline) will appear, and a new layer `ROI_XX_rotated_<method>_labels_contour` will be added(@fig-contour).
 
 ![Extracted contour](assets/contoru_extraction.webp){fig-alt="Extracted contour" fig-align="center" #fig-contour}
 
-この時、EFDとoriented true normalized EFD も自動的に計算され、メタデータとともにエクスポートされます。
+During this step, both the **EFD** and **oriented true normalized EFD** are automatically computed and exported together with metadata.
 
 ::: {.callout-note}
-## 輪郭に誤りがある場合
+## If Contour Extraction Fails
 
-輪郭が正しく抽出されなかった場合は、\[Delete selected layers\] ツールで "ROI_XX_rotated_`<method>`_labels_contour" レイヤーを削除し、ステップ 6 に戻って二値化マスクを再度修正してください。
+If the contour is incorrect, delete `ROI_XX_rotated_<method>_labels_contour` and return to the previous step to refine the mask.
 :::
 
 ::: callout-note
-## 保存オプション
+## Saving Options
 
--   \[Save final (edited) mask\] で手動修正した二値化マスク画像を保存するかどうかを設定できます。デフォルトではオンになっています。保存をしない場合は、チェックを外してください。
--   \[Save chosen blob mask\] で保存先を設定できます。デフォルトでは、`output/binarized_images` に保存されます。保存先を変更したい場合は、\[Choose directory\] をクリックして変更することが可能です。
+- **Save final (edited) mask:** Enable or disable saving the manually corrected mask (default: on).
+- **Save chosen blob mask:** Default = `output/binarized_images/`. Use **Choose directory** to change.
 :::
 
 ### Reset and Continue
 
-輪郭の取得を終えたら、ROIをリセットし、次のROIに進むか、次の画像に進みます。
+After extracting contours, you can reset the viewer and proceed to the next ROI or image.
 
-#### 次のROIに進む場合
+#### Proceed to Next ROI
 
-\[Keep base image & 'ROIs'\] にチェックを入れた状態で \[Reset Viewer\] をクリックします。
-これにより、元画像と ROIs レイヤーはそのままに、他のすべてのレイヤーが削除されます。
-ROIsレイヤーに前回のROIのプレビューが残っているため、次のROIを追加する際に便利です。
+1. Check **Keep base image & ‘ROIs’**, then click **Reset Viewer**.  
+The base image and ROI preview remain visible.
+2. Return to @sec-crop-ROI to define the next region.
 
-その後、@sec-crop-ROI に戻り、次のROIを追加して解析を続けることができます。
+#### Proceed to Next Image
 
-#### 次の画像に進む場合
-
-1. \[Keep base image & 'ROIs'\] にチェックを入れた状態で \[Reset Viewer\] をクリックします
-2. ROIs のプレビューを確認し、すべてのROIの解析が完了していることを確認します
-3. \[Keep base image & 'ROIs'\] にチェックを外し、 \[Reset All Layers\] をクリックします\
-   これにより、すべてのレイヤーが削除され、最初の状態に戻ります
-4. @sec-load-image に戻り、最初から解析を続けることができます
+1. With **Keep base image & ‘ROIs’** checked, click **Reset Viewer**.
+2. Verify that all ROIs are processed.
+3. Uncheck **Keep base image & ‘ROIs’**, then click **Reset All Layers**.  
+The viewer resets to its initial state.
+4. Return to @sec-load-image to start a new image.
 
 ::: callout-note
-## 保存オプション
+## Saving Options
 
--   \[Save ROIs (Image + ROIs + ROIS label)\] で ROIs のプレビュー画像を保存するかどうかを設定できます。デフォルトではオンになっています。保存をしない場合は、チェックを外してください。
-- 保存をする場合は、\[Save As\] に保存されます。 デフォルトでは、`output/rois/<image>` (`<image>` は拡張子なしのファイル名。レイヤ名と同じ) に保存されます。保存先を変更したい場合は、\[Select file\] をクリックして変更することが可能です。
+- **Save ROIs (Image + ROIs + ROI labels):** Enable or disable saving ROI preview images (default: on).
+- Default output = `output/rois/<image>/`, where `<image>` is the file name (without extension).  
+Use **Select file** to change.
 :::
+
+---
 
 ## Output Files
 
-メタデータや解析結果は自動的にエクスポートされ、指定された出力ディレクトリに保存されます。 デフォルトでは、`./output/` フォルダ内に保存されます。 デフォルトでは、以下のフォルダにそれぞれのファイルが保存されます：
+All metadata and analysis results are exported automatically to the designated output directory (default: `./output/`).  
+The default folder structure is as follows:
 
--   `binarized_image_final`: `binarized_images` にある、自動での二値化後の画像を修正した二値画像
--   `binarized_images`: 自動での二値化後の二値画像
--   `coefficients_efd`: フーリエ記述子の生データ
--   `coefficients_efd_normalized`: 正規化されたフーリエ記述子 (oriented true EFD normalization)
--   `contour`: 輪郭座標データ
--   `contour_image`: 輪郭を白、背景を黒で保存した二値画像
--   `cropped_images`: 元画像をROIで切り出した画像
--   `metadata`: メタデータファイル (.json および .csv)
--   `rois`: 元画像にROIで切り出した領域を示す画像。画像の大きさは、元の画像の半分にリサイズされています。
--   `rotated_images`: ランドマークに基づいて `cropped_images` を回転させた画像
+| Folder | Content |
+| --- | --- |
+| `binarized_image_final` | Final edited binary masks |
+| `binarized_images` | Automatically generated binary masks |
+| `coefficients_efd` | Raw EFD coefficients |
+| `coefficients_efd_normalized` | Normalized (oriented true) EFD coefficients |
+| `contour` | Extracted contour coordinates |
+| `contour_image` | Binary contour images (white = contour, black = background) |
+| `cropped_images` | ROI-cropped original images |
+| `metadata` | Metadata in `.json` and `.csv` formats |
+| `rois` | ROI overview images (resized to ½ of the original) |
+| `rotated_images` | Cropped images rotated based on landmarks |
 
 ### Metadata File
 
-For each processed ROI, metadata are automatically saved in both .json and .csv formats. Each file follows the naming convention:
+For each processed ROI, metadata are saved in both `.json` and `.csv` formats:
 
 - `<image_id>_<ROI_id>.json`
 - `<image_id>_<ROI_id>.csv`
 
-where `<image_id>` is the original image file name without the extension, and `<ROI_id>` is the ROI number starting from 01.
+where `<image_id>` is the original image file name (without extension) and `<ROI_id>` is the ROI number (zero-padded, e.g., 01, 02, 10).
 
 
 ::: callout-tip
-If you process the second ROI of `leaf001.jpg`, the exported files will be:\
-`leaf001_02.json` and `leaf001_02.csv`. ROI IDs are zero-padded to two digits (e.g., 01, 02, ..., 10). ROI は 01 から始まります。
+## Example
+
+For example, the second ROI of `leaf001.jpg` produces: `leaf001_02.json` and `leaf001_02.csv`.  
+ROI indices start from 01.
 :::
 
-By default, these files are stored under `output/metadata/`.
+Default output directory: `output/metadata/`.
 
-You can change the output directory. The metadata include information such as ROI coordinates, rotation angle, scale, and threshold parameters used during segmentation.
+Metadata include ROI coordinates, rotation angle, scale information, binarization parameters, and more.
 
-#### メタデータの詳細な内容
+---
 
-jsonファイルには以下の情報が含まれています：
+#### Metadata Structure (JSON)
+
+Each JSON file contains detailed processing information:
 
 -   metadata_version
 -   source
@@ -454,49 +444,22 @@ jsonファイルには以下の情報が含まれています：
     -   face_color_type
     -   border_color_type
 -   processing_history
-    -   step: "binarization"
+    - Each JSON file contains detailed processing information:
 
-    -   method
-
-    -   threshold
-
-    -   step: "contour_extraction"
-
-    -   points
-
-    -   area
-
-CSVファイルは、上記のJSONファイルから、一部の情報を抜粋して保存しています。 当初は、Procrustean pseudo-landmark methods [@hightower2025] の実装につなげることを目的として作成していました。
-
-具体的なCSVファイルの内容は以下になります。 なお、文字モードはUTF-8、区切り文字はカンマ (`,`) です。
+The CSV file includes a simplified subset of these data for statistical analysis.
 
 ::: callout-caution
-文字コードはUTF-8であるため、日本語を含むファイルをExcelで開く場合は注意が必要です。 通常、ExcelはShift-JISをデフォルトの文字コードとして使用するため、文字化けが発生します。 その際は、Excelの「データ」タブから「テキストまたはCSVから」を選択し、インポートウィザードで文字コードをUTF-8に指定して開いてください。
+## Character Encoding
+
+CSV files use **UTF-8** encoding.  
+When opening in Microsoft Excel, select “Import Text/CSV” and specify UTF-8 encoding to prevent garbled characters.
 :::
 
--   file_absolute_path: 元画像ファイルの絶対パス
+## Recommended Workflow for Users
 
--   file_relative_path: 元画像ファイルの相対パス
-
--   id: 元画像のファイル名（拡張子なし）
-
--   leaf_id: ROIのID（01, 02, ...）
-
--   px_per_cm: ピクセルあたりのセンチメートル数。 scale設定がされていない場合は空欄になります。
-
--   base_x: 基部ランドマークのX座標（回転後 `rotated_images` の画像に対応しています。）
-
--   base_y: 基部ランドマークのY座標（回転後 `rotated_images` の画像に対応しています。）
-
--   tip_x: 先端ランドマークのX座標（回転後 `rotated_images` の画像に対応しています。）
-
--   tip_y: 先端ランドマークのY座標（回転後 `rotated_images` の画像に対応しています。）
-
-## Recommended Order for Users
-
-1.  Run the tool and load your image.
-2.  Follow steps 1–9 above for each ROI.
-3.  Exported files can be used directly in R (e.g., with [**Momocs**](https://momx.github.io/Momocs/) package [@Bonhomme2014momocs]) in [R](https://www.r-project.org/) or [Python](https://www.python.org/) (e.g. [PyEFD](https://pyefd.readthedocs.io/en/latest/)) for downstream analysis.
+1. Launch the tool and load an image.
+2. Follow Steps 1–9 for each ROI.
+3. Use exported data directly for analysis in **R** (e.g., with [**Momocs**](https://momx.github.io/Momocs/) package [@Bonhomme2014momocs]) in [R](https://www.r-project.org/) or [**Python**](https://www.python.org/) (e.g. [PyEFD](https://pyefd.readthedocs.io/en/latest/)).
 
 ## References
 

@@ -47,6 +47,17 @@ flowchart TB
     N -- No --> O["Done"]
 ```
 
+## Installation
+
+There are several ways to install and use the Leaf Shape Analysis Tool.
+Please choose the method that best suits your environment.
+
+- **Standalone app** (the easiest option for general users)  
+- **Setup script** (for users who prioritize reproducibility)  
+- **Manual setup** (for developers)
+
+For more details, see the [Installation page](installation.qmd).
+
 ## License
 
 This project is licensed under the **BSD-3-Clause license**

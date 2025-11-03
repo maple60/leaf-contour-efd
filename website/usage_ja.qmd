@@ -471,6 +471,12 @@ Excel で開く際は、「データ」タブ → 「テキストまたはCSVか
 
 ---
 
+### アイコンのクレジット
+使用している一部のインターフェースアイコン（例：Add Shapes, Paint, Erase, Polygon）は、[napari](https://github.com/napari/napari) プロジェクトに由来するものであり、[BSD 3-Clause License](https://github.com/napari/napari/blob/main/LICENSE) の下で配布されています。
+本ドキュメントでは、説明および教育目的で使用しています。
+
+---
+
 ## 参考文献
 
 ::: {#refs}

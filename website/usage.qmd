@@ -485,6 +485,13 @@ When opening in Microsoft Excel, select “Import Text/CSV” and specify UTF-8 
 
 ---
 
+### Icon Credits
+
+Icons such as *Add Shapes*, *Paint*, *Erase*, and *Polygon* used in the Usage section are derived from the [napari](https://github.com/napari/napari) open-source project (© napari contributors), distributed under the [BSD 3-Clause License](https://github.com/napari/napari/blob/main/LICENSE).
+They have been used here solely for illustrative purposes.
+
+---
+
 ## References
 
 ::: {#refs}

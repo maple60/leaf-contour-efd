@@ -1,0 +1,218 @@
+---
+title: "Installation"
+lang: ja
+---
+
+::: {.callout-note}
+## 🇺🇸 English Version / Available in English
+
+For the English version, please refer to the [installation.qmd](installation.qmd) page.
+:::
+
+Leaf Shape Analysis Tool のインストールおよび使用方法は、次の 3 通りです。
+
+- **スタンドアロンアプリ**（最も簡単で、一般ユーザーに推奨）  
+- **セットアップスクリプト**（再現性を重視するユーザー向け）  
+- **手動セットアップ**（開発者・上級者向け）
+
+上から順に、実行難易度が低い方法となります。
+
+---
+
+## スタンドアロンアプリ（一般ユーザー向け）
+
+GitHub の [Releases](https://github.com/maple60/morphometrics-tool/releases) ページから、最新リリースをダウンロードしてください。  
+Windows では `LeafShapeTool.exe`、macOS では `LeafShapeTool.app` を実行することでツールを起動できます。
+
+Python 環境の構築は不要です。
+
+---
+
+## セットアップスクリプト（再現性重視）
+
+GitHub リポジトリをクローンし、同梱のセットアップスクリプトを用いて環境を構築・起動します。
+
+### Windows
+
+```bash
+git clone https://github.com/maple60/morphometrics-tool.git
+cd morphometrics-tool
+setup\setup_windows.bat
+```
+
+### macOS / Linux
+
+```bash
+git clone https://github.com/maple60/morphometrics-tool.git
+cd morphometrics-tool
+bash setup/setup_unix.sh
+```
+
+### git がインストールされていない場合
+
+以下の公式ドキュメントに従って Git をインストールしてください。
+
+- [Install - git](https://git-scm.com/install/)
+
+または、以下のリポジトリを ZIP 形式でダウンロードし、手動で展開しても構いません。
+
+- [Leaf Shape Analysis Tool - GitHub](https://github.com/maple60/morphometrics-tool)
+- [SAM 2: Segment Anything in Images and Videos - GitHub](https://github.com/facebookresearch/sam2)
+
+---
+
+## 手動セットアップ（開発者・上級者向け）
+
+スクリプトを使用せず、環境を一から構築する場合は、以下の手順に従ってください。
+
+### 1. 事前準備
+
+以下のソフトウェアがインストールされていることを確認してください。
+
+| ソフトウェア                      | 説明                         | 確認コマンド                            |
+| --------------------------- | -------------------------- | --------------------------------- |
+| **Python (≥ 3.12)**         | 環境全体の基盤となる実行環境             | `python --version`                |
+| **uv**                      | 仮想環境の作成および依存関係のインストールに使用   | `uv --version`                    |
+| **Git**                     | SAM2 リポジトリのクローンに使用         | `git --version`                   |
+| **curl** または **PowerShell** | SAM2 チェックポイントデータのダウンロードに使用 | `curl --version` または `powershell` |
+
+macOS および Linux では、PowerShell の代わりに `curl` や `wget` を利用できます。
+
+### 2. プロジェクトディレクトリへの移動
+
+```bash
+cd path/to/morphometrics-tool
+```
+
+::: {.callout-tip}
+## コマンドプロンプトの開き方（Windows）
+
+エクスプローラーでプロジェクトフォルダを開き、アドレスバーに `cmd` と入力すると、そのディレクトリでコマンドプロンプトを開くことができます。
+:::
+
+::: {.callout-tip}
+## Python の事前インストールは不要
+
+`uv` が自動的に Python 仮想環境を構築するため、システムに Python が事前にインストールされていなくても問題ありません。
+:::
+
+---
+
+### 3. 仮想環境の作成と有効化
+
+```bash
+uv venv
+```
+
+続いて、仮想環境を有効化します。
+
+- Windows:
+
+```bash
+.venv\Scripts\activate
+```
+
+- macOS / Linux:
+
+```bash
+source .venv/bin/activate
+```
+
+`.venv` ディレクトリがプロジェクトフォルダ内に自動的に作成されます。
+
+### 4. 依存関係のインストール
+
+```bash
+uv sync
+```
+
+このコマンドにより、`uv.lock` に記録されたパッケージがすべてインストールされます。  
+`uv.lock` が存在しない場合は、`pyproject.toml` を基に依存関係が解決され、新しいロックファイルが自動的に生成されます。
+
+::: {.callout-tip}
+## `pip` ユーザー向けの代替方法
+
+`requirements.txt` も同梱されています。
+`pip` を利用する場合は、以下のコマンドで依存関係をインストールできます。
+
+```bash
+pip install -r requirements.txt
+```
+
+`uv sync` の使用が推奨されますが、`uv` が利用できない環境ではこの方法を使用してください。
+:::
+
+### 5. SAM2 のクローンとインストール
+
+#### Step 5.1 — SAM2 リポジトリのクローン
+
+```bash
+git clone https://github.com/facebookresearch/sam2.git
+```
+
+#### Step 5.2 — 開発モードでのインストール
+
+```bash
+cd sam2
+uv pip install -e .
+cd ..
+```
+
+::: {.callout-tip}
+## 開発モード（editable mode）について
+
+開発モードでは、ソースコードを直接参照して動作させることができ、修正内容が即座に反映されます。
+:::
+
+### 6. SAM2 チェックポイントのダウンロード
+
+SAM2 モデルを使用するためには、複数のチェックポイントファイルが必要です。  
+以下のリンクから手動でダウンロードし、`sam2/checkpoints/` ディレクトリに保存してください。
+
+モデルの詳細については、次の公式ドキュメントを参照してください。
+
+- [Model Description - facebookresearch/sam2](https://github.com/facebookresearch/sam2#:~:text=(state)%3A%0A%20%20%20%20%20%20%20%20...-,Model%20Description,-SAM%202.1%20checkpoints)
+
+macOS / Linux、または Bash を使用可能な Windows 環境では、次のコマンドにより自動でチェックポイントを取得できます。
+
+```bash
+cd checkpoints && \
+./download_ckpts.sh && \
+cd ..
+```
+
+### 7. アプリケーションの起動
+
+環境構築が完了したら、以下のコマンドでツールを起動します。
+
+```bash
+leaf-shape-tool
+```
+
+または、開発ディレクトリから直接起動する場合は以下を実行します。
+
+```bash
+python -m leaf_shape_tool
+```
+
+### uv がインストールされていない場合
+
+`pip` により `uv` をインストールしてから、上記の手順を実行してください。
+
+```bash
+pip install uv
+```
+
+そのほかのインストール方法など詳細については、公式ドキュメントを参照してください。
+
+- [Installing uv - uv](https://docs.astral.sh/uv/getting-started/installation/)
+
+### Git がインストールされていない場合
+
+以下の公式ドキュメントを参照して Git をインストールしてください。
+
+- [Install - git](https://git-scm.com/install/)
+
+または、次のリポジトリを ZIP ファイルとしてダウンロードし、手動で展開してください。
+
+- [SAM 2: Segment Anything in Images and Videos - GitHub](https://github.com/facebookresearch/sam2)

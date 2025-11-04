@@ -1,7 +1,6 @@
 # -*- mode: python ; coding: utf-8 -*-
 from PyInstaller.utils.hooks import collect_submodules, collect_all, collect_dynamic_libs
 from PyInstaller.building.build_main import Tree
-import glob
 import sys
 import os
 import torch
@@ -25,6 +24,9 @@ vcruntime_dlls = [
     "vcruntime140_1.dll",
     "msvcp140.dll",
     "msvcp140_1.dll",
+    "msvcp140_atomic_wait.dll",   # ← 追加 / add
+    "concrt140.dll",              # ← 追加 / add
+    "libiomp5md.dll",
 ]
 
 for dll in vcruntime_dlls:
@@ -33,7 +35,8 @@ for dll in vcruntime_dlls:
         binaries.append((src, "."))
 
 # Collect from core dependencies
-for pkg in ["PyQt6", 
+for pkg in [
+    "PyQt6", 
     "napari", 
     "napari_builtins", 
     "vispy", 
@@ -41,7 +44,6 @@ for pkg in ["PyQt6",
     "imageio", 
     "PIL", 
     "tifffile", 
-    "torch", 
     "torchvision", 
     "pywin32-ctypes",
     ]:
@@ -73,10 +75,12 @@ hiddenimports += collect_submodules('napari.plugins._builtins')
 hiddenimports += collect_submodules('imageio.plugins')
 
 # --- Add SAM2 if exists locally ---
+"""
 sam2_path = os.path.join(os.getcwd(), "sam2")
 if os.path.isdir(sam2_path):
     datas += [(sam2_path, "sam2")]  # include the entire sam2 directory
     hiddenimports += collect_submodules("sam2")
+"""
 
 a = Analysis(
     ['src\\leaf_shape_tool\\__main__.py'],

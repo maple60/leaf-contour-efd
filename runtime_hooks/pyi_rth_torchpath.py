@@ -1,27 +1,32 @@
 # pyi_rth_torchpath.py
-import os
-import sys
-
+# Ensure torch DLLs are found in PyInstaller onefile builds
+# （日英併記コメント / JP-EN comments）
+import os, sys
 
 def _add(path: str):
-    try:
-        if os.path.isdir(path):
+    if os.path.isdir(path):
+        try:
             os.add_dll_directory(path)
-    except Exception:
-        pass
+        except Exception:
+            pass
 
+if getattr(sys, "frozen", False):
+    base = getattr(sys, "_MEIPASS", os.path.dirname(sys.executable))
 
-# Onefile 時は _MEIPASS、Onefolder 時は exe 直下
-base = (
-    getattr(sys, "_MEIPASS", os.path.dirname(sys.executable))
-    if getattr(sys, "frozen", False)
-    else None
-)
+    # --- search possible torch locations ---
+    torch_candidates = [
+        os.path.join(base, "torch", "lib"),
+        os.path.join(base, "_internal", "torch", "lib"),
+        os.path.join(base, "torch"),
+        os.path.join(base, "_internal", "torch"),
+    ]
 
-if base:
-    # torch の DLL 置き場
-    _add(os.path.join(base, "torch", "lib"))
-    # Conda/科学計算系が入ることがあるパス（NumPy/SciPy/OpenMP 等）
-    _add(os.path.join(base, "Library", "bin"))
-    # 念のため exe 直下も
-    _add(base)
+    for path in torch_candidates:
+        _add(path)
+
+    # PATH環境変数も拡張してDLL探索を確実化
+    env_path = ";".join(torch_candidates) + ";" + os.environ.get("PATH", "")
+    os.environ["PATH"] = env_path
+
+    os.environ.setdefault("KMP_DUPLICATE_LIB_OK", "TRUE")
+    os.environ.setdefault("OMP_NUM_THREADS", "1")

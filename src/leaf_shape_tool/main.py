@@ -12,6 +12,44 @@ Author: Maple
 License: BSD-3-Clause
 """
 
+# For SAM2if getattr(sys, "frozen", False):
+import os
+import sys
+
+def _add_sam2_path():
+    if getattr(sys, "frozen", False):
+        # PyInstaller one-dir/one-file
+        base = getattr(sys, "_MEIPASS", os.path.dirname(sys.executable))
+        internal_sam2 = os.path.join(base, "_internal", "sam2")
+        if os.path.isdir(internal_sam2):
+            sys.path.insert(0, internal_sam2)
+    else:
+        # Development (run via python)
+        local_sam2 = os.path.join(os.getcwd(), "sam2")
+        if os.path.isdir(local_sam2):
+            sys.path.insert(0, local_sam2)
+
+_add_sam2_path()
+
+"""
+# --- locate sam2 when running as frozen app ---
+if getattr(sys, "frozen", False):
+    base = getattr(sys, "_MEIPASS", os.path.dirname(sys.executable))
+    sam2_dir = os.path.join(base, "_internal", "sam2")
+else:
+    base = os.path.dirname(os.path.abspath(__file__))
+    sam2_dir = os.path.join(base, "sam2")
+
+if os.path.isdir(sam2_dir) and sam2_dir not in sys.path:
+    sys.path.insert(0, sam2_dir)
+
+try:
+    import sam2
+    SAM2_AVAILABLE = True
+except ImportError:
+    SAM2_AVAILABLE = False
+"""
+
 """
 # Check for SAM2 availability
 import sys, os
@@ -32,8 +70,39 @@ if getattr(sys, 'frozen', False):
     if exe_dir not in sys.path:
         sys.path.append(exe_dir)
 """
-# For SAM2
+
+
+"""
+torch_lib_path = os.path.join(os.path.dirname(sys.executable), "torch", "lib")
+if os.path.isdir(torch_lib_path):
+    os.add_dll_directory(torch_lib_path)
+"""
+
+'''
+def _add_dll_dir(path: str):
+    """Add DLL directory safely / DLL探索パスを安全に追加"""
+    if os.path.isdir(path):
+        try:
+            os.add_dll_directory(path)
+        except Exception:
+            pass
+
+if getattr(sys, "frozen", False):
+    base = getattr(sys, "_MEIPASS", os.path.dirname(sys.executable))
+    torch_dirs = [
+        os.path.join(base, "torch", "lib"),
+        os.path.join(base, "_internal", "torch", "lib"),
+    ]
+    for p in torch_dirs:
+        _add_dll_dir(p)
+    # PATH環境変数も拡張（環境依存DLLにも対応）
+    os.environ["PATH"] = ";".join(torch_dirs) + ";" + os.environ.get("PATH", "")
+    os.environ.setdefault("KMP_DUPLICATE_LIB_OK", "TRUE")
+    os.environ.setdefault("OMP_NUM_THREADS", "1")
+'''
+
 import torch  # noqa: F401
+torch.set_default_device("cpu")  # Ensure CPU usage by default
 
 import napari
 import imageio.v3 as iio

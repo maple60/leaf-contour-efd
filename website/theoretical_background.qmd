@@ -6,6 +6,7 @@ format:
     mermaid:
       theme: forest
 bibliography: references.bib
+draft: true
 ---
 
 楕円フーリエ記述子（EFD）に基づく葉の形態計測の理論的背景について説明します。

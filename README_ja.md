@@ -18,8 +18,8 @@
     葉の基部（base）と先端（tip）のランドマークを指定することで、サンプル間で一貫した方向に自動整列します。
     これにより、個体・種・集団間で生物学的に整合的な形態比較が可能です。
 
-- **真の正規化 Elliptic Fourier Descriptor (EFD)**  
-    [Wu et al., 2024](https://doi.org/10.48550/arXiv.2412.10795) に基づく 真の正規化 EFD と従来型 EFD の両方に対応しており、生物学的に意味のある方向性と対称性を保持した形態解析が可能です。
+- **生物学的向きを考慮した True Normalized EFDs（Oriented True Normalized EFDs）**  
+    [Wu et al., 2024](https://doi.org/10.48550/arXiv.2412.10795) に基づきつつ、独自に拡張した手法を実装し、生物学的に意味のある形状の向きと対称性を保持する **oriented true normalized EFDs** を算出可能。
 
 - **柔軟かつ編集可能なセグメンテーション機能**  
     伝統的な大津の二値化手法 ([Otsu, 1979](https://ieeexplore.ieee.org/document/4310076/)) と、深層学習ベースの [SAM2](https://ai.meta.com/sam2/) セグメンテーション ([Ravi et al., 2024](https://arxiv.org/abs/2408.00714)) の両方を提供し、多様な画像条件下での堅牢な輪郭抽出を実現します。  

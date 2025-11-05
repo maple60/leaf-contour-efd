@@ -17,8 +17,8 @@ This tool allows researchers to perform every processing step interactively — 
   Leaf images are **aligned based on manually defined base–tip landmarks**, guaranteeing consistent orientation across samples.  
   This allows for direct comparison of leaf outlines across individuals, species, and populations.
 
-- **True Elliptic Fourier Descriptors (EFDs)**  
-  Supports both conventional and *true normalized* EFDs (following [Wu et al., 2024](https://doi.org/10.48550/arXiv.2412.10795)), allowing morphometric analysis that preserves biologically meaningful orientation and symmetry.
+- **Oriented True Normalized Elliptic Fourier Descriptors (EFDs)**  
+  Implements a customized version of the **true normalized EFDs** following [Wu et al., (2024)](https://doi.org/10.48550/arXiv.2412.10795), enabling the computation of oriented descriptors that preserve biologically meaningful shape orientation and symmetry.
 
 - **Flexible and editable segmentation options**  
   Provides both traditional Otsu thresholding ([Otsu, 1979](https://ieeexplore.ieee.org/document/4310076/)) and deep-learning–based [SAM2](https://ai.meta.com/sam2/) segmentation ([Ravi et al., 2024](https://arxiv.org/abs/2408.00714)), ensuring robust contour extraction under diverse imaging conditions.  
@@ -38,12 +38,12 @@ Choose the method that best fits your environment.
 | **Setup Script**   | Automatically creates a reproducible environment via `uv` and installs dependencies. | Reproducible workflows |
 | **Manual Setup**   | Build the environment from scratch for development or debugging.                     | Developers             |
 
-### 1. Standalone App (Recommended) (**In preparation**)
+### 1. Standalone App (Recommended) 
 
-Download the latest release from the [Releases page](https://github.com/maple60/morphometrics-tool/releases/new)
+Download the latest release from the [Releases page](https://github.com/maple60/morphometrics-tool/releases)
 
 - On **Windows**: run `LeafShapeTool.exe`
-- On **macOS**: open `LeafShapeTool.app`
+- On **macOS**: open `LeafShapeTool.app` (**In preparation**)
 
 No Python installation is required.
 

@@ -1,4 +1,6 @@
 # -*- mode: python ; coding: utf-8 -*-
+block_cipher = None
+
 from PyInstaller.utils.hooks import collect_submodules, collect_all, collect_dynamic_libs
 from PyInstaller.building.build_main import Tree
 import sys
@@ -36,7 +38,7 @@ for dll in vcruntime_dlls:
 
 # Collect from core dependencies
 for pkg in [
-    "PyQt6", 
+    "PyQt5", 
     "napari", 
     "napari_builtins", 
     "vispy", 
@@ -44,6 +46,7 @@ for pkg in [
     "imageio", 
     "PIL", 
     "tifffile", 
+    "torch",
     "torchvision", 
     "pywin32-ctypes",
     ]:
@@ -64,6 +67,8 @@ hiddenimports += [
     "PIL.TiffImagePlugin",
     "PIL.BmpImagePlugin",
     "napari_builtins",  # built-in readers
+    "hydra", # SAM2
+    "iopath", # SAM2
 ]
 
 # --- Napari plugins ---
@@ -75,12 +80,16 @@ hiddenimports += collect_submodules('napari.plugins._builtins')
 hiddenimports += collect_submodules('imageio.plugins')
 
 # --- Add SAM2 if exists locally ---
-"""
-sam2_path = os.path.join(os.getcwd(), "sam2")
+sam2_path = os.path.join(os.getcwd(), "sam2", "sam2")
 if os.path.isdir(sam2_path):
     datas += [(sam2_path, "sam2")]  # include the entire sam2 directory
     hiddenimports += collect_submodules("sam2")
-"""
+
+
+runtime_hooks = [
+    "runtime_hooks\\pyi_rth_disable_torchjit.py", # Disable Torch JIT
+    "runtime_hooks\\pyi_rth_torchpath.py", # pytorch DLL path fix
+]
 
 a = Analysis(
     ['src\\leaf_shape_tool\\__main__.py'],
@@ -90,7 +99,7 @@ a = Analysis(
     hiddenimports=hiddenimports,
     hookspath=["extra_hooks\\hook-sam2.py"],
     hooksconfig={},
-    runtime_hooks=["runtime_hooks\\pyi_rth_torchpath.py"],
+    runtime_hooks=runtime_hooks,
     excludes=[
         "OpenGL",
         "torch.distributed",
@@ -102,24 +111,19 @@ a = Analysis(
 )
 
 a.datas += torch_tree # Add the torch Tree AFTER Analysis
-pyz = PYZ(a.pure) # Build EXE
+pyz = PYZ(a.pure, cipher=block_cipher) # Build EXE
 
 exe = EXE(
     pyz,
     a.scripts,
-    a.binaries,
-    a.datas,
     [],
+    exclude_binaries=True,  # ← True にする
     name='LeafShapeTool',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
-    upx=False,
-    upx_exclude=[],
-    runtime_tmpdir=None,
+    upx=True,
     console=True,
-    disable_windowed_traceback=False,
-    argv_emulation=False,
 )
 
 coll = COLLECT(
@@ -128,7 +132,6 @@ coll = COLLECT(
     a.zipfiles,
     a.datas,
     strip=False,
-    upx=False,
-    upx_exclude=[],
-    name='LeafShapeTool'
+    upx=True,
+    name='LeafShapeTool',
 )

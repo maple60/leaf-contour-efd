@@ -1,0 +1,155 @@
+---
+title: "Build Instructions"
+lang: en
+format: html
+bibliography: references.bib
+---
+
+::: {.callout-note}
+## 🇯🇵 日本語版 / Available in Japanese
+
+日本語で読みたい方は [こちらのページ](build_ja.qmd) をご覧ください。  
+Please see the [Japanese version](build_ja.qmd) for reading in Japanese.
+:::
+
+::: {.callout-caution}
+This page is intended for developers.
+:::
+
+This section explains how to build the application.
+
+The application is built using [PyInstaller](https://pyinstaller.org/en/stable/).
+
+A pre-generated spec file is provided and should be used for building the application.  
+Please note that this process can take some time (approximately 10 minutes).
+
+```bash
+pyinstaller build.spec
+```
+For more details on PyInstaller usage, please refer to the [official documentation](https://pyinstaller.org/en/stable/).
+
+::: {.callout-caution}
+## Notes
+
+- Currently, builds have only been tested on **Windows**.  
+  We plan to support other operating systems in the future.
+- The provided spec file runs without errors, but there is still room for **refactoring** and **optimization**.
+  Improvements will be made in future updates.
+- For details about spec files, see [Using Spec FIles - PyInstaller](https://pyinstaller.org/en/stable/spec-files.html).
+:::
+
+::: {.callout-tip}
+## Removing Previous Builds
+
+Before running PyInstaller, it is recommended to **remove any existing build artifacts**:
+
+```bash
+Remove-Item -Recurse -Force build, dist
+```
+
+:::
+
+## After Building
+
+If the build completes successfully, the following directory structure will be generated at the project root:
+
+```text
+project/
+├─ build/
+└─ dist/
+   └─ LeafShapeTool/
+      ├─ LeafShapeTool.exe
+      └─ _internal/
+         └─ (library files)
+```
+
+The main executable is located at:
+
+```bash
+dist/LeafShapeTool/LeafShapeTool.exe
+```
+
+You can launch the application either by **double-clicking** the file or from the **command line**:
+
+```bash
+cd dist/LeafShapeTool/
+LeafShapeTool.exe
+```
+
+::: {.callout-tip}
+## Double-Click vs. Command Line Launch
+
+When launched by double-clicking, a console window appears for log and error output.
+However, **the console closes automatically after execution ends**, which may make it difficult to check messages.
+In such cases, it is recommended to start the application from a command prompt.
+:::
+
+::: {.callout-caution}
+To improve stability, the application is built in `onedir` mode instead of `onefile` mode.  
+Therefore, the entire `dist/LeafShapeTool/` folder must be distributed together.
+
+Distributing only `LeafShapeTool.exe` will not work properly.
+:::
+
+::: {.callout-caution}
+## About the SAM2 Module
+
+When building from the spec file, the [Segment Anything Model 2](https://ai.meta.com/sam2/) (SAM2) [@ravi2024sam2segmentimages] module is not included by default.  
+To enable SAM2, follow the steps in the [next section](@sec-enable-sam2).
+:::
+
+## Enabling the SAM2 Module {#sec-enable-sam2}
+
+To reduce file size, build time, and dependency complexity, **the SAM2 folder is excluded** from the default build.  
+However, the executable distributed on the [Releases page](https://github.com/maple60/morphometrics-tool/releases) already includes SAM2.
+
+To enable SAM2 manually, follow the steps below.
+
+### 1. Clone the SAM2 Repository
+
+Clone the SAM2 repository from GitHub into the build directory:
+
+```bash
+cd dist/LeafShapeTool/
+git clone https://github.com/facebookresearch/sam2.git
+```
+
+### 2. Download the SAM2 Checkpoints
+
+The SAM2 model requires several checkpoint files.
+Download them manually and place them under `sam2/checkpoints/`.
+
+For details, refer to the following official documentation:
+
+
+- [Model Description - facebookresearch/sam2](https://github.com/facebookresearch/sam2#:~:text=(state)%3A%0A%20%20%20%20%20%20%20%20...-,Model%20Description,-SAM%202.1%20checkpoints)
+
+If you are using **macOS**, **Linux**, or Windows with a **Bash** environment, you can automatically download the checkpoints with:
+
+```bash
+cd checkpoints && \
+./download_ckpts.sh && \
+cd ..
+```
+
+After this step, the SAM2 module will be available.
+
+## Current Limitations
+
+The generated executable is **quite large** because PyInstaller bundles all dependencies.  
+We are considering alternative build systems such as [Nuitka](https://nuitka.net/).
+
+However, Nuitka currently has **limited compatibility with PyQt**, and it did not work properly in our environment.
+
+- Reference: [Nuitka PyQt5 support](https://nuitka.net/pages/pyqt5.html)
+
+## Useful References for Build and Error Troubleshooting
+
+- [[WinError 1114] A dynamic link library (DLL) initialization routine failed #166628 - pytorch/pytorch](https://github.com/pytorch/pytorch/issues/166628)
+- [How to use SAM2 if my own project already initialized Hydra? #179 - facebookresearch/sam2](https://github.com/facebookresearch/sam2/issues/179)
+- [pyinstaller failed to package sam2 (segment anything model2) #8966 - pyinstaller/pyinstaller](https://github.com/pyinstaller/pyinstaller/issues/8966)
+
+## References
+
+::: {#refs}
+:::

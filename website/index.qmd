@@ -21,8 +21,8 @@ This tool allows researchers to perform every processing step interactively — 
   Leaf images are **aligned based on manually defined base–tip landmarks**, guaranteeing consistent orientation across samples.  
   This allows for direct comparison of leaf outlines across individuals, species, and populations.
 
-- **True Elliptic Fourier Descriptors (EFDs)**  
-  Supports both conventional and *true normalized* EFDs (following @wu2024reliablesuperiorellipticfourier), allowing morphometric analysis that preserves biologically meaningful orientation and symmetry.
+- **Oriented True Normalized Elliptic Fourier Descriptors (EFDs)**  
+  Implements a customized version of the **true normalized EFDs** following [Wu et al., (2024)](https://doi.org/10.48550/arXiv.2412.10795), enabling the computation of oriented descriptors that preserve biologically meaningful shape orientation and symmetry.
 
 - **Flexible and editable segmentation options**  
   Provides both traditional Otsu thresholding [@otsu1979] and deep-learning–based [SAM2](https://ai.meta.com/sam2/) segmentation [@ravi2024sam2segmentimages], ensuring robust contour extraction under diverse imaging conditions.  

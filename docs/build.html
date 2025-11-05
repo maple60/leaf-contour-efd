@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Related Tools and Frameworks – Leaf Shape Analysis Tool</title>
+<title>Build Instructions – Leaf Shape Analysis Tool</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -136,7 +171,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./related_tools.html">Appendix</a></li><li class="breadcrumb-item"><a href="./related_tools.html">Related Tools and Frameworks</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./related_tools.html">Appendix</a></li><li class="breadcrumb-item"><a href="./build.html">Build Instructions</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -190,13 +225,13 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./related_tools.html" class="sidebar-item-text sidebar-link active">
+  <a href="./related_tools.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Related Tools and Frameworks</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./build.html" class="sidebar-item-text sidebar-link">
+  <a href="./build.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Build Instructions</span></a>
   </div>
 </li>
@@ -212,23 +247,24 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#software-and-tools" id="toc-software-and-tools" class="nav-link active" data-scroll-target="#software-and-tools">Software and Tools</a>
+  <li><a href="#after-building" id="toc-after-building" class="nav-link active" data-scroll-target="#after-building">After Building</a></li>
+  <li><a href="#sec-enable-sam2" id="toc-sec-enable-sam2" class="nav-link" data-scroll-target="#sec-enable-sam2">Enabling the SAM2 Module</a>
   <ul class="collapse">
-  <li><a href="#general-or-framework-level-tools" id="toc-general-or-framework-level-tools" class="nav-link" data-scroll-target="#general-or-framework-level-tools">General or Framework-Level Tools</a></li>
-  <li><a href="#outline-based-tools" id="toc-outline-based-tools" class="nav-link" data-scroll-target="#outline-based-tools">Outline-Based Tools</a></li>
-  <li><a href="#landmark-based-tools" id="toc-landmark-based-tools" class="nav-link" data-scroll-target="#landmark-based-tools">Landmark-Based Tools</a></li>
-  <li><a href="#other-specialized-tools" id="toc-other-specialized-tools" class="nav-link" data-scroll-target="#other-specialized-tools">Other Specialized Tools</a></li>
+  <li><a href="#clone-the-sam2-repository" id="toc-clone-the-sam2-repository" class="nav-link" data-scroll-target="#clone-the-sam2-repository">1. Clone the SAM2 Repository</a></li>
+  <li><a href="#download-the-sam2-checkpoints" id="toc-download-the-sam2-checkpoints" class="nav-link" data-scroll-target="#download-the-sam2-checkpoints">2. Download the SAM2 Checkpoints</a></li>
   </ul></li>
+  <li><a href="#current-limitations" id="toc-current-limitations" class="nav-link" data-scroll-target="#current-limitations">Current Limitations</a></li>
+  <li><a href="#useful-references-for-build-and-error-troubleshooting" id="toc-useful-references-for-build-and-error-troubleshooting" class="nav-link" data-scroll-target="#useful-references-for-build-and-error-troubleshooting">Useful References for Build and Error Troubleshooting</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/maple60/morphometrics-tool/edit/main/website/related_tools.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/morphometrics-tool/blob/main/website/related_tools.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/morphometrics-tool/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/maple60/morphometrics-tool/edit/main/website/build.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/morphometrics-tool/blob/main/website/build.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/morphometrics-tool/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./related_tools.html">Appendix</a></li><li class="breadcrumb-item"><a href="./related_tools.html">Related Tools and Frameworks</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./related_tools.html">Appendix</a></li><li class="breadcrumb-item"><a href="./build.html">Build Instructions</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Related Tools and Frameworks</h1>
+<h1 class="title">Build Instructions</h1>
 </div>
 
 
@@ -245,221 +281,176 @@ div.csl-indent {
 </header>
 
 
-<p>Numerous tools and frameworks have been developed for morphometrics. Here, we provide a brief overview of some notable examples that illustrate the diversity of approaches in this field.</p>
-<p>This section is subject to updates as new tools become available. Suggestions or corrections are always welcome.</p>
-<section id="software-and-tools" class="level2">
-<h2 class="anchored" data-anchor-id="software-and-tools">Software and Tools</h2>
-<section id="general-or-framework-level-tools" class="level3">
-<h3 class="anchored" data-anchor-id="general-or-framework-level-tools">General or Framework-Level Tools</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Language / Type</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://imagej.net/ij/"><strong>ImageJ</strong></a> <span class="citation" data-cites="schneider2012">(<a href="#ref-schneider2012" role="doc-biblioref">Schneider, Rasband, and Eliceiri 2012</a>)</span> / <br><a href="https://fiji.sc/"><strong>Fiji</strong></a> <span class="citation" data-cites="schindelin2012">(<a href="#ref-schindelin2012" role="doc-biblioref">Schindelin et al. 2012</a>)</span></td>
-<td>JAVA / GUI</td>
-<td></td>
-</tr>
-<tr class="even">
-<td><a href="https://lamina.sourceforge.net/index.shtml"><strong>LAMINA</strong></a> <span class="citation" data-cites="bylesjö2008">(<a href="#ref-bylesjö2008" role="doc-biblioref">Bylesjö et al. 2008</a>)</span></td>
-<td>Standalone GUI</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><a href="https://napari.org/stable/"><strong>napari</strong></a> <span class="citation" data-cites="sofroniew2025">(<a href="#ref-sofroniew2025" role="doc-biblioref">Sofroniew et al. 2025</a>)</span></td>
-<td>Python / GUI</td>
-<td>Interactive viewer in Python</td>
-</tr>
-</tbody>
-</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🇯🇵 日本語版 / Available in Japanese
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>日本語で読みたい方は <a href="./build_ja.html">こちらのページ</a> をご覧ください。<br>
+Please see the <a href="./build_ja.html">Japanese version</a> for reading in Japanese.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This page is intended for developers.</p>
+</div>
+</div>
+<p>This section explains how to build the application.</p>
+<p>The application is built using <a href="https://pyinstaller.org/en/stable/">PyInstaller</a>.</p>
+<p>A pre-generated spec file is provided and should be used for building the application.<br>
+Please note that this process can take some time (approximately 10 minutes).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyinstaller</span> build.spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For more details on PyInstaller usage, please refer to the <a href="https://pyinstaller.org/en/stable/">official documentation</a>.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Notes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Currently, builds have only been tested on <strong>Windows</strong>.<br>
+We plan to support other operating systems in the future.</li>
+<li>The provided spec file runs without errors, but there is still room for <strong>refactoring</strong> and <strong>optimization</strong>. Improvements will be made in future updates.</li>
+<li>For details about spec files, see <a href="https://pyinstaller.org/en/stable/spec-files.html">Using Spec FIles - PyInstaller</a>.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Removing Previous Builds
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Before running PyInstaller, it is recommended to <strong>remove any existing build artifacts</strong>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Remove-Item</span> <span class="at">-Recurse</span> <span class="at">-Force</span> build, dist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<section id="after-building" class="level2">
+<h2 class="anchored" data-anchor-id="after-building">After Building</h2>
+<p>If the build completes successfully, the following directory structure will be generated at the project root:</p>
+<pre class="text"><code>project/
+├─ build/
+└─ dist/
+   └─ LeafShapeTool/
+      ├─ LeafShapeTool.exe
+      └─ _internal/
+         └─ (library files)</code></pre>
+<p>The main executable is located at:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dist/LeafShapeTool/LeafShapeTool.exe</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can launch the application either by <strong>double-clicking</strong> the file or from the <strong>command line</strong>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> dist/LeafShapeTool/</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">LeafShapeTool.exe</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Double-Click vs.&nbsp;Command Line Launch
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When launched by double-clicking, a console window appears for log and error output. However, <strong>the console closes automatically after execution ends</strong>, which may make it difficult to check messages. In such cases, it is recommended to start the application from a command prompt.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To improve stability, the application is built in <code>onedir</code> mode instead of <code>onefile</code> mode.<br>
+Therefore, the entire <code>dist/LeafShapeTool/</code> folder must be distributed together.</p>
+<p>Distributing only <code>LeafShapeTool.exe</code> will not work properly.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+About the SAM2 Module
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When building from the spec file, the <a href="https://ai.meta.com/sam2/">Segment Anything Model 2</a> (SAM2) <span class="citation" data-cites="ravi2024sam2segmentimages">(<a href="#ref-ravi2024sam2segmentimages" role="doc-biblioref">Ravi et al. 2024</a>)</span> module is not included by default.<br>
+To enable SAM2, follow the steps in the <a href="@sec-enable-sam2">next section</a>.</p>
+</div>
+</div>
 </section>
-<section id="outline-based-tools" class="level3">
-<h3 class="anchored" data-anchor-id="outline-based-tools">Outline-Based Tools</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Language / Type</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="http://lbm.ab.a.u-tokyo.ac.jp/~iwata/shape/"><strong>SHAPE</strong></a> <span class="citation" data-cites="iwata2002">(<a href="#ref-iwata2002" role="doc-biblioref">Iwata 2002</a>)</span></td>
-<td>Windows GUI</td>
-<td>Classic EFD analysis software.</td>
-</tr>
-<tr class="even">
-<td><a href="https://momx.github.io/Momocs/"><strong>Momocs</strong></a> <span class="citation" data-cites="bonhomme2014">(<a href="#ref-bonhomme2014" role="doc-biblioref">Bonhomme et al. 2014</a>)</span></td>
-<td>R package</td>
-<td>Comprehensive outline &amp; landmark morphometrics.</td>
-</tr>
-<tr class="odd">
-<td><a href="https://www.plantplus.cn/ElliShape/"><strong>Ellishape</strong></a> <span class="citation" data-cites="wu2024reliablesuperiorellipticfourier">(<a href="#ref-wu2024reliablesuperiorellipticfourier" role="doc-biblioref">Wu et al. 2024</a>)</span></td>
-<td>Python CLI / GUI (standalone and web)</td>
-<td>True normalization of EFDs.</td>
-</tr>
-<tr class="even">
-<td><a href="https://pyefd.readthedocs.io/en/latest/"><strong>PyEFD</strong></a></td>
-<td>Python library</td>
-<td>Lightweight implementation of elliptic Fourier descriptors.</td>
-</tr>
-<tr class="odd">
-<td><a href="https://www.leafmachine.org/"><strong>LeafMachine</strong></a> <span class="citation" data-cites="weaver2020">(<a href="#ref-weaver2020" role="doc-biblioref">Weaver, Ng, and Laport 2020</a>)</span></td>
-<td>Python / GUI</td>
-<td>Automatic leaf segmentation and classification.</td>
-</tr>
-<tr class="even">
-<td><a href="https://www.leafmachine.org/"><strong>LeafMachine2</strong></a> <span class="citation" data-cites="weaver2023">(<a href="#ref-weaver2023" role="doc-biblioref">Weaver and Smith 2023</a>)</span></td>
-<td>Python / GUI</td>
-<td>Automated extraction of leaf and plant trait data from digital herbarium images using machine learning and computer vision.</td>
-</tr>
-<tr class="odd">
-<td><a href="https://morpholeaf.versailles.inrae.fr/"><strong>MorphoLeaf</strong></a> <span class="citation" data-cites="biot2016">(<a href="#ref-biot2016" role="doc-biblioref">Biot et al. 2016</a>)</span></td>
-<td>R / C++ hybrid</td>
-<td>Leaf contour extraction and shape quantification.</td>
-</tr>
-<tr class="even">
-<td><a href="https://bitbucket.org/jnmaloof/leafj/src/master/"><strong>LeafJ</strong></a> <span class="citation" data-cites="maloof2013">(<a href="#ref-maloof2013" role="doc-biblioref">Maloof et al. 2013</a>)</span></td>
-<td>ImageJ plugin</td>
-<td>Batch leaf outline extraction.</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/wishkerman/DiaOutline"><strong>DiaOutline</strong></a> <span class="citation" data-cites="wishkerman2018">(<a href="#ref-wishkerman2018" role="doc-biblioref">Wishkerman and Hamilton 2018</a>)</span></td>
-<td>GUI / R</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<section id="sec-enable-sam2" class="level2">
+<h2 class="anchored" data-anchor-id="sec-enable-sam2">Enabling the SAM2 Module</h2>
+<p>To reduce file size, build time, and dependency complexity, <strong>the SAM2 folder is excluded</strong> from the default build.<br>
+However, the executable distributed on the <a href="https://github.com/maple60/morphometrics-tool/releases">Releases page</a> already includes SAM2.</p>
+<p>To enable SAM2 manually, follow the steps below.</p>
+<section id="clone-the-sam2-repository" class="level3">
+<h3 class="anchored" data-anchor-id="clone-the-sam2-repository">1. Clone the SAM2 Repository</h3>
+<p>Clone the SAM2 repository from GitHub into the build directory:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> dist/LeafShapeTool/</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/facebookresearch/sam2.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="landmark-based-tools" class="level3">
-<h3 class="anchored" data-anchor-id="landmark-based-tools">Landmark-Based Tools</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Language / Type</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Morphological Analysis of Size and Shape (<a href="https://github.com/gillianlynnryan/MASS"><strong>MASS</strong></a>) <span class="citation" data-cites="chuanromanee2019">(<a href="#ref-chuanromanee2019" role="doc-biblioref">Chuanromanee, Cohen, and Ryan 2019</a>)</span></td>
-<td>MATLAB</td>
-<td>Morphological Analysis of Size and Shape.</td>
-</tr>
-<tr class="even">
-<td><a href="https://www.sbmorphometrics.org/soft-tps.html"><strong>TPS Series</strong></a> <span class="citation" data-cites="rohlf2015">(<a href="#ref-rohlf2015" role="doc-biblioref">Rohlf 2015</a>)</span></td>
-<td>Windows GUI</td>
-<td>Classic geometric morphometric suite.</td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/geomorphR/geomorph"><strong>geomorph</strong></a> <span class="citation" data-cites="adams2013">(<a href="#ref-adams2013" role="doc-biblioref">Adams and Otárola-Castillo 2013</a>)</span></td>
-<td>R package</td>
-<td>Landmark-based morphometric analysis.</td>
-</tr>
-<tr class="even">
-<td><a href="https://morphometrics.uk/MorphoJ_page.html"><strong>MorphoJ</strong></a> <span class="citation" data-cites="klingenberg2011">(<a href="#ref-klingenberg2011" role="doc-biblioref">Klingenberg 2011</a>)</span></td>
-<td>Java GUI</td>
-<td>Widely used for landmark-based morphometrics.</td>
-</tr>
-<tr class="odd">
-<td><a href="https://cran.r-project.org/web/packages/shape/index.html"><strong>shapes</strong></a> <span class="citation" data-cites="dryden2025">(<a href="#ref-dryden2025" role="doc-biblioref">Dryden 2025</a>)</span></td>
-<td>R package</td>
-<td>Statistical analysis of landmark shapes in R</td>
-</tr>
-</tbody>
-</table>
+<section id="download-the-sam2-checkpoints" class="level3">
+<h3 class="anchored" data-anchor-id="download-the-sam2-checkpoints">2. Download the SAM2 Checkpoints</h3>
+<p>The SAM2 model requires several checkpoint files. Download them manually and place them under <code>sam2/checkpoints/</code>.</p>
+<p>For details, refer to the following official documentation:</p>
+<ul>
+<li><a href="https://github.com/facebookresearch/sam2#:~:text=(state)%3A%0A%20%20%20%20%20%20%20%20...-,Model%20Description,-SAM%202.1%20checkpoints">Model Description - facebookresearch/sam2</a></li>
+</ul>
+<p>If you are using <strong>macOS</strong>, <strong>Linux</strong>, or Windows with a <strong>Bash</strong> environment, you can automatically download the checkpoints with:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> checkpoints <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./download_ckpts.sh</span> <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After this step, the SAM2 module will be available.</p>
 </section>
-<section id="other-specialized-tools" class="level3">
-<h3 class="anchored" data-anchor-id="other-specialized-tools">Other Specialized Tools</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Language / Type</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://qbios.gatech.edu/software-quantifies-leaf-vein-networks-enables-plant-biology-advances"><strong>LEAF GUI</strong></a> <span class="citation" data-cites="price2011">(<a href="#ref-price2011" role="doc-biblioref">Price et al. 2011</a>)</span></td>
-<td>MATLAB / GUI</td>
-<td>Software quantifing leaf vein networks. As of 2025, the download link seems to be no longer available.</td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/Angelovici-Lab/HTP_Image_Analysis/blob/master/LeafProcessor.m"><strong>LeafProcessor</strong></a> <span class="citation" data-cites="backhaus2010">(<a href="#ref-backhaus2010" role="doc-biblioref">Backhaus et al. 2010</a>)</span></td>
-<td>C/C++ and MATLAB / Script file</td>
-<td>Automatically identify plant species or genotypes. Although the paper mentions that a standalone program would be distributed, only a <a href="https://github.com/Angelovici-Lab/HTP_Image_Analysis/blob/master/LeafProcessor.m">MATLAB (<code>.m</code>) file</a> appears to be available.</td>
-</tr>
-</tbody>
-</table>
 </section>
+<section id="current-limitations" class="level2">
+<h2 class="anchored" data-anchor-id="current-limitations">Current Limitations</h2>
+<p>The generated executable is <strong>quite large</strong> because PyInstaller bundles all dependencies.<br>
+We are considering alternative build systems such as <a href="https://nuitka.net/">Nuitka</a>.</p>
+<p>However, Nuitka currently has <strong>limited compatibility with PyQt</strong>, and it did not work properly in our environment.</p>
+<ul>
+<li>Reference: <a href="https://nuitka.net/pages/pyqt5.html">Nuitka PyQt5 support</a></li>
+</ul>
+</section>
+<section id="useful-references-for-build-and-error-troubleshooting" class="level2">
+<h2 class="anchored" data-anchor-id="useful-references-for-build-and-error-troubleshooting">Useful References for Build and Error Troubleshooting</h2>
+<ul>
+<li><a href="https://github.com/pytorch/pytorch/issues/166628">[WinError 1114] A dynamic link library (DLL) initialization routine failed #166628 - pytorch/pytorch</a></li>
+<li><a href="https://github.com/facebookresearch/sam2/issues/179">How to use SAM2 if my own project already initialized Hydra? #179 - facebookresearch/sam2</a></li>
+<li><a href="https://github.com/pyinstaller/pyinstaller/issues/8966">pyinstaller failed to package sam2 (segment anything model2) #8966 - pyinstaller/pyinstaller</a></li>
+</ul>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-adams2013" class="csl-entry" role="listitem">
-Adams, Dean C., and Erik Otárola-Castillo. 2013. <span>“Geomorph: An r Package for the Collection and Analysis of Geometric Morphometric Shape Data.”</span> <em>Methods in Ecology and Evolution</em> 4 (4): 393–99. <a href="https://doi.org/10.1111/2041-210X.12035">https://doi.org/10.1111/2041-210X.12035</a>.
-</div>
-<div id="ref-backhaus2010" class="csl-entry" role="listitem">
-Backhaus, Andreas, Asuka Kuwabara, Marion Bauch, Nick Monk, Guido Sanguinetti, and Andrew Fleming. 2010. <span>“Leafprocessor: A New Leaf Phenotyping Tool Using Contour Bending Energy and Shape Cluster Analysis.”</span> <em>New Phytologist</em> 187 (1): 251–61. <a href="https://doi.org/10.1111/j.1469-8137.2010.03266.x">https://doi.org/10.1111/j.1469-8137.2010.03266.x</a>.
-</div>
-<div id="ref-biot2016" class="csl-entry" role="listitem">
-Biot, Eric, Millán Cortizo, Jasmine Burguet, Annamaria Kiss, Mohamed Oughou, Aude Maugarny-Calès, Beatriz Gonçalves, et al. 2016. <span>“Multiscale Quantification of Morphodynamics: MorphoLeaf Software for 2D Shape Analysis.”</span> <em>Development</em> 143 (18): 3417–28. <a href="https://doi.org/10.1242/dev.134619">https://doi.org/10.1242/dev.134619</a>.
-</div>
-<div id="ref-bonhomme2014" class="csl-entry" role="listitem">
-Bonhomme, Vincent, Sandrine Picq, Cédric Gaucherel, and Julien Claude. 2014. <span>“<span><strong>Momocs</strong></span> : Outline Analysis Using <span><em>R</em></span>.”</span> <em>Journal of Statistical Software</em> 56 (13). <a href="https://doi.org/10.18637/jss.v056.i13">https://doi.org/10.18637/jss.v056.i13</a>.
-</div>
-<div id="ref-bylesjö2008" class="csl-entry" role="listitem">
-Bylesjö, Max, Vincent Segura, Raju Y. Soolanayakanahally, Anne M. Rae, Johan Trygg, Petter Gustafsson, Stefan Jansson, and Nathaniel R. Street. 2008. <span>“LAMINA: A Tool for Rapid Quantification of Leaf Size and Shape Parameters.”</span> <em>BMC Plant Biology</em> 8 (1): 82. <a href="https://doi.org/10.1186/1471-2229-8-82">https://doi.org/10.1186/1471-2229-8-82</a>.
-</div>
-<div id="ref-chuanromanee2019" class="csl-entry" role="listitem">
-Chuanromanee, Tya S., James I. Cohen, and Gillian L. Ryan. 2019. <span>“Morphological Analysis of Size and Shape ( MASS ): An Integrative Software Program for Morphometric Analyses of Leaves.”</span> <em>Applications in Plant Sciences</em> 7 (9): e11288. <a href="https://doi.org/10.1002/aps3.11288">https://doi.org/10.1002/aps3.11288</a>.
-</div>
-<div id="ref-dryden2025" class="csl-entry" role="listitem">
-Dryden, Ian. 2025. <em>Shapes: Statistical Shape Analysis</em>. <a href="https://github.com/iandryden/shapes">https://github.com/iandryden/shapes</a>.
-</div>
-<div id="ref-iwata2002" class="csl-entry" role="listitem">
-Iwata, H. 2002. <span>“SHAPE: A Computer Program Package for Quantitative Evaluation of Biological Shapes Based on Elliptic Fourier Descriptors.”</span> <em>Journal of Heredity</em> 93 (5): 384–85. <a href="https://doi.org/10.1093/jhered/93.5.384">https://doi.org/10.1093/jhered/93.5.384</a>.
-</div>
-<div id="ref-klingenberg2011" class="csl-entry" role="listitem">
-Klingenberg, Christian Peter. 2011. <span>“Morpho J: An Integrated Software Package for Geometric Morphometrics.”</span> <em>Molecular Ecology Resources</em> 11 (2): 353–57. <a href="https://doi.org/10.1111/j.1755-0998.2010.02924.x">https://doi.org/10.1111/j.1755-0998.2010.02924.x</a>.
-</div>
-<div id="ref-maloof2013" class="csl-entry" role="listitem">
-Maloof, Julin N., Kazunari Nozue, Maxwell R. Mumbach, and Christine M. Palmer. 2013. <span>“LeafJ: An ImageJ Plugin for Semi-Automated Leaf Shape Measurement.”</span> <em>Journal of Visualized Experiments (JoVE)</em>, no. 71 (January): e50028. <a href="https://doi.org/10.3791/50028">https://doi.org/10.3791/50028</a>.
-</div>
-<div id="ref-price2011" class="csl-entry" role="listitem">
-Price, Charles A., Olga Symonova, Yuriy Mileyko, Troy Hilley, and Joshua S. Weitz. 2011. <span>“Leaf Extraction and Analysis Framework Graphical User Interface: Segmenting and Analyzing the Structure of Leaf Veins and Areoles.”</span> <em>Plant Physiology</em> 155 (1): 236–45. <a href="https://doi.org/10.1104/pp.110.162834">https://doi.org/10.1104/pp.110.162834</a>.
-</div>
-<div id="ref-rohlf2015" class="csl-entry" role="listitem">
-Rohlf, F. James. 2015. <span>“The Tps Series of Software.”</span> <em>Hystrix, the Italian Journal of Mammalogy</em> 26 (1): 9–12. <a href="https://doi.org/10.4404/hystrix-26.1-11264">https://doi.org/10.4404/hystrix-26.1-11264</a>.
-</div>
-<div id="ref-schindelin2012" class="csl-entry" role="listitem">
-Schindelin, Johannes, Ignacio Arganda-Carreras, Erwin Frise, Verena Kaynig, Mark Longair, Tobias Pietzsch, Stephan Preibisch, et al. 2012. <span>“Fiji: An Open-Source Platform for Biological-Image Analysis.”</span> <em>Nature Methods</em> 9 (7): 676–82. <a href="https://doi.org/10.1038/nmeth.2019">https://doi.org/10.1038/nmeth.2019</a>.
-</div>
-<div id="ref-schneider2012" class="csl-entry" role="listitem">
-Schneider, Caroline A., Wayne S. Rasband, and Kevin W. Eliceiri. 2012. <span>“NIH Image to ImageJ: 25 Years of Image Analysis.”</span> <em>Nature Methods</em> 9 (7): 671–75. <a href="https://doi.org/10.1038/nmeth.2089">https://doi.org/10.1038/nmeth.2089</a>.
-</div>
-<div id="ref-sofroniew2025" class="csl-entry" role="listitem">
-Sofroniew, Nicholas, Talley Lambert, Grzegorz Bokota, Juan Nunez-Iglesias, Peter Sobolewski, Andrew Sweet, Lorenzo Gaifas, et al. 2025. <em>Napari: A Multi-Dimensional Image Viewer for Python</em>. Zenodo. <a href="https://zenodo.org/doi/10.5281/zenodo.17367124">https://zenodo.org/doi/10.5281/zenodo.17367124</a>.
-</div>
-<div id="ref-weaver2020" class="csl-entry" role="listitem">
-Weaver, William N., Julienne Ng, and Robert G. Laport. 2020. <span>“LeafMachine: Using Machine Learning to Automate Leaf Trait Extraction from Digitized Herbarium Specimens.”</span> <em>Applications in Plant Sciences</em> 8 (6): e11367. <a href="https://doi.org/10.1002/aps3.11367">https://doi.org/10.1002/aps3.11367</a>.
-</div>
-<div id="ref-weaver2023" class="csl-entry" role="listitem">
-Weaver, William N., and Stephen A. Smith. 2023. <span>“From Leaves to Labels: Building Modular Machine Learning Networks for Rapid Herbarium Specimen Analysis with LeafMachine2.”</span> <em>Applications in Plant Sciences</em> 11 (5): e11548. <a href="https://doi.org/10.1002/aps3.11548">https://doi.org/10.1002/aps3.11548</a>.
-</div>
-<div id="ref-wishkerman2018" class="csl-entry" role="listitem">
-Wishkerman, Asher, and Paul B. Hamilton. 2018. <span>“Shape Outline Extraction Software (DiaOutline) for Elliptic Fourier Analysis Application in Morphometric Studies.”</span> <em>Applications in Plant Sciences</em> 6 (12): e01204. <a href="https://doi.org/10.1002/aps3.1204">https://doi.org/10.1002/aps3.1204</a>.
-</div>
-<div id="ref-wu2024reliablesuperiorellipticfourier" class="csl-entry" role="listitem">
-Wu, Hui, Jia-Jie Yang, Chao-Qun Li, Jin-Hua Ran, Ren-Hua Peng, and Xiao-Quan Wang. 2024. <span>“Reliable and Superior Elliptic Fourier Descriptor Normalization and Its Application Software ElliShape with Efficient Image Processing.”</span> <a href="https://arxiv.org/abs/2412.10795">https://arxiv.org/abs/2412.10795</a>.
+<div id="ref-ravi2024sam2segmentimages" class="csl-entry" role="listitem">
+Ravi, Nikhila, Valentin Gabeur, Yuan-Ting Hu, Ronghang Hu, Chaitanya Ryali, Tengyu Ma, Haitham Khedr, et al. 2024. <span>“SAM 2: Segment Anything in Images and Videos.”</span> <a href="https://arxiv.org/abs/2408.00714">https://arxiv.org/abs/2408.00714</a>.
 </div>
 </div>
 
@@ -881,7 +872,7 @@ Wu, Hui, Jia-Jie Yang, Chao-Qun Li, Jin-Hua Ran, Ren-Hua Peng, and Xiao-Quan Wan
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maple60/morphometrics-tool/edit/main/website/related_tools.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/morphometrics-tool/blob/main/website/related_tools.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/morphometrics-tool/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maple60/morphometrics-tool/edit/main/website/build.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/morphometrics-tool/blob/main/website/build.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/morphometrics-tool/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with Quarto</p>
 </div>

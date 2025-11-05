@@ -216,12 +216,6 @@ div.csl-indent {
  <span class="menu-text">Usage</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Analysis</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -237,6 +231,12 @@ div.csl-indent {
   <div class="sidebar-item-container"> 
   <a href="./related_tools.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Related Tools and Frameworks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./build.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Build Instructions</span></a>
   </div>
 </li>
       </ul>
@@ -299,8 +299,8 @@ All parameters, transformations, and processing histories are <strong>automatica
 <li><p><strong>Biologically consistent leaf orientation</strong><br>
 Leaf images are <strong>aligned based on manually defined base–tip landmarks</strong>, guaranteeing consistent orientation across samples.<br>
 This allows for direct comparison of leaf outlines across individuals, species, and populations.</p></li>
-<li><p><strong>True Elliptic Fourier Descriptors (EFDs)</strong><br>
-Supports both conventional and <em>true normalized</em> EFDs (following <span class="citation" data-cites="wu2024reliablesuperiorellipticfourier">Wu et al. (<a href="#ref-wu2024reliablesuperiorellipticfourier" role="doc-biblioref">2024</a>)</span>), allowing morphometric analysis that preserves biologically meaningful orientation and symmetry.</p></li>
+<li><p><strong>Oriented True Normalized Elliptic Fourier Descriptors (EFDs)</strong><br>
+Implements a customized version of the <strong>true normalized EFDs</strong> following <a href="https://doi.org/10.48550/arXiv.2412.10795">Wu et al., (2024)</a>, enabling the computation of oriented descriptors that preserve biologically meaningful shape orientation and symmetry.</p></li>
 <li><p><strong>Flexible and editable segmentation options</strong><br>
 Provides both traditional Otsu thresholding <span class="citation" data-cites="otsu1979">(<a href="#ref-otsu1979" role="doc-biblioref">Otsu 1979</a>)</span> and deep-learning–based <a href="https://ai.meta.com/sam2/">SAM2</a> segmentation <span class="citation" data-cites="ravi2024sam2segmentimages">(<a href="#ref-ravi2024sam2segmentimages" role="doc-biblioref">Ravi et al. 2024</a>)</span>, ensuring robust contour extraction under diverse imaging conditions.<br>
 Users can interactively adjust threshold values or manually refine segmentation masks using <a href="https://napari.org/stable/index.html">napari</a>’s built-in painting, polygon, and erasing tools, achieving precise control while maintaining reproducibility.</p></li>

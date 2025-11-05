@@ -1,0 +1,101 @@
+---
+title: "Home"
+lang: en
+format:
+  html:
+    mermaid:
+      theme: forest
+bibliography: references.bib
+---
+
+楕円フーリエ記述子（EFD）に基づく葉の形態計測の理論的背景について説明します。
+
+## Elliptic Fourier Descriptors (EFDs)
+
+複雑な閉じた輪郭に適用される、曲線フィッティングの方法と言えます。
+
+@giardina1977 に始まり、@kuhl1982 によって発展・手法が確立されました。
+
+Elliptic Fourier descriptor (EFD) について引用するときは、@kuhl1982 がほとんどであるように思えます。
+
+利点としては、
+
+-   輪郭に相同点（鋸歯などの生物学的に同じ特徴）が存在しなくてもよい
+
+-   複雑な輪郭を包括的に定量化・比較できる
+
+-   サイズを標準化できる
+
+といった点が挙げられます [@crampton1995; @rohlf1984]。
+
+## 基本的な導出
+
+$$
+x(t) = a_0 + \sum^N_{n=1} \left( a_n \cos \frac{2n \pi t}{T} + b_n \sin \frac{2n \pi t}{T} \right)
+$$
+
+$$
+y(t) = c_0 + \sum^N_{n=1} \left( c_n \cos \frac{2n \pi t}{T} + d_n \sin \frac{2n \pi t}{T} \right)
+$$
+
+輪郭を1の速度で操作するときの時間が $t$ で $a_n$, $b_n$, $c_n$, $dn$ はフーリエ係数と呼ばれる、形状のパラメータです。
+
+$N$ は調和数(harmonic number)と呼ばれる値で、いくつの係数を輪郭の近似に用いるかの数です。
+
+$$
+a_n = \frac{T}{2 n^2 \pi^2} \sum^K_{p=1} \frac{\Delta x_p}{\Delta t_p} \left( \cos \frac{2n \pi t_p}{T} - \cos \frac{2n \pi t_{p-1}}{T}  \right)
+$$
+
+## 研究例
+
+葉の輪郭形状に限らず、生態学、生物学、考古学、医療分野などで幅広く適用されています。
+
+-   植物の葉
+
+    -   [@chuanromanee2019]: 葉の形態解析ソフトウェアMASS
+
+    -   [@neto2006a]: EFDを用いた葉による種同定
+
+    -   [@furuta1995]: 大豆の小葉の形状比較
+
+    -   カエデ属二種とその交雑体の葉 [@jensen2002]
+
+-   動物
+
+    -   ネズミの臼歯 [@renaud1996]
+
+    -   
+
+-   考古学
+
+    -   [@gero1984]: EFDそれ自体ではないが、考古学への初めての形状に対するフーリエ解析の適用例
+
+    -   [@cardillo2010]: 石器へのEFD適用。ここにレビュー的にほかの考古学への適用例も書いてあります。
+
+-   [@rohlf1984]: 蚊の羽の形状の類似性
+
+-   [@ferson1985]: 二枚貝の形状
+
+-   [@crampton1995]: 二枚貝の化石の形状
+
+-   頭蓋骨の変形 [@frieß2003]
+
+-   トネリコの種子 [@goto2005]
+
+-   4種のブナ属樹木の葉 [@viscosi2009a]
+
+-   コメの粒形状と遺伝子型との関係性 [@iwata2015]
+
+-   *Passiflora*（トケイソウ属）の異形葉性（heteroblasty）と種間差の関係 [@chitwood2017]
+
+-   Aquilaria 3種の識別 [@lópez-sampson2018]
+
+-   *Campanula elatinoides* の葉の種内変異 [@giupponi2020]
+
+-   サツマイモの葉の多様性と遺伝的変異の関係性 [@gupta2020]
+
+-   単生類の付着器官 [@lyakh2024]
+
+-   *Saurauia* (マタタビ科)5種の葉の種間差 [@mazo2025]
+
+-   唐辛子の果実の系統間差 [@viáfara-vega2025]where pyinstaller

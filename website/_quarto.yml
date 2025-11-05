@@ -36,6 +36,8 @@ website:
         contents:
         - text: "Related Tools and Frameworks"
           href: related_tools.qmd
+        - text: "Build Instructions"
+          href: build.qmd
   search: 
     location: sidebar
     type: textbox

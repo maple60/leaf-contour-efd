@@ -23,7 +23,6 @@ from napari.utils.notifications import show_info
 import numpy as np
 import cv2
 import copy
-from magicgui.widgets import Label
 from napari.layers import Image
 from napari.utils.colormaps import DirectLabelColormap
 from pathlib import Path
@@ -346,8 +345,10 @@ def make_binarize_image_widget(viewer: "napari.Viewer"):
     _toggle_threshold_visibility()
 
     # --- Instruction label ---
+    """
     binarize_image.insert(
         0,
         Label(value="5. Select binarization method\n6. Click the button below"),
     )
+    """
     return binarize_image

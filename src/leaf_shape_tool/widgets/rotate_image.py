@@ -26,7 +26,6 @@ import cv2
 import numpy as np
 from pathlib import Path
 from numbers import Integral
-from magicgui.widgets import Label
 import copy
 
 
@@ -417,8 +416,10 @@ def make_points_metadata_widget(
             show_info(f"Error retrieving metadata: {e}")
             return {}
 
+    """
     points_metadata_widget.insert(
         0,
         Label(value="3. Add landmarks at the base and tip\n4. Click the button below"),
     )
+    """
     return points_metadata_widget

@@ -25,10 +25,10 @@ import cv2
 import pandas as pd
 import copy
 from pathlib import Path
-from magicgui.widgets import Label
 import json
 from datetime import datetime
 from napari.utils.colormaps import DirectLabelColormap
+from qtpy.QtCore import QTimer
 
 
 def make_extract_contour_widget(viewer: "napari.Viewer"):
@@ -132,14 +132,21 @@ def make_extract_contour_widget(viewer: "napari.Viewer"):
         # --- Add contour overlay to napari ---
         mask = np.zeros_like(labels)
         cv2.drawContours(mask, [max_contour], -1, color=1, thickness=3)
-        viewer.add_labels(
-            mask,
-            name=f"{layer.name}_contour",
-            opacity=1,
-            metadata=meta,
-            scale=layer.scale,
-            colormap=colormap,
-        )
+
+        mask_safe = mask.copy()
+
+        def safe_add_layer():
+            viewer.add_labels(
+                mask_safe,
+                name=f"{layer.name}_contour",
+                opacity=1,
+                metadata=copy.deepcopy(meta),
+                scale=layer.scale,
+                colormap=colormap,
+            )
+
+        # 0ms 遅延で GUI イベントループに登録
+        QTimer.singleShot(0, safe_add_layer)
 
         # --- Save contour coordinates (CSV) ---
         contour = max_contour.squeeze()  # shape as (N, 2)
@@ -282,8 +289,11 @@ def make_extract_contour_widget(viewer: "napari.Viewer"):
         }
         return payload
 
+    """
     extract_contour.insert(
         0,
         Label(value="7. Choose the output folder\n8. Click the button below"),
     )
+    """
+
     return extract_contour

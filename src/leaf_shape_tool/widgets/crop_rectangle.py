@@ -21,7 +21,6 @@ from magicgui import magicgui
 from napari.utils.notifications import show_info
 from napari.layers import Shapes
 import pandas as pd
-from magicgui.widgets import Label
 import copy
 import cv2
 from pathlib import Path
@@ -387,10 +386,12 @@ def make_add_roi_widget(viewer, labels=LABELS, point_size=30, show_text=True):
         except Exception:
             pass
 
+    """
     add_roi.insert(
         0,
         Label(value="1. Draw rectangle in 'ROIs' layer\n2. Click the button below"),
     )
+    """
 
     # Initialize ROI index SpinBox
     try:

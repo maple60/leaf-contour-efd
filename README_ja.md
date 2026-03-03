@@ -162,6 +162,13 @@ flowchart LR
 本ソフトウェアは **BSD 3-Clause License** の下で配布されています。
 詳細は [LICENSE](https://github.com/maple60/morphometrics-tool/blob/main/LICENSE) をご覧ください。
 
+## AI利用について
+
+GitHub Copilot および ChatGPT を、コードの作成支援およびドキュメントの推敲に利用しました。
+
+本ソフトウェアにおけるすべての方法論的判断および検証は、著者自身が行っています。
+本ソフトウェアの科学的妥当性および再現性についての最終的な責任は、著者が負います。
+
 ## 参考文献
 
 - Otsu, Nobuyuki. 1979. “A Threshold Selection Method from Gray-Level Histograms.” IEEE Transactions on Systems, Man, and Cybernetics 9 (1): 62–66. https://doi.org/10.1109/TSMC.1979.4310076.

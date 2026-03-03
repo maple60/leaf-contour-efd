@@ -163,6 +163,15 @@ whose work made this tool possible.
 
 Distributed under the BSD 3-Clause License. See [LICENSE](https://github.com/maple60/morphometrics-tool/blob/main/LICENSE) for more information.
 
+## AI Assistant
+
+GitHub Copilot and ChatGPT were used to assist in drafting code
+and revising documentation.
+
+All methodological decisions and validations were conducted by the author.
+The author assumes full responsibility for the scientific correctness
+and reproducibility of this software.
+
 ## References
 
 - Otsu, Nobuyuki. 1979. “A Threshold Selection Method from Gray-Level Histograms.” IEEE Transactions on Systems, Man, and Cybernetics 9 (1): 62–66. https://doi.org/10.1109/TSMC.1979.4310076.

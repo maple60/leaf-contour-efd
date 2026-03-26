@@ -4,4 +4,6 @@
 Command-line entry point for the Leaf Shape Analysis Tool.
 """
 
-import leaf_shape_tool.main  # Importing runs the Napari GUI
+from leaf_shape_tool.main import main
+
+main()

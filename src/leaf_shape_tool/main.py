@@ -275,5 +275,11 @@ def _add_roi_shortcut(v):
 # ---------------------------------------------------------------------
 # Run Napari viewer
 # ---------------------------------------------------------------------
-viewer.title = "Leaf Shape Analysis Tool — powered by napari"  # Set window title
-napari.run()  # Run the viewer
+def main():
+    """Launch the Leaf Shape Analysis Tool GUI."""
+    viewer.title = "Leaf Shape Analysis Tool — powered by napari"  # Set window title
+    napari.run()  # Run the viewer
+
+
+if __name__ == "__main__":
+    main()

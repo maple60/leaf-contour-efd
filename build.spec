@@ -36,7 +36,7 @@ if is_windows:
         if os.path.exists(src):
             binaries.append((src, "."))
 
-# Collect from core dependencies
+# Collect required dependencies (fail fast on collection errors)
 for pkg in [
     "PyQt6",
     "napari",
@@ -48,15 +48,21 @@ for pkg in [
     "tifffile",
     "torch",
     "torchvision",
-    "pywin32-ctypes",
 ]:
+    tmp = collect_all(pkg)
+    datas += tmp[0]
+    binaries += tmp[1]
+    hiddenimports += tmp[2]
+
+# Collect optional/platform-specific dependencies
+if is_windows:
     try:
-        tmp = collect_all(pkg)
+        tmp = collect_all("pywin32-ctypes")
         datas += tmp[0]
         binaries += tmp[1]
         hiddenimports += tmp[2]
     except Exception:
-        # Skip optional/platform-specific package collection.
+        # Optional dependency may be unavailable depending on environment.
         pass
 
 # Additional hidden imports for readers and SAM2 dependencies

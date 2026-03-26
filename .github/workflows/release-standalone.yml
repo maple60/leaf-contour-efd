@@ -63,6 +63,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write
 
     steps:
       - name: Download all artifacts
@@ -70,12 +72,31 @@ jobs:
         with:
           path: artifacts
 
+      - name: Prepare release assets (split files over 2GB)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p release-assets
+
+          shopt -s globstar nullglob
+          for file in artifacts/**/LeafShapeTool-windows.zip artifacts/**/LeafShapeTool-*.tar.gz; do
+            [ -f "$file" ] || continue
+            base="$(basename "$file")"
+            size_bytes="$(stat -c%s "$file")"
+
+            # GitHub release asset size limit is < 2 GiB
+            if [ "$size_bytes" -ge 2147483648 ]; then
+              echo "File is too large for a single release asset: $base (${size_bytes} bytes)"
+              echo "Splitting into 1900MiB chunks..."
+              split -b 1900m -d -a 3 "$file" "release-assets/${base}.part-"
+            else
+              cp "$file" "release-assets/$base"
+            fi
+          done
+
       - name: Publish release assets
         uses: softprops/action-gh-release@v2
         with:
-          files: |
-            artifacts/**/LeafShapeTool-windows.zip
-            artifacts/**/LeafShapeTool-macos-latest.tar.gz
-            artifacts/**/LeafShapeTool-ubuntu-latest.tar.gz
+          files: release-assets/**
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

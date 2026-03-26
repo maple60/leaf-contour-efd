@@ -38,7 +38,6 @@ if is_windows:
 
 # Collect required dependencies (fail fast on collection errors)
 for pkg in [
-    "PyQt6",
     "napari",
     "napari_builtins",
     "vispy",
@@ -46,7 +45,6 @@ for pkg in [
     "imageio",
     "PIL",
     "tifffile",
-    "torch",
     "torchvision",
 ]:
     tmp = collect_all(pkg)
@@ -82,6 +80,13 @@ hiddenimports += collect_submodules("napari.plugins")
 hiddenimports += collect_submodules("napari.plugins.io")
 hiddenimports += collect_submodules("napari.plugins._builtins")
 hiddenimports += collect_submodules("imageio.plugins")
+
+# NOTE:
+# On macOS, `collect_all("PyQt6")` may duplicate Qt framework entries that
+# napari/vispy hooks already collect, causing COLLECT to fail with
+# `FileExistsError` while creating symlinks (for example,
+# QtBluetooth.framework/Resources). Rely on PyInstaller's Qt hooks instead.
+hiddenimports += ["PyQt6"]
 
 # --- Add local SAM2 if exists ---
 sam2_path = os.path.join(os.getcwd(), "sam2", "sam2")

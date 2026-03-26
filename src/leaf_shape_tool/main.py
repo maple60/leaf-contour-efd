@@ -34,30 +34,30 @@ def _add_sam2_path():
 _add_sam2_path()
 
 
-import torch  # noqa: F401
+import torch  # noqa: E402
 
 # TODO: Add GPU support
 torch.set_default_device("cpu")  # Ensure CPU usage by default
 
-import napari
-from functools import partial
-from qtpy.QtCore import Qt, QTimer
-from qtpy.QtWidgets import QDockWidget
+import napari  # noqa: E402
+from functools import partial  # noqa: E402
+from qtpy.QtCore import Qt, QTimer  # noqa: E402
+from qtpy.QtWidgets import QDockWidget  # noqa: E402
 
 # --- Custom widget imports ---
-from leaf_shape_tool.widgets import crop_rectangle
-from leaf_shape_tool.widgets.make_points_tool_widget import make_points_tools_widget
-from leaf_shape_tool.widgets.rotate_image import (
+from leaf_shape_tool.widgets import crop_rectangle  # noqa: E402
+from leaf_shape_tool.widgets.make_points_tool_widget import make_points_tools_widget  # noqa: E402
+from leaf_shape_tool.widgets.rotate_image import (  # noqa: E402
     make_points_metadata_widget,
     get_active_points_layer,
     summarize_points_layer,
 )
-from leaf_shape_tool.widgets.binarize_image import make_binarize_image_widget
-from leaf_shape_tool.widgets.extract_contour import make_extract_contour_widget
-from leaf_shape_tool.widgets.set_scale import make_set_scale_widget
-from leaf_shape_tool.widgets.calculate_efd import calculate_efd_and_save
-from leaf_shape_tool.widgets.clear_viewer import make_clear_viewer_widget
-from leaf_shape_tool.utils.add_ROIs_layer import add_ROIs
+from leaf_shape_tool.widgets.binarize_image import make_binarize_image_widget  # noqa: E402
+from leaf_shape_tool.widgets.extract_contour import make_extract_contour_widget  # noqa: E402
+from leaf_shape_tool.widgets.set_scale import make_set_scale_widget  # noqa: E402
+from leaf_shape_tool.widgets.calculate_efd import calculate_efd_and_save  # noqa: E402
+from leaf_shape_tool.widgets.clear_viewer import make_clear_viewer_widget  # noqa: E402
+from leaf_shape_tool.utils.add_ROIs_layer import add_ROIs  # noqa: E402
 
 
 # ---------------------------------------------------------------------

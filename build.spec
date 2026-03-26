@@ -1,11 +1,12 @@
 # -*- mode: python ; coding: utf-8 -*-
-block_cipher = None
 
 from PyInstaller.utils.hooks import collect_submodules, collect_all, collect_dynamic_libs
 from PyInstaller.building.build_main import Tree
-import sys
 import os
+import platform
 import torch
+
+is_windows = platform.system() == "Windows"
 
 datas = []
 binaries = []
@@ -13,52 +14,58 @@ hiddenimports = []
 
 # --- Add torch package data and binaries ---
 torch_dir = os.path.dirname(torch.__file__)
-torch_tree = Tree(torch_dir, prefix="torch")  # copy entire torch directory
+torch_tree = Tree(torch_dir, prefix="torch")
 binaries += collect_dynamic_libs("torch")
 hiddenimports += ["torch", "torch._C", "torchvision"]
 
-# --- Add Visual C++ runtime DLLs manually ---
-system32 = os.path.join(os.environ.get("SystemRoot", "C:\\Windows"), "System32")
+# --- Windows-only Visual C++ runtime DLLs ---
+if is_windows:
+    system32 = os.path.join(os.environ.get("SystemRoot", "C:\\Windows"), "System32")
+    vcruntime_dlls = [
+        "vcruntime140.dll",
+        "vcruntime140_1.dll",
+        "msvcp140.dll",
+        "msvcp140_1.dll",
+        "msvcp140_atomic_wait.dll",
+        "concrt140.dll",
+        "libiomp5md.dll",
+    ]
 
-# find required VC runtime DLLs
-vcruntime_dlls = [
-    "vcruntime140.dll",
-    "vcruntime140_1.dll",
-    "msvcp140.dll",
-    "msvcp140_1.dll",
-    "msvcp140_atomic_wait.dll",   # ← 追加 / add
-    "concrt140.dll",              # ← 追加 / add
-    "libiomp5md.dll",
-]
+    for dll in vcruntime_dlls:
+        src = os.path.join(system32, dll)
+        if os.path.exists(src):
+            binaries.append((src, "."))
 
-for dll in vcruntime_dlls:
-    src = os.path.join(system32, dll)
-    if os.path.exists(src):
-        binaries.append((src, "."))
-
-# Collect from core dependencies
+# Collect required dependencies (fail fast on collection errors)
 for pkg in [
-    "PyQt5", 
-    "napari", 
-    "napari_builtins", 
-    "vispy", 
-    "magicgui", 
-    "imageio", 
-    "PIL", 
-    "tifffile", 
+    "PyQt6",
+    "napari",
+    "napari_builtins",
+    "vispy",
+    "magicgui",
+    "imageio",
+    "PIL",
+    "tifffile",
     "torch",
-    "torchvision", 
-    "pywin32-ctypes",
-    ]:
+    "torchvision",
+]:
     tmp = collect_all(pkg)
     datas += tmp[0]
     binaries += tmp[1]
     hiddenimports += tmp[2]
 
-# Also include MSVC-dependent dynamic libraries for torch
-binaries += collect_dynamic_libs("torch")
+# Collect optional/platform-specific dependencies
+if is_windows:
+    try:
+        tmp = collect_all("pywin32-ctypes")
+        datas += tmp[0]
+        binaries += tmp[1]
+        hiddenimports += tmp[2]
+    except Exception:
+        # Optional dependency may be unavailable depending on environment.
+        pass
 
-# Additional hidden imports for readers
+# Additional hidden imports for readers and SAM2 dependencies
 hiddenimports += [
     "imageio.plugins.pillow",
     "imageio.plugins.tifffile",
@@ -66,38 +73,34 @@ hiddenimports += [
     "PIL.PngImagePlugin",
     "PIL.TiffImagePlugin",
     "PIL.BmpImagePlugin",
-    "napari_builtins",  # built-in readers
-    "hydra", # SAM2
-    "iopath", # SAM2
+    "napari_builtins",
+    "hydra",
+    "iopath",
 ]
 
-# --- Napari plugins ---
-hiddenimports += collect_submodules('napari.plugins')
-hiddenimports += collect_submodules('napari.plugins.io')
-hiddenimports += collect_submodules('napari.plugins._builtins')
+hiddenimports += collect_submodules("napari.plugins")
+hiddenimports += collect_submodules("napari.plugins.io")
+hiddenimports += collect_submodules("napari.plugins._builtins")
+hiddenimports += collect_submodules("imageio.plugins")
 
-# Safety: ensure all imageio plugins are bundled
-hiddenimports += collect_submodules('imageio.plugins')
-
-# --- Add SAM2 if exists locally ---
+# --- Add local SAM2 if exists ---
 sam2_path = os.path.join(os.getcwd(), "sam2", "sam2")
 if os.path.isdir(sam2_path):
-    datas += [(sam2_path, "sam2")]  # include the entire sam2 directory
+    datas += [(sam2_path, "sam2")]
     hiddenimports += collect_submodules("sam2")
 
-
 runtime_hooks = [
-    "runtime_hooks\\pyi_rth_disable_torchjit.py", # Disable Torch JIT
-    "runtime_hooks\\pyi_rth_torchpath.py", # pytorch DLL path fix
+    os.path.join("runtime_hooks", "pyi_rth_disable_torchjit.py"),
+    os.path.join("runtime_hooks", "pyi_rth_torchpath.py"),
 ]
 
 a = Analysis(
-    ['src\\leaf_shape_tool\\__main__.py'],
+    [os.path.join("src", "leaf_shape_tool", "__main__.py")],
     pathex=[],
     binaries=binaries,
     datas=datas,
     hiddenimports=hiddenimports,
-    hookspath=["extra_hooks\\hook-sam2.py"],
+    hookspath=[os.path.join("extra_hooks", "hook-sam2.py")],
     hooksconfig={},
     runtime_hooks=runtime_hooks,
     excludes=[
@@ -110,15 +113,15 @@ a = Analysis(
     optimize=0,
 )
 
-a.datas += torch_tree # Add the torch Tree AFTER Analysis
-pyz = PYZ(a.pure, cipher=block_cipher) # Build EXE
+a.datas += torch_tree
+pyz = PYZ(a.pure)
 
 exe = EXE(
     pyz,
     a.scripts,
     [],
-    exclude_binaries=True,  # ← True にする
-    name='LeafShapeTool',
+    exclude_binaries=True,
+    name="LeafShapeTool",
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -133,5 +136,5 @@ coll = COLLECT(
     a.datas,
     strip=False,
     upx=True,
-    name='LeafShapeTool',
+    name="LeafShapeTool",
 )

@@ -34,18 +34,19 @@
 
 | 方法              | 概要                                  | 推奨対象         |
 | --------------- | ----------------------------------- | ------------ |
-| **スタンドアロンアプリ**  | Windows/macOS向けの実行ファイル。Python環境は不要。 | 一般ユーザー       |
+| **スタンドアロンアプリ**  | Windows/macOS/Linux向けの実行ファイル。Python環境は不要。 | 一般ユーザー       |
 | **セットアップスクリプト** | `uv` により仮想環境を自動構築し、依存関係をインストール。     | 再現性を重視するユーザー |
 | **手動セットアップ**    | 開発やデバッグ目的で、一から環境を構築。                | 開発者          |
 
-### 1. スタンドアロンアプリ（推奨）【準備中】
+### 1. スタンドアロンアプリ（推奨）
 
-最新のリリースは [Releasesページ](https://github.com/maple60/morphometrics-tool/releases/new) からダウンロードいただけます。
+最新のリリースは [Releasesページ](https://github.com/maple60/morphometrics-tool/releases) からダウンロードいただけます。
 
 - **Windows**：`LeafShapeTool.exe` を実行
-- **macOS**：`LeafShapeTool.app` を開く
+- **macOS**：ダウンロードしたアーカイブ内のアプリバンドルまたは実行ファイルを起動
 
 Python のインストールは不要です。
+- **Linux**: リリースアーカイブを展開し、`LeafShapeTool/` フォルダ内の `LeafShapeTool` を起動
 
 ### 2. セットアップスクリプト
 
@@ -62,7 +63,7 @@ cd morphometrics-tool
 setup\setup_windows.bat
 ```
 
-- macOS / Linux（準備中）
+- macOS / Linux
 
 ```bash
 bash setup/setup_unix.sh

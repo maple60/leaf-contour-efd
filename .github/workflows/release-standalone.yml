@@ -1,0 +1,81 @@
+name: Build standalone app (Windows/macOS/Linux)
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install system dependencies (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libegl1 libgl1 libxkbcommon-x11-0 libxcb-cursor0
+
+      - name: Install project dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install .
+          pip install pyinstaller==6.16.0
+
+      - name: Build with PyInstaller
+        run: pyinstaller build.spec --clean
+
+      - name: Archive build output (Windows)
+        if: matrix.os == 'windows-latest'
+        shell: pwsh
+        run: |
+          Compress-Archive -Path dist/LeafShapeTool/* -DestinationPath LeafShapeTool-windows.zip
+
+      - name: Archive build output (macOS/Linux)
+        if: matrix.os != 'windows-latest'
+        run: |
+          tar -C dist -czf LeafShapeTool-${{ matrix.os }}.tar.gz LeafShapeTool
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: LeafShapeTool-${{ matrix.os }}
+          path: |
+            LeafShapeTool-windows.zip
+            LeafShapeTool-${{ matrix.os }}.tar.gz
+
+  release:
+    name: Publish GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Publish release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            artifacts/**/LeafShapeTool-windows.zip
+            artifacts/**/LeafShapeTool-macos-latest.tar.gz
+            artifacts/**/LeafShapeTool-ubuntu-latest.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

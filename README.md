@@ -34,7 +34,7 @@ Choose the method that best fits your environment.
 
 | Method             | Description                                                                          | Recommended for        |
 | ------------------ | ------------------------------------------------------------------------------------ | ---------------------- |
-| **Standalone App** | Ready-to-use executable for Windows and macOS. No Python required.                   | General users          |
+| **Standalone App** | Ready-to-use executables for Windows, macOS, and Linux. No Python required.                   | General users          |
 | **Setup Script**   | Automatically creates a reproducible environment via `uv` and installs dependencies. | Reproducible workflows |
 | **Manual Setup**   | Build the environment from scratch for development or debugging.                     | Developers             |
 
@@ -43,9 +43,10 @@ Choose the method that best fits your environment.
 Download the latest release from the [Releases page](https://github.com/maple60/morphometrics-tool/releases)
 
 - On **Windows**: run `LeafShapeTool.exe`
-- On **macOS**: open `LeafShapeTool.app` (**In preparation**)
+- On **macOS**: run the app bundle or binary from the downloaded archive
 
 No Python installation is required.
+- On **Linux**: extract the release archive and run `LeafShapeTool` from the `LeafShapeTool/` folder
 
 ### 2. Setup Script
 
@@ -61,7 +62,7 @@ cd morphometrics-tool
 setup\setup_windows.bat
 ```
 
-- macOS / Linux (In preparation)
+- macOS / Linux
 
 ```bash
 bash setup/setup_unix.sh

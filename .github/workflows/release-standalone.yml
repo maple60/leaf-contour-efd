@@ -8,12 +8,24 @@ on:
 
 jobs:
   build:
-    name: Build (${{ matrix.os }})
+    name: Build (${{ matrix.name }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, macos-latest, ubuntu-latest]
+        include:
+          - name: windows-x64
+            os: windows-latest
+            archive_name: LeafShapeTool-windows-x64.zip
+          - name: macos-arm64
+            os: macos-latest
+            archive_name: LeafShapeTool-macos-arm64.tar.gz
+          - name: macos-x64
+            os: macos-13
+            archive_name: LeafShapeTool-macos-x64.tar.gz
+          - name: ubuntu-x64
+            os: ubuntu-latest
+            archive_name: LeafShapeTool-ubuntu-x64.tar.gz
 
     steps:
       - name: Checkout
@@ -25,7 +37,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install system dependencies (Linux)
-        if: matrix.os == 'ubuntu-latest'
+        if: startsWith(matrix.os, 'ubuntu')
         run: |
           sudo apt-get update
           sudo apt-get install -y libegl1 libgl1 libxkbcommon-x11-0 libxcb-cursor0
@@ -40,23 +52,21 @@ jobs:
         run: pyinstaller build.spec --clean
 
       - name: Archive build output (Windows)
-        if: matrix.os == 'windows-latest'
+        if: startsWith(matrix.os, 'windows')
         shell: pwsh
         run: |
-          Compress-Archive -Path dist/LeafShapeTool/* -DestinationPath LeafShapeTool-windows.zip
+          Compress-Archive -Path dist/LeafShapeTool/* -DestinationPath ${{ matrix.archive_name }}
 
       - name: Archive build output (macOS/Linux)
-        if: matrix.os != 'windows-latest'
+        if: ${{ !startsWith(matrix.os, 'windows') }}
         run: |
-          tar -C dist -czf LeafShapeTool-${{ matrix.os }}.tar.gz LeafShapeTool
+          tar -C dist -czf "${{ matrix.archive_name }}" LeafShapeTool
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: LeafShapeTool-${{ matrix.os }}
-          path: |
-            LeafShapeTool-windows.zip
-            LeafShapeTool-${{ matrix.os }}.tar.gz
+          name: LeafShapeTool-${{ matrix.name }}
+          path: ${{ matrix.archive_name }}
 
   release:
     name: Publish GitHub Release
@@ -79,7 +89,7 @@ jobs:
           mkdir -p release-assets
 
           shopt -s globstar nullglob
-          for file in artifacts/**/LeafShapeTool-windows.zip artifacts/**/LeafShapeTool-*.tar.gz; do
+          for file in artifacts/**/LeafShapeTool-*.zip artifacts/**/LeafShapeTool-*.tar.gz; do
             [ -f "$file" ] || continue
             base="$(basename "$file")"
             size_bytes="$(stat -c%s "$file")"

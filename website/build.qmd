@@ -36,9 +36,10 @@ Starting from **v1.0.0**, this repository provides a GitHub Actions release work
 - Workflow file: `.github/workflows/release-standalone.yml`
 - Trigger: tag push such as `v1.0.0`
 - Outputs:
-  - `LeafShapeTool-windows.zip`
-  - `LeafShapeTool-macos-latest.tar.gz`
-  - `LeafShapeTool-ubuntu-latest.tar.gz`
+  - `LeafShapeTool-windows-x64.zip`
+  - `LeafShapeTool-macos-arm64.tar.gz`
+  - `LeafShapeTool-macos-x64.tar.gz`
+  - `LeafShapeTool-ubuntu-x64.tar.gz`
 
 All generated assets are attached to the corresponding GitHub Release.
 :::

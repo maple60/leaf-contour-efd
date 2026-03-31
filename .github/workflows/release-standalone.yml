@@ -2,8 +2,11 @@ name: Build standalone app (Windows/macOS/Linux)
 
 on:
   push:
+    branches:
+      - main
     tags:
       - "v*"
+  pull_request:
   workflow_dispatch:
 
 jobs:

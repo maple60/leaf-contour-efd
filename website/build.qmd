@@ -34,7 +34,9 @@ For more details on PyInstaller usage, please refer to the [official documentati
 Starting from **v1.0.0**, this repository provides a GitHub Actions release workflow:
 
 - Workflow file: `.github/workflows/release-standalone.yml`
-- Trigger: tag push such as `v1.0.0`
+- Trigger:
+  - `pull_request` / push to `main`: build verification only
+  - tag push such as `v1.0.0`: build + GitHub Release publishing
 - Outputs:
   - `LeafShapeTool-windows-x64.zip`
   - `LeafShapeTool-macos-arm64.tar.gz`

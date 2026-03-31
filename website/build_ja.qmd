@@ -36,6 +36,7 @@ pyinstaller build.spec
   - `LeafShapeTool-ubuntu-x64.tar.gz`
 
 生成物は GitHub Release に添付されます。
+Releaseノートには、各アーカイブ内の実行ファイルから自動検出したCPUアーキテクチャ一覧も追記されます。
 :::
 
 ::: {.callout-tip}

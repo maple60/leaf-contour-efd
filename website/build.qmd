@@ -42,6 +42,7 @@ Starting from **v1.0.0**, this repository provides a GitHub Actions release work
   - `LeafShapeTool-ubuntu-x64.tar.gz`
 
 All generated assets are attached to the corresponding GitHub Release.
+The Release notes also include an auto-generated table showing the executable architecture detected from each archive.
 :::
 
 ::: {.callout-tip}

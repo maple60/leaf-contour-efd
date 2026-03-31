@@ -28,13 +28,17 @@ pyinstaller build.spec
 **v1.0.0** 以降は、GitHub Actions で 3OS 向けの配布物を自動生成します。
 
 - ワークフロー: `.github/workflows/release-standalone.yml`
-- 実行条件: `v1.0.0` のようなタグ push
+- 実行条件:
+  - `pull_request` / `main` への push: ビルド検証のみ
+  - `v1.0.0` のようなタグ push: ビルド + GitHub Release 公開
 - 生成物:
-  - `LeafShapeTool-windows.zip`
-  - `LeafShapeTool-macos-latest.tar.gz`
-  - `LeafShapeTool-ubuntu-latest.tar.gz`
+  - `LeafShapeTool-windows-x64.zip`
+  - `LeafShapeTool-macos-arm64.tar.gz`
+  - `LeafShapeTool-macos-x64.tar.gz`
+  - `LeafShapeTool-ubuntu-x64.tar.gz`
 
 生成物は GitHub Release に添付されます。
+Releaseノートには、各アーカイブ内の実行ファイルから自動検出したCPUアーキテクチャ一覧も追記されます。
 :::
 
 ::: {.callout-tip}

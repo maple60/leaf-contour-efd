@@ -23,8 +23,10 @@ dependencies = [
     "scikit-image",
     "scipy",
     "pyinstaller==6.16.0",
-    "torch==2.8.0",
-    "torchvision",
+    "torch==2.2.2; platform_system == \"Darwin\" and platform_machine == \"x86_64\"",
+    "torch==2.8.0; platform_system != \"Darwin\" or platform_machine != \"x86_64\"",
+    "torchvision==0.17.2; platform_system == \"Darwin\" and platform_machine == \"x86_64\"",
+    "torchvision; platform_system != \"Darwin\" or platform_machine != \"x86_64\"",
 ]
 
 [project.scripts]

@@ -8,12 +8,24 @@ on:
 
 jobs:
   build:
-    name: Build (${{ matrix.os }})
+    name: Build (${{ matrix.name }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, macos-latest, ubuntu-latest]
+        include:
+          - name: windows-x64
+            os: windows-latest
+            archive_name: LeafShapeTool-windows-x64.zip
+          - name: macos-arm64
+            os: macos-15
+            archive_name: LeafShapeTool-macos-arm64.tar.gz
+          - name: macos-x64
+            os: macos-15-intel
+            archive_name: LeafShapeTool-macos-x64.tar.gz
+          - name: ubuntu-x64
+            os: ubuntu-latest
+            archive_name: LeafShapeTool-ubuntu-x64.tar.gz
 
     steps:
       - name: Checkout
@@ -25,7 +37,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install system dependencies (Linux)
-        if: matrix.os == 'ubuntu-latest'
+        if: startsWith(matrix.os, 'ubuntu')
         run: |
           sudo apt-get update
           sudo apt-get install -y libegl1 libgl1 libxkbcommon-x11-0 libxcb-cursor0
@@ -40,23 +52,21 @@ jobs:
         run: pyinstaller build.spec --clean
 
       - name: Archive build output (Windows)
-        if: matrix.os == 'windows-latest'
+        if: startsWith(matrix.os, 'windows')
         shell: pwsh
         run: |
-          Compress-Archive -Path dist/LeafShapeTool/* -DestinationPath LeafShapeTool-windows.zip
+          Compress-Archive -Path dist/LeafShapeTool/* -DestinationPath ${{ matrix.archive_name }}
 
       - name: Archive build output (macOS/Linux)
-        if: matrix.os != 'windows-latest'
+        if: ${{ !startsWith(matrix.os, 'windows') }}
         run: |
-          tar -C dist -czf LeafShapeTool-${{ matrix.os }}.tar.gz LeafShapeTool
+          tar -C dist -czf "${{ matrix.archive_name }}" LeafShapeTool
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: LeafShapeTool-${{ matrix.os }}
-          path: |
-            LeafShapeTool-windows.zip
-            LeafShapeTool-${{ matrix.os }}.tar.gz
+          name: LeafShapeTool-${{ matrix.name }}
+          path: ${{ matrix.archive_name }}
 
   release:
     name: Publish GitHub Release
@@ -79,7 +89,7 @@ jobs:
           mkdir -p release-assets
 
           shopt -s globstar nullglob
-          for file in artifacts/**/LeafShapeTool-windows.zip artifacts/**/LeafShapeTool-*.tar.gz; do
+          for file in artifacts/**/LeafShapeTool-*.zip artifacts/**/LeafShapeTool-*.tar.gz; do
             [ -f "$file" ] || continue
             base="$(basename "$file")"
             size_bytes="$(stat -c%s "$file")"
@@ -94,9 +104,54 @@ jobs:
             fi
           done
 
+      - name: Generate release notes with executable architecture
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p release-notes _release_inspect
+
+          notes_file="release-notes/auto-generated-notes.md"
+          {
+            echo "## Standalone artifacts"
+            echo
+            echo "Please download the archive matching your platform and CPU architecture."
+            echo
+            echo "| Asset | Executable | Detected architecture |"
+            echo "|---|---|---|"
+          } > "$notes_file"
+
+          shopt -s nullglob
+          for asset in release-assets/LeafShapeTool-*.zip release-assets/LeafShapeTool-*.tar.gz; do
+            [ -f "$asset" ] || continue
+            base="$(basename "$asset")"
+
+            workdir="_release_inspect/${base}"
+            rm -rf "$workdir"
+            mkdir -p "$workdir"
+
+            if [[ "$asset" == *.zip ]]; then
+              unzip -q "$asset" -d "$workdir"
+              exe_path="$(find "$workdir" -type f -name 'LeafShapeTool.exe' | head -n 1 || true)"
+            else
+              tar -xzf "$asset" -C "$workdir"
+              exe_path="$(find "$workdir" -type f -name 'LeafShapeTool' | head -n 1 || true)"
+            fi
+
+            if [ -n "$exe_path" ] && [ -f "$exe_path" ]; then
+              arch="$(file -b "$exe_path" | sed 's/|/\\|/g')"
+              exe_name="$(basename "$exe_path")"
+            else
+              arch="(executable not found)"
+              exe_name="(not found)"
+            fi
+
+            printf "| %s | %s | %s |\n" "$base" "$exe_name" "$arch" >> "$notes_file"
+          done
+
       - name: Publish release assets
         uses: softprops/action-gh-release@v2
         with:
+          body_path: release-notes/auto-generated-notes.md
           files: release-assets/**
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

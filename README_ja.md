@@ -41,12 +41,25 @@
 ### 1. スタンドアロンアプリ（推奨）
 
 最新のリリースは [Releasesページ](https://github.com/maple60/morphometrics-tool/releases) からダウンロードいただけます。
+Python のインストールは不要です。
 
 - **Windows**：`LeafShapeTool.exe` を実行
 - **macOS**：ダウンロードしたアーカイブ内のアプリバンドルまたは実行ファイルを起動
-
-Python のインストールは不要です。
 - **Linux**: リリースアーカイブを展開し、`LeafShapeTool/` フォルダ内の `LeafShapeTool` を起動
+
+::: {.callout-warning}
+## macOSでアプリが開けない場合
+
+macOSでは、アプリの初回起動時に警告ダイアログが表示され、アプリを開けないことがあります。
+その場合は、ターミナルで以下のコマンドを実行してください。
+
+```bash
+/usr/bin/xattr -dr com.apple.quarantine ~/path/to/LeafShapeTool
+```
+
+`~/path/to/LeafShapeTool`は、ダウンロードしたアプリのパスに置き換えてください。
+コマンド実行後、再度アプリを起動してください。
+:::
 
 ### 2. セットアップスクリプト
 

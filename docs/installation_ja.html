@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Installation – Leaf Shape Analysis Tool</title>
+<title>Installation – LeafContourEFD</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -71,10 +74,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-264a0fc3a96c72ca7334393e02078ef0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d0eb33a73c8de335a1b0e6ed1df1adc0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -114,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Leaf Shape Analysis Tool</span>
+    <span class="navbar-title">LeafContourEFD</span>
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="ナビゲーションを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -137,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-github"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/maple60/morphometrics-tool">
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/maple60/leaf-contour-efd">
             Source Code
             </a>
           </li>
@@ -247,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#git-がインストールされていない場合-1" id="toc-git-がインストールされていない場合-1" class="nav-link" data-scroll-target="#git-がインストールされていない場合-1">Git がインストールされていない場合</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/maple60/morphometrics-tool/edit/main/website/installation_ja.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/maple60/morphometrics-tool/blob/main/website/installation_ja.qmd" class="toc-action"><i class="bi empty"></i>ソースコード</a></li><li><a href="https://github.com/maple60/morphometrics-tool/issues/new" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/maple60/leaf-contour-efd/edit/main/website/installation_ja.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/blob/main/website/installation_ja.qmd" class="toc-action"><i class="bi empty"></i>ソースコード</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/issues/new" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -277,14 +280,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-🇺🇸 English Version / Available in English
+<span class="screen-reader-only">ノート</span>🇺🇸 English Version / Available in English
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>For the English version, please refer to the <a href="./installation.html">installation.qmd</a> page.</p>
 </div>
 </div>
-<p>Leaf Shape Analysis Tool のインストールおよび使用方法は、次の 3 通りです。</p>
+<p>LeafContourEFD のインストールおよび使用方法は、次の 3 通りです。</p>
 <ul>
 <li><strong>スタンドアロンアプリ</strong>（最も簡単で、一般ユーザーに推奨）<br>
 </li>
@@ -296,8 +299,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 <section id="スタンドアロンアプリ一般ユーザー向け" class="level2">
 <h2 class="anchored" data-anchor-id="スタンドアロンアプリ一般ユーザー向け">スタンドアロンアプリ（一般ユーザー向け）</h2>
-<p>GitHub の <a href="https://github.com/maple60/morphometrics-tool/releases">Releases</a> ページから、最新リリースをダウンロードしてください。<br>
-Windows では <code>LeafShapeTool.exe</code>、macOS では <code>LeafShapeTool.app</code> を実行することでツールを起動できます。</p>
+<p>GitHub の <a href="https://github.com/maple60/leaf-contour-efd/releases">Releases</a> ページから、最新リリースをダウンロードしてください。<br>
+Windows では <code>LeafContourEFD.exe</code>、macOS では <code>LeafContourEFD.app</code> を実行することでツールを起動できます。</p>
 <p>Python 環境の構築は不要です。</p>
 <hr>
 </section>
@@ -306,15 +309,15 @@ Windows では <code>LeafShapeTool.exe</code>、macOS では <code>LeafShapeTool
 <p>GitHub リポジトリをクローンし、同梱のセットアップスクリプトを用いて環境を構築・起動します。</p>
 <section id="windows" class="level3">
 <h3 class="anchored" data-anchor-id="windows">Windows</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/maple60/morphometrics-tool.git</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> morphometrics-tool</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">setup\setup_windows.bat</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/maple60/leaf-contour-efd.git</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> leaf-contour-efd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">setup\setup_windows.bat</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="macos-linux" class="level3">
 <h3 class="anchored" data-anchor-id="macos-linux">macOS / Linux</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/maple60/morphometrics-tool.git</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> morphometrics-tool</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> setup/setup_unix.sh</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/maple60/leaf-contour-efd.git</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> leaf-contour-efd</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> setup/setup_unix.sh</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="git-がインストールされていない場合" class="level3">
 <h3 class="anchored" data-anchor-id="git-がインストールされていない場合">git がインストールされていない場合</h3>
@@ -324,7 +327,7 @@ Windows では <code>LeafShapeTool.exe</code>、macOS では <code>LeafShapeTool
 </ul>
 <p>または、以下のリポジトリを ZIP 形式でダウンロードし、手動で展開しても構いません。</p>
 <ul>
-<li><a href="https://github.com/maple60/morphometrics-tool">Leaf Shape Analysis Tool - GitHub</a></li>
+<li><a href="https://github.com/maple60/leaf-contour-efd">LeafContourEFD - GitHub</a></li>
 <li><a href="https://github.com/facebookresearch/sam2">SAM 2: Segment Anything in Images and Videos - GitHub</a></li>
 </ul>
 <hr>
@@ -376,14 +379,14 @@ Windows では <code>LeafShapeTool.exe</code>、macOS では <code>LeafShapeTool
 </section>
 <section id="プロジェクトディレクトリへの移動" class="level3">
 <h3 class="anchored" data-anchor-id="プロジェクトディレクトリへの移動">2. プロジェクトディレクトリへの移動</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> path/to/morphometrics-tool</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> path/to/leaf-contour-efd</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-コマンドプロンプトの開き方（Windows）
+<span class="screen-reader-only">ヒント</span>コマンドプロンプトの開き方（Windows）
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -396,7 +399,7 @@ Windows では <code>LeafShapeTool.exe</code>、macOS では <code>LeafShapeTool
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Python の事前インストールは不要
+<span class="screen-reader-only">ヒント</span>Python の事前インストールは不要
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -407,21 +410,21 @@ Python の事前インストールは不要
 </section>
 <section id="仮想環境の作成と有効化" class="level3">
 <h3 class="anchored" data-anchor-id="仮想環境の作成と有効化">3. 仮想環境の作成と有効化</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p>続いて、仮想環境を有効化します。</p>
 <ul>
 <li>Windows:</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv\Scripts\activate</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv\Scripts\activate</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>macOS / Linux:</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>.venv</code> ディレクトリがプロジェクトフォルダ内に自動的に作成されます。</p>
 </section>
 <section id="依存関係のインストール" class="level3">
 <h3 class="anchored" data-anchor-id="依存関係のインストール">4. 依存関係のインストール</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p>このコマンドにより、<code>uv.lock</code> に記録されたパッケージがすべてインストールされます。<br>
 <code>uv.lock</code> が存在しない場合は、<code>pyproject.toml</code> を基に依存関係が解決され、新しいロックファイルが自動的に生成されます。</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -430,12 +433,12 @@ Python の事前インストールは不要
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<code>pip</code> ユーザー向けの代替方法
+<span class="screen-reader-only">ヒント</span><code>pip</code> ユーザー向けの代替方法
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p><code>requirements.txt</code> も同梱されています。 <code>pip</code> を利用する場合は、以下のコマンドで依存関係をインストールできます。</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>uv sync</code> の使用が推奨されますが、<code>uv</code> が利用できない環境ではこの方法を使用してください。</p>
 </div>
 </div>
@@ -444,20 +447,20 @@ Python の事前インストールは不要
 <h3 class="anchored" data-anchor-id="sam2-のクローンとインストール">5. SAM2 のクローンとインストール</h3>
 <section id="step-5.1-sam2-リポジトリのクローン" class="level4">
 <h4 class="anchored" data-anchor-id="step-5.1-sam2-リポジトリのクローン">Step 5.1 — SAM2 リポジトリのクローン</h4>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/facebookresearch/sam2.git</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/facebookresearch/sam2.git</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="step-5.2-開発モードでのインストール" class="level4">
 <h4 class="anchored" data-anchor-id="step-5.2-開発モードでのインストール">Step 5.2 — 開発モードでのインストール</h4>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> sam2</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> sam2</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> pip install <span class="at">-e</span> .</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-開発モード（editable mode）について
+<span class="screen-reader-only">ヒント</span>開発モード（editable mode）について
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -475,21 +478,21 @@ Python の事前インストールは不要
 <li><a href="https://github.com/facebookresearch/sam2#:~:text=(state)%3A%0A%20%20%20%20%20%20%20%20...-,Model%20Description,-SAM%202.1%20checkpoints">Model Description - facebookresearch/sam2</a></li>
 </ul>
 <p>macOS / Linux、または Bash を使用可能な Windows 環境では、次のコマンドにより自動でチェックポイントを取得できます。</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> checkpoints <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> checkpoints <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./download_ckpts.sh</span> <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="アプリケーションの起動" class="level3">
 <h3 class="anchored" data-anchor-id="アプリケーションの起動">7. アプリケーションの起動</h3>
 <p>環境構築が完了したら、以下のコマンドでツールを起動します。</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">leaf-shape-tool</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">leaf-contour-efd</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p>または、開発ディレクトリから直接起動する場合は以下を実行します。</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> leaf_shape_tool</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> leaf_shape_tool</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="uv-がインストールされていない場合" class="level3">
 <h3 class="anchored" data-anchor-id="uv-がインストールされていない場合">uv がインストールされていない場合</h3>
 <p><code>pip</code> により <code>uv</code> をインストールしてから、上記の手順を実行してください。</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install uv</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install uv</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p>そのほかのインストール方法など詳細については、公式ドキュメントを参照してください。</p>
 <ul>
 <li><a href="https://docs.astral.sh/uv/getting-started/installation/">Installing uv - uv</a></li>
@@ -562,13 +565,14 @@ Python の事前インストールは不要
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -921,11 +925,11 @@ Python の事前インストールは不要
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© 2025 Leaf Shape Analysis Tool</p>
+<p>© 2025 LeafContourEFD</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maple60/morphometrics-tool/edit/main/website/installation_ja.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/maple60/morphometrics-tool/blob/main/website/installation_ja.qmd" class="toc-action"><i class="bi empty"></i>ソースコード</a></li><li><a href="https://github.com/maple60/morphometrics-tool/issues/new" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maple60/leaf-contour-efd/edit/main/website/installation_ja.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/blob/main/website/installation_ja.qmd" class="toc-action"><i class="bi empty"></i>ソースコード</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/issues/new" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with Quarto</p>
 </div>

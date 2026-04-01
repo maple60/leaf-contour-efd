@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Home – Leaf Shape Analysis Tool</title>
+<title>Home – LeafContourEFD</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -59,7 +62,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -91,10 +93,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-264a0fc3a96c72ca7334393e02078ef0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d0eb33a73c8de335a1b0e6ed1df1adc0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -138,7 +140,7 @@ div.csl-indent {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Leaf Shape Analysis Tool</span>
+    <span class="navbar-title">LeafContourEFD</span>
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -161,7 +163,7 @@ div.csl-indent {
       <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-github"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/maple60/morphometrics-tool">
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/maple60/leaf-contour-efd">
             Source Code
             </a>
           </li>
@@ -264,7 +266,7 @@ div.csl-indent {
   <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/maple60/morphometrics-tool/edit/main/website/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/morphometrics-tool/blob/main/website/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/morphometrics-tool/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/maple60/leaf-contour-efd/edit/main/website/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/blob/main/website/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -310,7 +312,7 @@ Every processing step — scale calibration, ROI cropping, landmark placement, r
 </section>
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">Installation</h2>
-<p>There are three ways to install and run the Leaf Shape Analysis Tool. Choose the method that best fits your environment.</p>
+<p>There are three ways to install and run the LeafContourEFD. Choose the method that best fits your environment.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 14%">
@@ -344,26 +346,26 @@ Every processing step — scale calibration, ROI cropping, landmark placement, r
 </table>
 <section id="standalone-app-recommended-in-preparation" class="level3">
 <h3 class="anchored" data-anchor-id="standalone-app-recommended-in-preparation">1. Standalone App (Recommended) (<strong>In preparation</strong>)</h3>
-<p>Download the latest release from the <a href="https://github.com/maple60/morphometrics-tool/releases/new">Releases page</a></p>
+<p>Download the latest release from the <a href="https://github.com/maple60/leaf-contour-efd/releases/new">Releases page</a></p>
 <ul>
-<li>On <strong>Windows</strong>: run <code>LeafShapeTool.exe</code></li>
-<li>On <strong>macOS</strong>: open <code>LeafShapeTool.app</code></li>
+<li>On <strong>Windows</strong>: run <code>LeafContourEFD.exe</code></li>
+<li>On <strong>macOS</strong>: open <code>LeafContourEFD.app</code></li>
 </ul>
 <p>No Python installation is required.</p>
 </section>
 <section id="setup-script" class="level3">
 <h3 class="anchored" data-anchor-id="setup-script">2. Setup Script</h3>
 <p>Clone the repository and launch the tool using the provided script.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/maple60/morphometrics-tool.git</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> morphometrics-tool</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/maple60/leaf-contour-efd.git</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> leaf-contour-efd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Windows</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">setup\setup_windows.bat</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">setup\setup_windows.bat</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>macOS / Linux (In preparation)</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> setup/setup_unix.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> setup/setup_unix.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This script automatically:</p>
 <ul>
 <li>Creates a virtual environment (<code>uv venv</code>)</li>
@@ -376,19 +378,19 @@ Every processing step — scale calibration, ROI cropping, landmark placement, r
 <section id="manual-setup-developers" class="level3">
 <h3 class="anchored" data-anchor-id="manual-setup-developers">3. Manual Setup (Developers)</h3>
 <p>If you prefer to configure everything manually:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv\Scripts\activate</span>       <span class="co"># source .venv/bin/activate  (macOS/Linux)</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/facebookresearch/sam2.git</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> sam2</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> pip install <span class="at">-e</span> .</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If you plan to use Segment Anything Model 2 (SAM2) for segmentation, make sure its checkpoints are downloaded into <code>sam2/checkpoints/</code>. For details about each model, refer to the following page:</p>
 <ul>
 <li><a href="https://github.com/facebookresearch/sam2#:~:text=(state)%3A%0A%20%20%20%20%20%20%20%20...-,Model%20Description,-SAM%202.1%20checkpoints">Model Description - facebookresearch/sam2</a></li>
 </ul>
 <p>After installation, launch the tool with:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">leaf-shape-tool</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">leaf-contour-efd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -399,7 +401,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>For full setup instructions (including uv, git, and checkpoint downloads), see the <a href="https://maple60.github.io/morphometrics-tool/installation.html">Installation Guide</a>.</p>
+<p>For full setup instructions (including uv, git, and checkpoint downloads), see the <a href="https://maple60.github.io/leaf-contour-efd/installation.html">Installation Guide</a>.</p>
 </div>
 </div>
 </section>
@@ -444,7 +446,7 @@ flowchart TD
 </div>
 <p>Each processing step corresponds to a dedicated GUI widget,<br>
 and all results (images, contours, metadata, EFDs) are automatically exported to the <code>output/</code> directory.</p>
-<p>For a detailed step-by-step guide, please refer to the <a href="https://maple60.github.io/morphometrics-tool/usage.html">Usage page</a>.</p>
+<p>For a detailed step-by-step guide, please refer to the <a href="https://maple60.github.io/leaf-contour-efd/usage.html">Usage page</a>.</p>
 </section>
 <section id="citation" class="level2">
 <h2 class="anchored" data-anchor-id="citation">Citation</h2>
@@ -467,25 +469,25 @@ and all results (images, contours, metadata, EFDs) are automatically exported to
 <p>The design and implementation of this tool were inspired by the methodology and GUI software developed by <span class="citation" data-cites="wu2024reliablesuperiorellipticfourier">(<a href="#ref-wu2024reliablesuperiorellipticfourier" role="doc-biblioref">2024</a>)</span>, particularly the <em>ElliShape</em> interface (<a href="https://www.plantplus.cn/ElliShape/">https://www.plantplus.cn/ElliShape/</a>).</p>
 <p>We also acknowledge the contributions of many other open-source tools and studies<br>
 that have advanced automated leaf image analysis.<br>
-A summary of related software can be found on the <a href="https://maple60.github.io/morphometrics-tool/related_tools.html">Related Tools page</a>.</p>
+A summary of related software can be found on the <a href="https://maple60.github.io/leaf-contour-efd/related_tools.html">Related Tools page</a>.</p>
 <p>We express our sincere gratitude to the open-source community and all contributors<br>
 whose work made this tool possible.</p>
 </section>
 <section id="license" class="level2">
 <h2 class="anchored" data-anchor-id="license">License</h2>
-<p>Distributed under the BSD 3-Clause License. See <a href="https://github.com/maple60/morphometrics-tool/blob/main/LICENSE">LICENSE</a> for more information.</p>
+<p>Distributed under the BSD 3-Clause License. See <a href="https://github.com/maple60/leaf-contour-efd/blob/main/LICENSE">LICENSE</a> for more information.</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-otsu1979" class="csl-entry" role="listitem">
 Otsu, Nobuyuki. 1979. <span>“A Threshold Selection Method from Gray-Level Histograms.”</span> <em>IEEE Transactions on Systems, Man, and Cybernetics</em> 9 (1): 62–66. <a href="https://doi.org/10.1109/TSMC.1979.4310076">https://doi.org/10.1109/TSMC.1979.4310076</a>.
 </div>
 <div id="ref-ravi2024sam2segmentimages" class="csl-entry" role="listitem">
-Ravi, Nikhila, Valentin Gabeur, Yuan-Ting Hu, Ronghang Hu, Chaitanya Ryali, Tengyu Ma, Haitham Khedr, et al. 2024. <span>“SAM 2: Segment Anything in Images and Videos.”</span> <a href="https://arxiv.org/abs/2408.00714">https://arxiv.org/abs/2408.00714</a>.
+Ravi, Nikhila, Valentin Gabeur, Yuan-Ting Hu, et al. 2024. <em>SAM 2: Segment Anything in Images and Videos</em>. <a href="https://arxiv.org/abs/2408.00714">https://arxiv.org/abs/2408.00714</a>.
 </div>
 <div id="ref-wu2024reliablesuperiorellipticfourier" class="csl-entry" role="listitem">
-Wu, Hui, Jia-Jie Yang, Chao-Qun Li, Jin-Hua Ran, Ren-Hua Peng, and Xiao-Quan Wang. 2024. <span>“Reliable and Superior Elliptic Fourier Descriptor Normalization and Its Application Software ElliShape with Efficient Image Processing.”</span> <a href="https://arxiv.org/abs/2412.10795">https://arxiv.org/abs/2412.10795</a>.
+Wu, Hui, Jia-Jie Yang, Chao-Qun Li, Jin-Hua Ran, Ren-Hua Peng, and Xiao-Quan Wang. 2024. <em>Reliable and Superior Elliptic Fourier Descriptor Normalization and Its Application Software ElliShape with Efficient Image Processing</em>. <a href="https://arxiv.org/abs/2412.10795">https://arxiv.org/abs/2412.10795</a>.
 </div>
 </div>
 
@@ -544,13 +546,14 @@ Wu, Hui, Jia-Jie Yang, Chao-Qun Li, Jin-Hua Ran, Ren-Hua Peng, and Xiao-Quan Wan
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -903,11 +906,11 @@ Wu, Hui, Jia-Jie Yang, Chao-Qun Li, Jin-Hua Ran, Ren-Hua Peng, and Xiao-Quan Wan
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© 2025 Leaf Shape Analysis Tool</p>
+<p>© 2025 LeafContourEFD</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maple60/morphometrics-tool/edit/main/website/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/morphometrics-tool/blob/main/website/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/morphometrics-tool/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maple60/leaf-contour-efd/edit/main/website/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/blob/main/website/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with Quarto</p>
 </div>

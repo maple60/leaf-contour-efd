@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Build Instructions – Leaf Shape Analysis Tool</title>
+<title>Build Instructions – LeafContourEFD</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -55,27 +58,7 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -91,10 +74,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-264a0fc3a96c72ca7334393e02078ef0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d0eb33a73c8de335a1b0e6ed1df1adc0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -134,7 +117,7 @@ div.csl-indent {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Leaf Shape Analysis Tool</span>
+    <span class="navbar-title">LeafContourEFD</span>
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -157,7 +140,7 @@ div.csl-indent {
       <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-github"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/maple60/morphometrics-tool">
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/maple60/leaf-contour-efd">
             Source Code
             </a>
           </li>
@@ -248,16 +231,8 @@ div.csl-indent {
    
   <ul>
   <li><a href="#after-building" id="toc-after-building" class="nav-link active" data-scroll-target="#after-building">After Building</a></li>
-  <li><a href="#sec-enable-sam2" id="toc-sec-enable-sam2" class="nav-link" data-scroll-target="#sec-enable-sam2">Enabling the SAM2 Module</a>
-  <ul class="collapse">
-  <li><a href="#clone-the-sam2-repository" id="toc-clone-the-sam2-repository" class="nav-link" data-scroll-target="#clone-the-sam2-repository">1. Clone the SAM2 Repository</a></li>
-  <li><a href="#download-the-sam2-checkpoints" id="toc-download-the-sam2-checkpoints" class="nav-link" data-scroll-target="#download-the-sam2-checkpoints">2. Download the SAM2 Checkpoints</a></li>
-  </ul></li>
-  <li><a href="#current-limitations" id="toc-current-limitations" class="nav-link" data-scroll-target="#current-limitations">Current Limitations</a></li>
-  <li><a href="#useful-references-for-build-and-error-troubleshooting" id="toc-useful-references-for-build-and-error-troubleshooting" class="nav-link" data-scroll-target="#useful-references-for-build-and-error-troubleshooting">Useful References for Build and Error Troubleshooting</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/maple60/morphometrics-tool/edit/main/website/build.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/morphometrics-tool/blob/main/website/build.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/morphometrics-tool/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/maple60/leaf-contour-efd/edit/main/website/build.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/blob/main/website/build.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -287,7 +262,7 @@ div.csl-indent {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-🇯🇵 日本語版 / Available in Japanese
+<span class="screen-reader-only">Note</span>🇯🇵 日本語版 / Available in Japanese
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -312,24 +287,35 @@ Caution
 <p>The application is built using <a href="https://pyinstaller.org/en/stable/">PyInstaller</a>.</p>
 <p>A pre-generated spec file is provided and should be used for building the application.<br>
 Please note that this process can take some time (approximately 10 minutes).</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyinstaller</span> build.spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyinstaller</span> build.spec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>For more details on PyInstaller usage, please refer to the <a href="https://pyinstaller.org/en/stable/">official documentation</a>.</p>
-<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Notes
+<span class="screen-reader-only">Important</span>Stable standalone builds (Windows/macOS/Linux)
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>Starting from <strong>v1.0.0</strong>, this repository provides a GitHub Actions release workflow:</p>
 <ul>
-<li>Currently, builds have only been tested on <strong>Windows</strong>.<br>
-We plan to support other operating systems in the future.</li>
-<li>The provided spec file runs without errors, but there is still room for <strong>refactoring</strong> and <strong>optimization</strong>. Improvements will be made in future updates.</li>
-<li>For details about spec files, see <a href="https://pyinstaller.org/en/stable/spec-files.html">Using Spec FIles - PyInstaller</a>.</li>
+<li>Workflow file: <code>.github/workflows/release-standalone.yml</code></li>
+<li>Trigger:
+<ul>
+<li><code>pull_request</code> / push to <code>main</code>: build verification only</li>
+<li>tag push such as <code>v1.0.0</code>: build + GitHub Release publishing</li>
+</ul></li>
+<li>Outputs:
+<ul>
+<li><code>LeafContourEFD-windows-x64.zip</code></li>
+<li><code>LeafContourEFD-macos-arm64.tar.gz</code></li>
+<li><code>LeafContourEFD-macos-x64.tar.gz</code></li>
+<li><code>LeafContourEFD-ubuntu-x64.tar.gz</code></li>
+</ul></li>
 </ul>
+<p>All generated assets are attached to the corresponding GitHub Release. The Release notes also include an auto-generated table showing the executable architecture detected from each archive.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -338,12 +324,16 @@ We plan to support other operating systems in the future.</li>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Removing Previous Builds
+<span class="screen-reader-only">Tip</span>Removing Previous Builds
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>Before running PyInstaller, it is recommended to <strong>remove any existing build artifacts</strong>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Remove-Item</span> <span class="at">-Recurse</span> <span class="at">-Force</span> build, dist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PowerShell</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Remove-Item</span> <span class="at">-Recurse</span> <span class="at">-Force</span> build, dist</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Bash</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> build dist</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <section id="after-building" class="level2">
@@ -352,28 +342,11 @@ Removing Previous Builds
 <pre class="text"><code>project/
 ├─ build/
 └─ dist/
-   └─ LeafShapeTool/
-      ├─ LeafShapeTool.exe
+   └─ LeafContourEFD/
+      ├─ LeafContourEFD(.exe)
       └─ _internal/
          └─ (library files)</code></pre>
-<p>The main executable is located at:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dist/LeafShapeTool/LeafShapeTool.exe</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can launch the application either by <strong>double-clicking</strong> the file or from the <strong>command line</strong>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> dist/LeafShapeTool/</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">LeafShapeTool.exe</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Double-Click vs.&nbsp;Command Line Launch
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>When launched by double-clicking, a console window appears for log and error output. However, <strong>the console closes automatically after execution ends</strong>, which may make it difficult to check messages. In such cases, it is recommended to start the application from a command prompt.</p>
-</div>
-</div>
+<p>The main executable is located under <code>dist/LeafContourEFD/</code>.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -385,72 +358,7 @@ Caution
 </div>
 <div class="callout-body-container callout-body">
 <p>To improve stability, the application is built in <code>onedir</code> mode instead of <code>onefile</code> mode.<br>
-Therefore, the entire <code>dist/LeafShapeTool/</code> folder must be distributed together.</p>
-<p>Distributing only <code>LeafShapeTool.exe</code> will not work properly.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-About the SAM2 Module
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>When building from the spec file, the <a href="https://ai.meta.com/sam2/">Segment Anything Model 2</a> (SAM2) <span class="citation" data-cites="ravi2024sam2segmentimages">(<a href="#ref-ravi2024sam2segmentimages" role="doc-biblioref">Ravi et al. 2024</a>)</span> module is not included by default.<br>
-To enable SAM2, follow the steps in the <a href="@sec-enable-sam2">next section</a>.</p>
-</div>
-</div>
-</section>
-<section id="sec-enable-sam2" class="level2">
-<h2 class="anchored" data-anchor-id="sec-enable-sam2">Enabling the SAM2 Module</h2>
-<p>To reduce file size, build time, and dependency complexity, <strong>the SAM2 folder is excluded</strong> from the default build.<br>
-However, the executable distributed on the <a href="https://github.com/maple60/morphometrics-tool/releases">Releases page</a> already includes SAM2.</p>
-<p>To enable SAM2 manually, follow the steps below.</p>
-<section id="clone-the-sam2-repository" class="level3">
-<h3 class="anchored" data-anchor-id="clone-the-sam2-repository">1. Clone the SAM2 Repository</h3>
-<p>Clone the SAM2 repository from GitHub into the build directory:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> dist/LeafShapeTool/</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/facebookresearch/sam2.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="download-the-sam2-checkpoints" class="level3">
-<h3 class="anchored" data-anchor-id="download-the-sam2-checkpoints">2. Download the SAM2 Checkpoints</h3>
-<p>The SAM2 model requires several checkpoint files. Download them manually and place them under <code>sam2/checkpoints/</code>.</p>
-<p>For details, refer to the following official documentation:</p>
-<ul>
-<li><a href="https://github.com/facebookresearch/sam2#:~:text=(state)%3A%0A%20%20%20%20%20%20%20%20...-,Model%20Description,-SAM%202.1%20checkpoints">Model Description - facebookresearch/sam2</a></li>
-</ul>
-<p>If you are using <strong>macOS</strong>, <strong>Linux</strong>, or Windows with a <strong>Bash</strong> environment, you can automatically download the checkpoints with:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> checkpoints <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./download_ckpts.sh</span> <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>After this step, the SAM2 module will be available.</p>
-</section>
-</section>
-<section id="current-limitations" class="level2">
-<h2 class="anchored" data-anchor-id="current-limitations">Current Limitations</h2>
-<p>The generated executable is <strong>quite large</strong> because PyInstaller bundles all dependencies.<br>
-We are considering alternative build systems such as <a href="https://nuitka.net/">Nuitka</a>.</p>
-<p>However, Nuitka currently has <strong>limited compatibility with PyQt</strong>, and it did not work properly in our environment.</p>
-<ul>
-<li>Reference: <a href="https://nuitka.net/pages/pyqt5.html">Nuitka PyQt5 support</a></li>
-</ul>
-</section>
-<section id="useful-references-for-build-and-error-troubleshooting" class="level2">
-<h2 class="anchored" data-anchor-id="useful-references-for-build-and-error-troubleshooting">Useful References for Build and Error Troubleshooting</h2>
-<ul>
-<li><a href="https://github.com/pytorch/pytorch/issues/166628">[WinError 1114] A dynamic link library (DLL) initialization routine failed #166628 - pytorch/pytorch</a></li>
-<li><a href="https://github.com/facebookresearch/sam2/issues/179">How to use SAM2 if my own project already initialized Hydra? #179 - facebookresearch/sam2</a></li>
-<li><a href="https://github.com/pyinstaller/pyinstaller/issues/8966">pyinstaller failed to package sam2 (segment anything model2) #8966 - pyinstaller/pyinstaller</a></li>
-</ul>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-ravi2024sam2segmentimages" class="csl-entry" role="listitem">
-Ravi, Nikhila, Valentin Gabeur, Yuan-Ting Hu, Ronghang Hu, Chaitanya Ryali, Tengyu Ma, Haitham Khedr, et al. 2024. <span>“SAM 2: Segment Anything in Images and Videos.”</span> <a href="https://arxiv.org/abs/2408.00714">https://arxiv.org/abs/2408.00714</a>.
+Therefore, the entire <code>dist/LeafContourEFD/</code> folder must be distributed together.</p>
 </div>
 </div>
 
@@ -509,13 +417,14 @@ Ravi, Nikhila, Valentin Gabeur, Yuan-Ting Hu, Ronghang Hu, Chaitanya Ryali, Teng
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -868,11 +777,11 @@ Ravi, Nikhila, Valentin Gabeur, Yuan-Ting Hu, Ronghang Hu, Chaitanya Ryali, Teng
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© 2025 Leaf Shape Analysis Tool</p>
+<p>© 2025 LeafContourEFD</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maple60/morphometrics-tool/edit/main/website/build.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/morphometrics-tool/blob/main/website/build.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/morphometrics-tool/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maple60/leaf-contour-efd/edit/main/website/build.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/blob/main/website/build.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with Quarto</p>
 </div>

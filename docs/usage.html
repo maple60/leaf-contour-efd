@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Usage – Leaf Shape Analysis Tool</title>
+<title>Usage – LeafContourEFD</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -24,7 +27,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -56,10 +58,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-264a0fc3a96c72ca7334393e02078ef0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d0eb33a73c8de335a1b0e6ed1df1adc0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -106,7 +108,7 @@ div.csl-indent {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Leaf Shape Analysis Tool</span>
+    <span class="navbar-title">LeafContourEFD</span>
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -129,7 +131,7 @@ div.csl-indent {
       <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-github"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/maple60/morphometrics-tool">
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/maple60/leaf-contour-efd">
             Source Code
             </a>
           </li>
@@ -242,7 +244,7 @@ div.csl-indent {
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">5</span> References</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/maple60/morphometrics-tool/edit/main/website/usage.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/morphometrics-tool/blob/main/website/usage.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/morphometrics-tool/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/maple60/leaf-contour-efd/edit/main/website/usage.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/blob/main/website/usage.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -272,7 +274,7 @@ div.csl-indent {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-🇯🇵 日本語版 / Available in Japanese
+<span class="screen-reader-only">Note</span>🇯🇵 日本語版 / Available in Japanese
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -280,7 +282,7 @@ div.csl-indent {
 Please see the <a href="./usage_ja.html">Japanese version</a> for reading in Japanese.</p>
 </div>
 </div>
-<p>This section describes how to use the <strong>Leaf Shape Analysis Tool</strong> through its graphical user interface (GUI).<br>
+<p>This section describes how to use the <strong>LeafContourEFD</strong> through its graphical user interface (GUI).<br>
 All steps — from ROI cropping to EFD export — can be performed interactively within a single window.</p>
 <hr>
 <section id="workflow-overview" class="level2" data-number="1">
@@ -332,7 +334,7 @@ flowchart TD
 <h3 data-number="2.1" class="anchored" data-anchor-id="launch-the-application"><span class="header-section-number">2.1</span> Launch the Application</h3>
 <p>After installation, start the application.<br>
 The <strong><a href="https://napari.org/stable/">napari</a> viewer</strong> window will appear as shown below.</p>
-<div id="fig-initial-window" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Initial window" data-fig-align="center">
+<div id="fig-initial-window" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Initial window">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-initial-window-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="assets/initial_window.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Initial window"><img src="assets/initial_window.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Initial window"></a>
@@ -348,7 +350,7 @@ Figure&nbsp;1: Initial window
 <h3 data-number="2.2" class="anchored" data-anchor-id="sec-load-image"><span class="header-section-number">2.2</span> Load an Image</h3>
 <p>To load an image, select <strong>File &gt; Open</strong> from the menu bar, or simply drag and drop a file into the viewer.<br>
 Shortcut: <strong>Ctrl + O</strong> (Windows / Linux) or <strong>Cmd + O</strong> (macOS).</p>
-<div id="fig-fig-open-image" class="quarto-float quarto-figure quarto-figure-center anchored" alt="How to open a image" data-fig-align="center">
+<div id="fig-fig-open-image" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="How to open a image">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-fig-open-image-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="assets/open_image.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: File > Open"><img src="assets/open_image.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="How to open a image"></a>
@@ -364,7 +366,7 @@ Figure&nbsp;2: File &gt; Open
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Supported Image Formats
+<span class="screen-reader-only">Note</span>Supported Image Formats
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -372,7 +374,7 @@ Supported Image Formats
 </div>
 </div>
 <p>When loaded, the image appears as a new layer named after the file, and an <strong>ROIs</strong> layer is automatically created on top of it.</p>
-<div id="fig-image-loaded" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Image loaded" data-fig-align="center">
+<div id="fig-image-loaded" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Image loaded">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-image-loaded-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="assets/image_loaded.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Image loaded"><img src="assets/image_loaded.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Image loaded"></a>
@@ -400,7 +402,7 @@ Once the scale is set, the enclosed area of each contour will be recorded in cm�
 <li>Enter the real length and unit (default: 1 cm).</li>
 <li>Click <strong>Set Scale</strong> to apply.</li>
 </ol>
-<div id="fig-set-scale-px-cm-mode" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Set scale (px/cm mode)" data-fig-align="center">
+<div id="fig-set-scale-px-cm-mode" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Set scale (px/cm mode)">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-set-scale-px-cm-mode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="assets/set_scale_px_cm_mode.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Set scale (scale bar mode)"><img src="assets/set_scale_px_cm_mode.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Set scale (px/cm mode)"></a>
@@ -417,7 +419,7 @@ Figure&nbsp;4: Set scale (scale bar mode)
 <li>Set <strong>mode</strong> to <code>dpi</code> (default).</li>
 <li>Enter the image DPI in the <strong>DPI</strong> field (default: 300 dpi).</li>
 </ul>
-<div id="fig-set-scale-dpi-mode" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Set scale (dpi mode)" data-fig-align="center">
+<div id="fig-set-scale-dpi-mode" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Set scale (dpi mode)">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-set-scale-dpi-mode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="assets/set_scale_dpi_mode.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Set scale (dpi mode)"><img src="assets/set_scale_dpi_mode.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Set scale (dpi mode)"></a>
@@ -433,7 +435,7 @@ Figure&nbsp;5: Set scale (dpi mode)
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Recommended Scan Resolution
+<span class="screen-reader-only">Tip</span>Recommended Scan Resolution
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -460,7 +462,7 @@ Click <strong>Add ROI Layer</strong> and draw a rectangular selection around the
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-What Is ROI?
+<span class="screen-reader-only">Note</span>What Is ROI?
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -469,7 +471,7 @@ In leaf-shape studies, the ROI typically corresponds to the leaf area cropped fr
 which helps exclude irrelevant background regions.</p>
 </div>
 </div>
-<div id="fig-draw-ROI-rectangle" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Draw ROI rectangle" data-fig-align="center">
+<div id="fig-draw-ROI-rectangle" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Draw ROI rectangle">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-draw-ROI-rectangle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="assets/roi_extraction.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6: Draw ROI rectangle"><img src="assets/roi_extraction.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Draw ROI rectangle"></a>
@@ -485,7 +487,7 @@ Figure&nbsp;6: Draw ROI rectangle
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Navigation
+<span class="screen-reader-only">Tip</span>Navigation
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -504,7 +506,7 @@ Navigation
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Saving Options”
+<span class="screen-reader-only">Note</span>Saving Options”
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -544,7 +546,7 @@ Figure&nbsp;7: Added landmarks
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Interaction Tips
+<span class="screen-reader-only">Tip</span>Interaction Tips
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -564,7 +566,7 @@ Interaction Tips
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Saving Options
+<span class="screen-reader-only">Note</span>Saving Options
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -585,7 +587,7 @@ Saving Options
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-About Binarization
+<span class="screen-reader-only">Note</span>About Binarization
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -632,7 +634,7 @@ Figure&nbsp;8: Binarized by Otsu’s method
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Caution</span>Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -646,7 +648,7 @@ To use SAM2, please run the Python version instead.</p>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Saving Options
+<span class="screen-reader-only">Note</span>Saving Options
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -662,7 +664,7 @@ Saving Options
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Comparing Methods
+<span class="screen-reader-only">Tip</span>Comparing Methods
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -732,7 +734,7 @@ Figure&nbsp;9: Comparison between two methods
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Brush Settings
+<span class="screen-reader-only">Tip</span>Brush Settings
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -765,7 +767,7 @@ Brush Settings
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Editing Guidance
+<span class="screen-reader-only">Tip</span>Editing Guidance
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -784,7 +786,7 @@ Since contour extraction later uses the <em>largest connected component</em>, it
 <li>In the <strong>Contour Extraction Widget</strong>, click <strong>Extract Contour</strong>.</li>
 <li>The contour (cyan outline) will appear, and a new layer <code>ROI_XX_rotated_&lt;method&gt;_labels_contour</code> will be added (<a href="#fig-contour" class="quarto-xref">Figure&nbsp;10</a>).</li>
 </ol>
-<div id="fig-contour" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Extracted contour" data-fig-align="center">
+<div id="fig-contour" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Extracted contour">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-contour-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="assets/contoru_extraction.webp" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;10: Extracted contour"><img src="assets/contoru_extraction.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Extracted contour"></a>
@@ -801,7 +803,7 @@ Figure&nbsp;10: Extracted contour
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-If Contour Extraction Fails
+<span class="screen-reader-only">Note</span>If Contour Extraction Fails
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -814,7 +816,7 @@ If Contour Extraction Fails
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Saving Options
+<span class="screen-reader-only">Note</span>Saving Options
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -852,7 +854,7 @@ The viewer resets to its initial state.</li>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Saving Options
+<span class="screen-reader-only">Note</span>Saving Options
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -940,7 +942,7 @@ The default folder structure is as follows:</p>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Example
+<span class="screen-reader-only">Tip</span>Example
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1023,7 +1025,7 @@ ROI indices start from 01.</p>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Character Encoding
+<span class="screen-reader-only">Caution</span>Character Encoding
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1051,9 +1053,9 @@ When opening in Microsoft Excel, select “Import Text/CSV” and specify UTF-8 
 </section>
 <section id="references" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="references"><span class="header-section-number">5</span> References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-Bonhomme2014momocs" class="csl-entry" role="listitem">
-Bonhomme, Vincent, Sandrine Picq, Cédric Gaucherel, and Julien Claude. 2014. <em>Momocs: Outline Analysis Using r</em>. <em>Journal of Statistical Software</em>. Vol. 56. <a href="https://www.jstatsoft.org/v56/i13/">https://www.jstatsoft.org/v56/i13/</a>.
+Bonhomme, Vincent, Sandrine Picq, Cédric Gaucherel, and Julien Claude. 2014. <em>Momocs: Outline Analysis Using r</em>. In <em>Journal of Statistical Software</em>, No. 13, vol. 56. <a href="https://www.jstatsoft.org/v56/i13/">https://www.jstatsoft.org/v56/i13/</a>.
 </div>
 <div id="ref-neto2006a" class="csl-entry" role="listitem">
 Neto, João Camargo, George E. Meyer, David D. Jones, and Ashok K. Samal. 2006. <span>“Plant Species Identification Using Elliptic Fourier Leaf Shape Analysis.”</span> <em>Computers and Electronics in Agriculture</em> 50 (2): 121–34. <a href="https://doi.org/10.1016/j.compag.2005.09.004">https://doi.org/10.1016/j.compag.2005.09.004</a>.
@@ -1062,10 +1064,10 @@ Neto, João Camargo, George E. Meyer, David D. Jones, and Ashok K. Samal. 2006. 
 Otsu, Nobuyuki. 1979. <span>“A Threshold Selection Method from Gray-Level Histograms.”</span> <em>IEEE Transactions on Systems, Man, and Cybernetics</em> 9 (1): 62–66. <a href="https://doi.org/10.1109/TSMC.1979.4310076">https://doi.org/10.1109/TSMC.1979.4310076</a>.
 </div>
 <div id="ref-ravi2024sam2segmentimages" class="csl-entry" role="listitem">
-Ravi, Nikhila, Valentin Gabeur, Yuan-Ting Hu, Ronghang Hu, Chaitanya Ryali, Tengyu Ma, Haitham Khedr, et al. 2024. <span>“SAM 2: Segment Anything in Images and Videos.”</span> <a href="https://arxiv.org/abs/2408.00714">https://arxiv.org/abs/2408.00714</a>.
+Ravi, Nikhila, Valentin Gabeur, Yuan-Ting Hu, et al. 2024. <em>SAM 2: Segment Anything in Images and Videos</em>. <a href="https://arxiv.org/abs/2408.00714">https://arxiv.org/abs/2408.00714</a>.
 </div>
 <div id="ref-shi2021" class="csl-entry" role="listitem">
-Shi, Peijian, Kexin Yu, Karl J. Niklas, Julian Schrader, Yu Song, Renbin Zhu, Yang Li, Hailin Wei, and David A. Ratkowsky. 2021. <span>“A General Model for Describing the Ovate Leaf Shape.”</span> <em>Symmetry</em> 13 (8): 1524. <a href="https://doi.org/10.3390/sym13081524">https://doi.org/10.3390/sym13081524</a>.
+Shi, Peijian, Kexin Yu, Karl J. Niklas, et al. 2021. <span>“A General Model for Describing the Ovate Leaf Shape.”</span> <em>Symmetry</em> 13 (8): 1524. <a href="https://doi.org/10.3390/sym13081524">https://doi.org/10.3390/sym13081524</a>.
 </div>
 <div id="ref-viscosi2009" class="csl-entry" role="listitem">
 Viscosi, V., P. Fortini, D. E. Slice, A. Loy, and C. Blasi. 2009. <span>“Geometric Morphometric Analyses of Leaf Variation in Four Oak Species of the Subgenus Quercus (Fagaceae).”</span> <em>Plant Biosystems - An International Journal Dealing with All Aspects of Plant Biology</em> 143 (3): 575–87. <a href="https://doi.org/10.1080/11263500902775277">https://doi.org/10.1080/11263500902775277</a>.
@@ -1127,13 +1129,14 @@ Viscosi, V., P. Fortini, D. E. Slice, A. Loy, and C. Blasi. 2009. <span>“Geome
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1486,11 +1489,11 @@ Viscosi, V., P. Fortini, D. E. Slice, A. Loy, and C. Blasi. 2009. <span>“Geome
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© 2025 Leaf Shape Analysis Tool</p>
+<p>© 2025 LeafContourEFD</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maple60/morphometrics-tool/edit/main/website/usage.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/morphometrics-tool/blob/main/website/usage.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/morphometrics-tool/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maple60/leaf-contour-efd/edit/main/website/usage.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/blob/main/website/usage.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with Quarto</p>
 </div>

@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Related Tools and Frameworks – Leaf Shape Analysis Tool</title>
+<title>Related Tools and Frameworks – LeafContourEFD</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -24,7 +27,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -56,10 +58,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-264a0fc3a96c72ca7334393e02078ef0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d0eb33a73c8de335a1b0e6ed1df1adc0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -99,7 +101,7 @@ div.csl-indent {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Leaf Shape Analysis Tool</span>
+    <span class="navbar-title">LeafContourEFD</span>
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -122,7 +124,7 @@ div.csl-indent {
       <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-github"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/maple60/morphometrics-tool">
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/maple60/leaf-contour-efd">
             Source Code
             </a>
           </li>
@@ -221,7 +223,7 @@ div.csl-indent {
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/maple60/morphometrics-tool/edit/main/website/related_tools.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/morphometrics-tool/blob/main/website/related_tools.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/morphometrics-tool/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/maple60/leaf-contour-efd/edit/main/website/related_tools.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/blob/main/website/related_tools.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -261,7 +263,7 @@ div.csl-indent {
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="https://imagej.net/ij/"><strong>ImageJ</strong></a> <span class="citation" data-cites="schneider2012">(<a href="#ref-schneider2012" role="doc-biblioref">Schneider, Rasband, and Eliceiri 2012</a>)</span> / <br><a href="https://fiji.sc/"><strong>Fiji</strong></a> <span class="citation" data-cites="schindelin2012">(<a href="#ref-schindelin2012" role="doc-biblioref">Schindelin et al. 2012</a>)</span></td>
+<td><a href="https://imagej.net/ij/"><strong>ImageJ</strong></a> <span class="citation" data-cites="schneider2012">(<a href="#ref-schneider2012" role="doc-biblioref">Schneider et al. 2012</a>)</span> / <br><a href="https://fiji.sc/"><strong>Fiji</strong></a> <span class="citation" data-cites="schindelin2012">(<a href="#ref-schindelin2012" role="doc-biblioref">Schindelin et al. 2012</a>)</span></td>
 <td>JAVA / GUI</td>
 <td></td>
 </tr>
@@ -310,7 +312,7 @@ div.csl-indent {
 <td>Lightweight implementation of elliptic Fourier descriptors.</td>
 </tr>
 <tr class="odd">
-<td><a href="https://www.leafmachine.org/"><strong>LeafMachine</strong></a> <span class="citation" data-cites="weaver2020">(<a href="#ref-weaver2020" role="doc-biblioref">Weaver, Ng, and Laport 2020</a>)</span></td>
+<td><a href="https://www.leafmachine.org/"><strong>LeafMachine</strong></a> <span class="citation" data-cites="weaver2020">(<a href="#ref-weaver2020" role="doc-biblioref">Weaver et al. 2020</a>)</span></td>
 <td>Python / GUI</td>
 <td>Automatic leaf segmentation and classification.</td>
 </tr>
@@ -349,7 +351,7 @@ div.csl-indent {
 </thead>
 <tbody>
 <tr class="odd">
-<td>Morphological Analysis of Size and Shape (<a href="https://github.com/gillianlynnryan/MASS"><strong>MASS</strong></a>) <span class="citation" data-cites="chuanromanee2019">(<a href="#ref-chuanromanee2019" role="doc-biblioref">Chuanromanee, Cohen, and Ryan 2019</a>)</span></td>
+<td>Morphological Analysis of Size and Shape (<a href="https://github.com/gillianlynnryan/MASS"><strong>MASS</strong></a>) <span class="citation" data-cites="chuanromanee2019">(<a href="#ref-chuanromanee2019" role="doc-biblioref">Chuanromanee et al. 2019</a>)</span></td>
 <td>MATLAB</td>
 <td>Morphological Analysis of Size and Shape.</td>
 </tr>
@@ -403,7 +405,7 @@ div.csl-indent {
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-adams2013" class="csl-entry" role="listitem">
 Adams, Dean C., and Erik Otárola-Castillo. 2013. <span>“Geomorph: An r Package for the Collection and Analysis of Geometric Morphometric Shape Data.”</span> <em>Methods in Ecology and Evolution</em> 4 (4): 393–99. <a href="https://doi.org/10.1111/2041-210X.12035">https://doi.org/10.1111/2041-210X.12035</a>.
 </div>
@@ -411,13 +413,13 @@ Adams, Dean C., and Erik Otárola-Castillo. 2013. <span>“Geomorph: An r Packag
 Backhaus, Andreas, Asuka Kuwabara, Marion Bauch, Nick Monk, Guido Sanguinetti, and Andrew Fleming. 2010. <span>“Leafprocessor: A New Leaf Phenotyping Tool Using Contour Bending Energy and Shape Cluster Analysis.”</span> <em>New Phytologist</em> 187 (1): 251–61. <a href="https://doi.org/10.1111/j.1469-8137.2010.03266.x">https://doi.org/10.1111/j.1469-8137.2010.03266.x</a>.
 </div>
 <div id="ref-biot2016" class="csl-entry" role="listitem">
-Biot, Eric, Millán Cortizo, Jasmine Burguet, Annamaria Kiss, Mohamed Oughou, Aude Maugarny-Calès, Beatriz Gonçalves, et al. 2016. <span>“Multiscale Quantification of Morphodynamics: MorphoLeaf Software for 2D Shape Analysis.”</span> <em>Development</em> 143 (18): 3417–28. <a href="https://doi.org/10.1242/dev.134619">https://doi.org/10.1242/dev.134619</a>.
+Biot, Eric, Millán Cortizo, Jasmine Burguet, et al. 2016. <span>“Multiscale Quantification of Morphodynamics: MorphoLeaf Software for 2D Shape Analysis.”</span> <em>Development</em> 143 (18): 3417–28. <a href="https://doi.org/10.1242/dev.134619">https://doi.org/10.1242/dev.134619</a>.
 </div>
 <div id="ref-bonhomme2014" class="csl-entry" role="listitem">
 Bonhomme, Vincent, Sandrine Picq, Cédric Gaucherel, and Julien Claude. 2014. <span>“<span><strong>Momocs</strong></span> : Outline Analysis Using <span><em>R</em></span>.”</span> <em>Journal of Statistical Software</em> 56 (13). <a href="https://doi.org/10.18637/jss.v056.i13">https://doi.org/10.18637/jss.v056.i13</a>.
 </div>
 <div id="ref-bylesjö2008" class="csl-entry" role="listitem">
-Bylesjö, Max, Vincent Segura, Raju Y. Soolanayakanahally, Anne M. Rae, Johan Trygg, Petter Gustafsson, Stefan Jansson, and Nathaniel R. Street. 2008. <span>“LAMINA: A Tool for Rapid Quantification of Leaf Size and Shape Parameters.”</span> <em>BMC Plant Biology</em> 8 (1): 82. <a href="https://doi.org/10.1186/1471-2229-8-82">https://doi.org/10.1186/1471-2229-8-82</a>.
+Bylesjö, Max, Vincent Segura, Raju Y. Soolanayakanahally, et al. 2008. <span>“LAMINA: A Tool for Rapid Quantification of Leaf Size and Shape Parameters.”</span> <em>BMC Plant Biology</em> 8 (1): 82. <a href="https://doi.org/10.1186/1471-2229-8-82">https://doi.org/10.1186/1471-2229-8-82</a>.
 </div>
 <div id="ref-chuanromanee2019" class="csl-entry" role="listitem">
 Chuanromanee, Tya S., James I. Cohen, and Gillian L. Ryan. 2019. <span>“Morphological Analysis of Size and Shape ( MASS ): An Integrative Software Program for Morphometric Analyses of Leaves.”</span> <em>Applications in Plant Sciences</em> 7 (9): e11288. <a href="https://doi.org/10.1002/aps3.11288">https://doi.org/10.1002/aps3.11288</a>.
@@ -429,7 +431,7 @@ Dryden, Ian. 2025. <em>Shapes: Statistical Shape Analysis</em>. <a href="https:/
 Iwata, H. 2002. <span>“SHAPE: A Computer Program Package for Quantitative Evaluation of Biological Shapes Based on Elliptic Fourier Descriptors.”</span> <em>Journal of Heredity</em> 93 (5): 384–85. <a href="https://doi.org/10.1093/jhered/93.5.384">https://doi.org/10.1093/jhered/93.5.384</a>.
 </div>
 <div id="ref-klingenberg2011" class="csl-entry" role="listitem">
-Klingenberg, Christian Peter. 2011. <span>“Morpho J: An Integrated Software Package for Geometric Morphometrics.”</span> <em>Molecular Ecology Resources</em> 11 (2): 353–57. <a href="https://doi.org/10.1111/j.1755-0998.2010.02924.x">https://doi.org/10.1111/j.1755-0998.2010.02924.x</a>.
+Klingenberg, Christian Peter. 2011. <span>“Morpho j: An Integrated Software Package for Geometric Morphometrics.”</span> <em>Molecular Ecology Resources</em> 11 (2): 353–57. <a href="https://doi.org/10.1111/j.1755-0998.2010.02924.x">https://doi.org/10.1111/j.1755-0998.2010.02924.x</a>.
 </div>
 <div id="ref-maloof2013" class="csl-entry" role="listitem">
 Maloof, Julin N., Kazunari Nozue, Maxwell R. Mumbach, and Christine M. Palmer. 2013. <span>“LeafJ: An ImageJ Plugin for Semi-Automated Leaf Shape Measurement.”</span> <em>Journal of Visualized Experiments (JoVE)</em>, no. 71 (January): e50028. <a href="https://doi.org/10.3791/50028">https://doi.org/10.3791/50028</a>.
@@ -441,13 +443,13 @@ Price, Charles A., Olga Symonova, Yuriy Mileyko, Troy Hilley, and Joshua S. Weit
 Rohlf, F. James. 2015. <span>“The Tps Series of Software.”</span> <em>Hystrix, the Italian Journal of Mammalogy</em> 26 (1): 9–12. <a href="https://doi.org/10.4404/hystrix-26.1-11264">https://doi.org/10.4404/hystrix-26.1-11264</a>.
 </div>
 <div id="ref-schindelin2012" class="csl-entry" role="listitem">
-Schindelin, Johannes, Ignacio Arganda-Carreras, Erwin Frise, Verena Kaynig, Mark Longair, Tobias Pietzsch, Stephan Preibisch, et al. 2012. <span>“Fiji: An Open-Source Platform for Biological-Image Analysis.”</span> <em>Nature Methods</em> 9 (7): 676–82. <a href="https://doi.org/10.1038/nmeth.2019">https://doi.org/10.1038/nmeth.2019</a>.
+Schindelin, Johannes, Ignacio Arganda-Carreras, Erwin Frise, et al. 2012. <span>“Fiji: An Open-Source Platform for Biological-Image Analysis.”</span> <em>Nature Methods</em> 9 (7): 676–82. <a href="https://doi.org/10.1038/nmeth.2019">https://doi.org/10.1038/nmeth.2019</a>.
 </div>
 <div id="ref-schneider2012" class="csl-entry" role="listitem">
 Schneider, Caroline A., Wayne S. Rasband, and Kevin W. Eliceiri. 2012. <span>“NIH Image to ImageJ: 25 Years of Image Analysis.”</span> <em>Nature Methods</em> 9 (7): 671–75. <a href="https://doi.org/10.1038/nmeth.2089">https://doi.org/10.1038/nmeth.2089</a>.
 </div>
 <div id="ref-sofroniew2025" class="csl-entry" role="listitem">
-Sofroniew, Nicholas, Talley Lambert, Grzegorz Bokota, Juan Nunez-Iglesias, Peter Sobolewski, Andrew Sweet, Lorenzo Gaifas, et al. 2025. <em>Napari: A Multi-Dimensional Image Viewer for Python</em>. Zenodo. <a href="https://zenodo.org/doi/10.5281/zenodo.17367124">https://zenodo.org/doi/10.5281/zenodo.17367124</a>.
+Sofroniew, Nicholas, Talley Lambert, Grzegorz Bokota, et al. 2025. <em>Napari: A Multi-Dimensional Image Viewer for Python</em>. Zenodo. <a href="https://zenodo.org/doi/10.5281/zenodo.17367124">https://zenodo.org/doi/10.5281/zenodo.17367124</a>.
 </div>
 <div id="ref-weaver2020" class="csl-entry" role="listitem">
 Weaver, William N., Julienne Ng, and Robert G. Laport. 2020. <span>“LeafMachine: Using Machine Learning to Automate Leaf Trait Extraction from Digitized Herbarium Specimens.”</span> <em>Applications in Plant Sciences</em> 8 (6): e11367. <a href="https://doi.org/10.1002/aps3.11367">https://doi.org/10.1002/aps3.11367</a>.
@@ -459,7 +461,7 @@ Weaver, William N., and Stephen A. Smith. 2023. <span>“From Leaves to Labels: 
 Wishkerman, Asher, and Paul B. Hamilton. 2018. <span>“Shape Outline Extraction Software (DiaOutline) for Elliptic Fourier Analysis Application in Morphometric Studies.”</span> <em>Applications in Plant Sciences</em> 6 (12): e01204. <a href="https://doi.org/10.1002/aps3.1204">https://doi.org/10.1002/aps3.1204</a>.
 </div>
 <div id="ref-wu2024reliablesuperiorellipticfourier" class="csl-entry" role="listitem">
-Wu, Hui, Jia-Jie Yang, Chao-Qun Li, Jin-Hua Ran, Ren-Hua Peng, and Xiao-Quan Wang. 2024. <span>“Reliable and Superior Elliptic Fourier Descriptor Normalization and Its Application Software ElliShape with Efficient Image Processing.”</span> <a href="https://arxiv.org/abs/2412.10795">https://arxiv.org/abs/2412.10795</a>.
+Wu, Hui, Jia-Jie Yang, Chao-Qun Li, Jin-Hua Ran, Ren-Hua Peng, and Xiao-Quan Wang. 2024. <em>Reliable and Superior Elliptic Fourier Descriptor Normalization and Its Application Software ElliShape with Efficient Image Processing</em>. <a href="https://arxiv.org/abs/2412.10795">https://arxiv.org/abs/2412.10795</a>.
 </div>
 </div>
 
@@ -518,13 +520,14 @@ Wu, Hui, Jia-Jie Yang, Chao-Qun Li, Jin-Hua Ran, Ren-Hua Peng, and Xiao-Quan Wan
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -877,11 +880,11 @@ Wu, Hui, Jia-Jie Yang, Chao-Qun Li, Jin-Hua Ran, Ren-Hua Peng, and Xiao-Quan Wan
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© 2025 Leaf Shape Analysis Tool</p>
+<p>© 2025 LeafContourEFD</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maple60/morphometrics-tool/edit/main/website/related_tools.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/morphometrics-tool/blob/main/website/related_tools.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/morphometrics-tool/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maple60/leaf-contour-efd/edit/main/website/related_tools.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/blob/main/website/related_tools.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with Quarto</p>
 </div>

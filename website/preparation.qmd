@@ -12,8 +12,8 @@ These prerequisites guarantee that all dependencies (including GUI and segmentat
 ### Option A. Standalone Executable (Recommended for general users)
 
 No installation required.  
-Download the latest release from [Releases](https://github.com/username/leaf-shape-tool/releases) and run the executable.  
-*(Windows: `LeafShapeTool.exe`, macOS: `LeafShapeTool.app`)*
+Download the latest release from [Releases](https://github.com/username/leaf-contour-efd/releases) and run the executable.  
+*(Windows: `LeafContourEFD.exe`, macOS: `LeafContourEFD.app`)*
 
 -> Proceed to the [Usage Guide]() for instructions on how to use the application.
 
@@ -57,11 +57,11 @@ source .venv/bin/activate   # for macOS / Linux
 # 3. Install all dependencies defined in pyproject.toml / uv.lock
 uv sync
 
-# 4. Install the Leaf Shape Tool package in editable mode
+# 4. Install the LeafContourEFD package in editable mode
 uv pip install -e .
 
 # 5. Launch the application
-uv run leaf-shape-tool
+uv run leaf-contour-efd
 ```
 
 :::{.callout-note}

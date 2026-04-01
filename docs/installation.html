@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Installation – Leaf Shape Analysis Tool</title>
+<title>Installation – LeafContourEFD</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -71,10 +74,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-264a0fc3a96c72ca7334393e02078ef0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d0eb33a73c8de335a1b0e6ed1df1adc0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -114,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Leaf Shape Analysis Tool</span>
+    <span class="navbar-title">LeafContourEFD</span>
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -137,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-github"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/maple60/morphometrics-tool">
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/maple60/leaf-contour-efd">
             Source Code
             </a>
           </li>
@@ -242,12 +245,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#sync-project-dependencies" id="toc-sync-project-dependencies" class="nav-link" data-scroll-target="#sync-project-dependencies">4. Sync Project Dependencies</a></li>
   <li><a href="#clone-and-install-sam2" id="toc-clone-and-install-sam2" class="nav-link" data-scroll-target="#clone-and-install-sam2">5. Clone and Install SAM2</a></li>
   <li><a href="#download-sam2-checkpoints" id="toc-download-sam2-checkpoints" class="nav-link" data-scroll-target="#download-sam2-checkpoints">6. Download SAM2 Checkpoints</a></li>
-  <li><a href="#launch-the-leaf-shape-tool" id="toc-launch-the-leaf-shape-tool" class="nav-link" data-scroll-target="#launch-the-leaf-shape-tool">7. Launch the Leaf Shape Tool</a></li>
+  <li><a href="#launch-the-leafcontourefd" id="toc-launch-the-leafcontourefd" class="nav-link" data-scroll-target="#launch-the-leafcontourefd">7. Launch the LeafContourEFD</a></li>
   <li><a href="#if-uv-is-not-installed" id="toc-if-uv-is-not-installed" class="nav-link" data-scroll-target="#if-uv-is-not-installed">If uv Is Not Installed</a></li>
   <li><a href="#if-git-is-not-installed-1" id="toc-if-git-is-not-installed-1" class="nav-link" data-scroll-target="#if-git-is-not-installed-1">If Git Is Not Installed</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/maple60/morphometrics-tool/edit/main/website/installation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/morphometrics-tool/blob/main/website/installation.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/morphometrics-tool/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/maple60/leaf-contour-efd/edit/main/website/installation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/blob/main/website/installation.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -277,14 +280,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-🇯🇵 日本語版 / Available in Japanese
+<span class="screen-reader-only">Note</span>🇯🇵 日本語版 / Available in Japanese
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>日本語で読みたい方は <a href="./installation_ja.html">こちらのページ</a> をご覧ください。</p>
 </div>
 </div>
-<p>There are three ways to install and use the Leaf Shape Analysis Tool:</p>
+<p>There are three ways to install and use the LeafContourEFD:</p>
 <ul>
 <li><strong>Standalone app</strong> (the easiest option for general users)<br>
 </li>
@@ -296,9 +299,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 <section id="standalone-app-recommended-for-most-users" class="level2">
 <h2 class="anchored" data-anchor-id="standalone-app-recommended-for-most-users">Standalone App (Recommended for Most Users)</h2>
-<p>Download the latest release from the <a href="https://github.com/maple60/morphometrics-tool/releases">Releases</a> page on GitHub.<br>
-On Windows, run <code>LeafShapeTool.exe</code>;<br>
-on macOS, open <code>LeafShapeTool.app</code>.</p>
+<p>Download the latest release from the <a href="https://github.com/maple60/leaf-contour-efd/releases">Releases</a> page on GitHub.<br>
+On Windows, run <code>LeafContourEFD.exe</code>;<br>
+on macOS, open <code>LeafContourEFD.app</code>.</p>
 <p>No Python environment is required.</p>
 <hr>
 </section>
@@ -307,15 +310,15 @@ on macOS, open <code>LeafShapeTool.app</code>.</p>
 <p>Clone the GitHub repository and launch the tool using the provided setup script.</p>
 <section id="windows" class="level3">
 <h3 class="anchored" data-anchor-id="windows">Windows</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/maple60/morphometrics-tool.git</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> morphometrics-tool</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">setup\setup_windows.bat</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/maple60/leaf-contour-efd.git</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> leaf-contour-efd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">setup\setup_windows.bat</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="macos-linux" class="level3">
 <h3 class="anchored" data-anchor-id="macos-linux">macOS / Linux</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/maple60/morphometrics-tool.git</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> morphometrics-tool</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> setup/setup_unix.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/maple60/leaf-contour-efd.git</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> leaf-contour-efd</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> setup/setup_unix.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="if-git-is-not-installed" class="level3">
 <h3 class="anchored" data-anchor-id="if-git-is-not-installed">If Git Is Not Installed</h3>
@@ -325,7 +328,7 @@ on macOS, open <code>LeafShapeTool.app</code>.</p>
 </ul>
 <p>Alternatively, you can download the following GitHub repositories as ZIP files and extract them manually:</p>
 <ul>
-<li><a href="https://github.com/maple60/morphometrics-tool">Leaf Shape Analysis Tool - GitHub</a></li>
+<li><a href="https://github.com/maple60/leaf-contour-efd">LeafContourEFD - GitHub</a></li>
 <li><a href="https://github.com/facebookresearch/sam2">SAM 2: Segment Anything in Images and Videos - GitHub</a></li>
 </ul>
 <hr>
@@ -377,14 +380,14 @@ on macOS, open <code>LeafShapeTool.app</code>.</p>
 </section>
 <section id="move-to-the-project-directory" class="level3">
 <h3 class="anchored" data-anchor-id="move-to-the-project-directory">2. Move to the Project Directory</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> path/to/morphometrics-tool</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> path/to/leaf-contour-efd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Opening a Command Prompt (Windows)
+<span class="screen-reader-only">Tip</span>Opening a Command Prompt (Windows)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -397,7 +400,7 @@ Opening a Command Prompt (Windows)
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Python Is Not Strictly Required
+<span class="screen-reader-only">Tip</span>Python Is Not Strictly Required
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -407,21 +410,21 @@ Python Is Not Strictly Required
 </section>
 <section id="create-and-activate-virtual-environment" class="level3">
 <h3 class="anchored" data-anchor-id="create-and-activate-virtual-environment">3. Create and Activate Virtual Environment</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Then activate the environment:</p>
 <ul>
 <li>Windows:</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv\Scripts\activate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv\Scripts\activate</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>macOS / Linux:</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The <code>.venv</code> directory will be created automatically inside the project folder.</p>
 </section>
 <section id="sync-project-dependencies" class="level3">
 <h3 class="anchored" data-anchor-id="sync-project-dependencies">4. Sync Project Dependencies</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This command installs all packages defined in <code>uv.lock</code>.<br>
 If <code>uv.lock</code> is not found, dependencies will be resolved from <code>pyproject.toml</code> and a new lock file will be generated.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -430,13 +433,13 @@ If <code>uv.lock</code> is not found, dependencies will be resolved from <code>p
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Alternative for <code>pip</code> Users
+<span class="screen-reader-only">Tip</span>Alternative for <code>pip</code> Users
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>A <code>requirements.txt</code> file is also included.<br>
 If you prefer <code>pip</code>, you can install dependencies with:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Using <code>uv sync</code> is strongly recommended for reproducibility,<br>
 but this alternative can be used when <code>uv</code> is unavailable.</p>
 </div>
@@ -446,20 +449,20 @@ but this alternative can be used when <code>uv</code> is unavailable.</p>
 <h3 class="anchored" data-anchor-id="clone-and-install-sam2">5. Clone and Install SAM2</h3>
 <section id="step-5.1-clone-the-sam2-repository" class="level4">
 <h4 class="anchored" data-anchor-id="step-5.1-clone-the-sam2-repository">Step 5.1 — Clone the SAM2 Repository</h4>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/facebookresearch/sam2.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/facebookresearch/sam2.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="step-5.2-install-sam2-in-editable-mode" class="level4">
 <h4 class="anchored" data-anchor-id="step-5.2-install-sam2-in-editable-mode">Step 5.2 — Install SAM2 in Editable Mode</h4>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> sam2</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> sam2</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> pip install <span class="at">-e</span> .</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-What Is Editable Mode?
+<span class="screen-reader-only">Tip</span>What Is Editable Mode?
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -478,21 +481,21 @@ Download the following files manually and place them under <code>sam2/checkpoint
 </ul>
 <p>If you are using macOS, Linux, or Windows with Bash available,<br>
 you can download all checkpoints automatically with:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> checkpoints <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> checkpoints <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./download_ckpts.sh</span> <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="launch-the-leaf-shape-tool" class="level3">
-<h3 class="anchored" data-anchor-id="launch-the-leaf-shape-tool">7. Launch the Leaf Shape Tool</h3>
+<section id="launch-the-leafcontourefd" class="level3">
+<h3 class="anchored" data-anchor-id="launch-the-leafcontourefd">7. Launch the LeafContourEFD</h3>
 <p>Once the environment is ready, launch the tool with:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">leaf-shape-tool</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">leaf-contour-efd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Or, run it directly from the source directory:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> leaf_shape_tool</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> leaf_shape_tool</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="if-uv-is-not-installed" class="level3">
 <h3 class="anchored" data-anchor-id="if-uv-is-not-installed">If uv Is Not Installed</h3>
 <p>Install <code>uv</code> via <code>pip</code> before running the setup commands:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install uv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install uv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>For more details, see the official documentation:</p>
 <ul>
 <li><a href="https://docs.astral.sh/uv/getting-started/installation/">Installing uv - uv</a></li>
@@ -565,13 +568,14 @@ you can download all checkpoints automatically with:</p>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -924,11 +928,11 @@ you can download all checkpoints automatically with:</p>
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© 2025 Leaf Shape Analysis Tool</p>
+<p>© 2025 LeafContourEFD</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maple60/morphometrics-tool/edit/main/website/installation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/morphometrics-tool/blob/main/website/installation.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/morphometrics-tool/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maple60/leaf-contour-efd/edit/main/website/installation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/blob/main/website/installation.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with Quarto</p>
 </div>

@@ -16,7 +16,7 @@ number-sections: true
 For the English version, please refer to the [Usage](usage.qmd) page.
 :::
 
-本節では、**Leaf Shape Analysis Tool** のグラフィカルユーザーインターフェース（GUI）を用いた操作方法について説明します。  
+本節では、**LeafContourEFD** のグラフィカルユーザーインターフェース（GUI）を用いた操作方法について説明します。  
 ROI の切り抜きから EFD の出力まで、すべての処理を一つのウィンドウ内で完結できます。
 
 ---

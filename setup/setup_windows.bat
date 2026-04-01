@@ -42,9 +42,9 @@ if exist "sam2\checkpoints" (
     echo [Info] sam2\checkpoints directory not found. Skipping checkpoint download.
 )
 
-REM === Step 6: Run the Leaf Shape Tool ===
-echo Launching Leaf Shape Tool...
-leaf-shape-tool
+REM === Step 6: Run the LeafContourEFD ===
+echo Launching LeafContourEFD...
+leaf-contour-efd
 
 pause
 exit /b 0

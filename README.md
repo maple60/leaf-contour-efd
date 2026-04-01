@@ -1,8 +1,8 @@
-# Leaf Shape Analysis Tool
+# LeafContourEFD
 
 [**日本語のREADMEはこちら (Japanese README is here)**](README_ja.md)
 
-**Full documentation:** [https://maple60.github.io/morphometrics-tool/](https://maple60.github.io/morphometrics-tool/)
+**Full documentation:** [https://maple60.github.io/leaf-contour-efd/](https://maple60.github.io/leaf-contour-efd/)
 
 A **[**napari**](https://napari.org/stable/)-based graphical user interface (GUI)** for fully reproducible extraction, orientation, and morphometric analysis of leaf outlines.  
 This tool allows researchers to perform every processing step interactively — from setting image scale to exporting normalized Elliptic Fourier Descriptors (EFDs) — all within a single, unified environment.
@@ -29,7 +29,7 @@ This tool allows researchers to perform every processing step interactively — 
 
 ## Installation
 
-There are three ways to install and run the Leaf Shape Analysis Tool.
+There are three ways to install and run the LeafContourEFD.
 Choose the method that best fits your environment.
 
 | Method             | Description                                                                          | Recommended for        |
@@ -40,12 +40,12 @@ Choose the method that best fits your environment.
 
 ### 1. Standalone App (Recommended) 
 
-Download the latest release from the [Releases page](https://github.com/maple60/morphometrics-tool/releases)
+Download the latest release from the [Releases page](https://github.com/maple60/leaf-contour-efd/releases)
 No Python installation is required.
 
-- On **Windows**: run `LeafShapeTool.exe`
+- On **Windows**: run `LeafContourEFD.exe`
 - On **macOS**: run the app bundle or binary from the downloaded archive
-- On **Linux**: extract the release archive and run `LeafShapeTool` from the `LeafShapeTool/` folder
+- On **Linux**: extract the release archive and run `LeafContourEFD` from the `LeafContourEFD/` folder
 
 ::: {.callout-warning}
 ## If the app does not open on macOS
@@ -55,10 +55,10 @@ On macOS, a warning dialog may appear the first time you launch the app, and the
 If this happens, run the following command in Terminal:
 
 ```bash
-/usr/bin/xattr -dr com.apple.quarantine ~/path/to/LeafShapeTool
+/usr/bin/xattr -dr com.apple.quarantine ~/path/to/LeafContourEFD
 ```
 
-Replace `~/path/to/LeafShapeTool` with the path to the downloaded app.
+Replace `~/path/to/LeafContourEFD` with the path to the downloaded app.
 
 After running the command, try launching the app again.
 :::
@@ -68,8 +68,8 @@ After running the command, try launching the app again.
 Clone the repository and launch the tool using the provided script.
 
 ```bash
-git clone https://github.com/maple60/morphometrics-tool.git
-cd morphometrics-tool
+git clone https://github.com/maple60/leaf-contour-efd.git
+cd leaf-contour-efd
 ```
 - Windows
 
@@ -113,11 +113,11 @@ For details about each model, refer to the following page:
 After installation, launch the tool with:
 
 ```bash
-leaf-shape-tool
+leaf-contour-efd
 ```
 
 > [!NOTE]
-> For full setup instructions (including uv, git, and checkpoint downloads), see the [Installation Guide](https://maple60.github.io/morphometrics-tool/installation.html).
+> For full setup instructions (including uv, git, and checkpoint downloads), see the [Installation Guide](https://maple60.github.io/leaf-contour-efd/installation.html).
 
 ## Workflow & Usage
 
@@ -150,7 +150,7 @@ flowchart LR
 Each processing step corresponds to a dedicated GUI widget,  
 and all results (images, contours, metadata, EFDs) are automatically exported to the `output/` directory.
 
-For a detailed step-by-step guide, please refer to the [Usage page](https://maple60.github.io/morphometrics-tool/usage.html).
+For a detailed step-by-step guide, please refer to the [Usage page](https://maple60.github.io/leaf-contour-efd/usage.html).
 
 ## Citation
 
@@ -170,14 +170,14 @@ The design and implementation of this tool were inspired by the methodology and 
 
 We also acknowledge the contributions of many other open-source tools and studies  
 that have advanced automated leaf image analysis.  
-A summary of related software can be found on the [Related Tools page](https://maple60.github.io/morphometrics-tool/related_tools.html).
+A summary of related software can be found on the [Related Tools page](https://maple60.github.io/leaf-contour-efd/related_tools.html).
 
 We express our sincere gratitude to the open-source community and all contributors  
 whose work made this tool possible.
 
 ## License 
 
-Distributed under the BSD 3-Clause License. See [LICENSE](https://github.com/maple60/morphometrics-tool/blob/main/LICENSE) for more information.
+Distributed under the BSD 3-Clause License. See [LICENSE](https://github.com/maple60/leaf-contour-efd/blob/main/LICENSE) for more information.
 
 ## AI Assistant
 

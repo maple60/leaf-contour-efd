@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Requirements – Leaf Shape Analysis Tool</title>
+<title>Requirements – LeafContourEFD</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -71,10 +74,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-264a0fc3a96c72ca7334393e02078ef0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d0eb33a73c8de335a1b0e6ed1df1adc0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -114,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Leaf Shape Analysis Tool</span>
+    <span class="navbar-title">LeafContourEFD</span>
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -137,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-github"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/maple60/morphometrics-tool">
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/maple60/leaf-contour-efd">
             Source Code
             </a>
           </li>
@@ -241,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#download-model-checkpoints" id="toc-download-model-checkpoints" class="nav-link" data-scroll-target="#download-model-checkpoints">3. Download Model Checkpoints</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/maple60/morphometrics-tool/edit/main/website/preparation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/morphometrics-tool/blob/main/website/preparation.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/morphometrics-tool/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/maple60/leaf-contour-efd/edit/main/website/preparation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/blob/main/website/preparation.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -273,8 +276,8 @@ These prerequisites guarantee that all dependencies (including GUI and segmentat
 <section id="option-a.-standalone-executable-recommended-for-general-users" class="level3">
 <h3 class="anchored" data-anchor-id="option-a.-standalone-executable-recommended-for-general-users">Option A. Standalone Executable (Recommended for general users)</h3>
 <p>No installation required.<br>
-Download the latest release from <a href="https://github.com/username/leaf-shape-tool/releases">Releases</a> and run the executable.<br>
-<em>(Windows: <code>LeafShapeTool.exe</code>, macOS: <code>LeafShapeTool.app</code>)</em></p>
+Download the latest release from <a href="https://github.com/username/leaf-contour-efd/releases">Releases</a> and run the executable.<br>
+<em>(Windows: <code>LeafContourEFD.exe</code>, macOS: <code>LeafContourEFD.app</code>)</em></p>
 <p>-&gt; Proceed to the <a href="">Usage Guide</a> for instructions on how to use the application.</p>
 <hr>
 </section>
@@ -312,7 +315,7 @@ Note
 <h2 class="anchored" data-anchor-id="environment-setup">Environment Setup</h2>
 <p>Follow the steps below to create an isolated environment and install all dependencies using uv.<br>
 This ensures a fully reproducible setup across systems.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Create a virtual environment</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Create a virtual environment</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Activate the environment</span></span>
@@ -322,11 +325,11 @@ This ensures a fully reproducible setup across systems.</p>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Install all dependencies defined in pyproject.toml / uv.lock</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Install the Leaf Shape Tool package in editable mode</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Install the LeafContourEFD package in editable mode</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> pip install <span class="at">-e</span> .</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Launch the application</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run leaf-shape-tool</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run leaf-contour-efd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -357,7 +360,7 @@ It is optional — you can skip this section if you prefer manual or Otsu-based 
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-About SAM2
+<span class="screen-reader-only">Note</span>About SAM2
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -373,10 +376,10 @@ In this software, SAM2 can be optionally used to automate ROI extraction prior t
 <li><a href="https://pytorch.org/get-started/locally/">PyTorch — Get Started</a></li>
 </ul>
 <p>Example (for CUDA 12.1 on Windows):</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> pip install torch torchvision <span class="at">--index-url</span> https://download.pytorch.org/whl/cu121</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> pip install torch torchvision <span class="at">--index-url</span> https://download.pytorch.org/whl/cu121</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You can verify CUDA support in Python as follows:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(torch.cuda.is_available())  <span class="co"># should return True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(torch.cuda.is_available())  <span class="co"># should return True</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If it returns <code>False</code>, make sure you have a compatible <strong>CUDA Toolkit</strong> installed.</p>
 <ul>
 <li>Download CUDA Toolkit:
@@ -405,9 +408,9 @@ Note
 <section id="clone-and-install-sam2" class="level3">
 <h3 class="anchored" data-anchor-id="clone-and-install-sam2">2. Clone and Install SAM2</h3>
 <p>Clone the official SAM2 repository and install it in editable mode.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/facebookresearch/sam2.git</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/facebookresearch/sam2.git</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> sam2</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> pip install <span class="at">-e</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> pip install <span class="at">-e</span> .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -429,9 +432,9 @@ You can download them using the provided shell script or manually via the links 
 <section id="option-a.-using-the-provided-script" class="level4">
 <h4 class="anchored" data-anchor-id="option-a.-using-the-provided-script">Option A. Using the provided script</h4>
 <p>Use <strong>Git Bash</strong> (or rewrite the script for PowerShell):</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> checkpoints <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> checkpoints <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./download_ckpts.sh</span> <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="option-b.-manual-download" class="level4">
 <h4 class="anchored" data-anchor-id="option-b.-manual-download">Option B. Manual download</h4>
@@ -540,13 +543,14 @@ Warning
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -899,11 +903,11 @@ Warning
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© 2025 Leaf Shape Analysis Tool</p>
+<p>© 2025 LeafContourEFD</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maple60/morphometrics-tool/edit/main/website/preparation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/morphometrics-tool/blob/main/website/preparation.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/morphometrics-tool/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/maple60/leaf-contour-efd/edit/main/website/preparation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/blob/main/website/preparation.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/maple60/leaf-contour-efd/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Built with Quarto</p>
 </div>

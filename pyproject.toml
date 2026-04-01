@@ -1,5 +1,5 @@
 [project]
-name = "leaf-shape-tool"
+name = "leaf-contour-efd"
 version = "1.0.0"
 
 requires-python = ">=3.11, <3.13"
@@ -30,7 +30,7 @@ dependencies = [
 ]
 
 [project.scripts]
-leaf-shape-tool = "leaf_shape_tool.main:main"
+leaf-contour-efd = "leaf_shape_tool.main:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -54,4 +54,4 @@ members = [
 ]
 
 [tool.uv.sources]
-leaf-shape-tool = { workspace = true }
+leaf-contour-efd = { workspace = true }

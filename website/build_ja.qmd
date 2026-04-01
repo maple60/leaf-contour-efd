@@ -32,10 +32,10 @@ pyinstaller build.spec
   - `pull_request` / `main` への push: ビルド検証のみ
   - `v1.0.0` のようなタグ push: ビルド + GitHub Release 公開
 - 生成物:
-  - `LeafShapeTool-windows-x64.zip`
-  - `LeafShapeTool-macos-arm64.tar.gz`
-  - `LeafShapeTool-macos-x64.tar.gz`
-  - `LeafShapeTool-ubuntu-x64.tar.gz`
+  - `LeafContourEFD-windows-x64.zip`
+  - `LeafContourEFD-macos-arm64.tar.gz`
+  - `LeafContourEFD-macos-x64.tar.gz`
+  - `LeafContourEFD-ubuntu-x64.tar.gz`
 
 生成物は GitHub Release に添付されます。
 Releaseノートには、各アーカイブ内の実行ファイルから自動検出したCPUアーキテクチャ一覧も追記されます。
@@ -59,13 +59,13 @@ rm -rf build dist
 project/
 ├─ build/
 └─ dist/
-   └─ LeafShapeTool/
-      ├─ LeafShapeTool(.exe)
+   └─ LeafContourEFD/
+      ├─ LeafContourEFD(.exe)
       └─ _internal/
          └─ (ライブラリ群)
 ```
 
 ::: {.callout-caution}
 安定性のため `onefile` ではなく `onedir` モードで配布しています。  
-`dist/LeafShapeTool/` フォルダ全体を配布してください。
+`dist/LeafContourEFD/` フォルダ全体を配布してください。
 :::

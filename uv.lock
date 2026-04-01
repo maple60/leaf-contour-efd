@@ -605,7 +605,7 @@ wheels = [
 ]
 
 [[package]]
-name = "leaf-shape-tool"
+name = "leaf-contour-efd"
 version = "0.9.0a0"
 source = { editable = "." }
 dependencies = [

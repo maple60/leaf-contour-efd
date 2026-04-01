@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir: ../docs # GitHub Pages
+  output-dir: _site # GitHub Actions artifact for Pages deployment
   preview:
     port: 3000
     browser: true

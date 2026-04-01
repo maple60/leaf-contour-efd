@@ -47,9 +47,9 @@ else
     echo "[Info] sam2/checkpoints directory not found."
 fi
 
-# === Step 6: Run the Leaf Shape Tool ===
-echo "Launching Leaf Shape Tool..."
-leaf-shape-tool
+# === Step 6: Run the LeafContourEFD ===
+echo "Launching LeafContourEFD..."
+leaf-contour-efd
 
 # =========================
 # Functions

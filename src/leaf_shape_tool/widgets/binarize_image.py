@@ -2,7 +2,7 @@
 binarize_image.py
 -----------------
 A napari widget for image binarization using Otsu thresholding or SAM2 segmentation.
-This module is part of the Leaf Shape Analysis Tool.
+This module is part of the LeafContourEFD.
 """
 
 # --- Fix PyTorch DLL loading in PyInstaller ---

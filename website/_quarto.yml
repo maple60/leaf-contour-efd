@@ -6,16 +6,16 @@ project:
     browser: true
 
 website:
-  repo-url: https://github.com/maple60/morphometrics-tool
+  repo-url: https://github.com/maple60/leaf-contour-efd
   repo-subdir: website
   repo-actions: [edit, source, issue]
-  title: "Leaf Shape Analysis Tool"
+  title: "LeafContourEFD"
   navbar:
     tools:
       - icon: github
         menu:
           - text: Source Code
-            href: https://github.com/maple60/morphometrics-tool
+            href: https://github.com/maple60/leaf-contour-efd
     left:
       - text: "Home"
         href: index.qmd
@@ -42,7 +42,7 @@ website:
     location: sidebar
     type: textbox
   page-footer:
-    left: "© 2025 Leaf Shape Analysis Tool"
+    left: "© 2025 LeafContourEFD"
     right: "Built with Quarto"
 
 format:

@@ -9,7 +9,7 @@ title: "Installation"
 :::
 
 
-There are three ways to install and use the Leaf Shape Analysis Tool:
+There are three ways to install and use the LeafContourEFD:
 
 - **Standalone app** (the easiest option for general users)  
 - **Setup script** (for users who prioritize reproducibility)  
@@ -21,9 +21,9 @@ The methods are listed from easiest to most advanced.
 
 ## Standalone App (Recommended for Most Users)
 
-Download the latest release from the [Releases](https://github.com/maple60/morphometrics-tool/releases) page on GitHub.  
-On Windows, run `LeafShapeTool.exe`;  
-on macOS, open `LeafShapeTool.app`.
+Download the latest release from the [Releases](https://github.com/maple60/leaf-contour-efd/releases) page on GitHub.  
+On Windows, run `LeafContourEFD.exe`;  
+on macOS, open `LeafContourEFD.app`.
 
 No Python environment is required.
 
@@ -36,16 +36,16 @@ Clone the GitHub repository and launch the tool using the provided setup script.
 ### Windows
 
 ```bash
-git clone https://github.com/maple60/morphometrics-tool.git
-cd morphometrics-tool
+git clone https://github.com/maple60/leaf-contour-efd.git
+cd leaf-contour-efd
 setup\setup_windows.bat
 ```
 
 ### macOS / Linux
 
 ```bash
-git clone https://github.com/maple60/morphometrics-tool.git
-cd morphometrics-tool
+git clone https://github.com/maple60/leaf-contour-efd.git
+cd leaf-contour-efd
 bash setup/setup_unix.sh
 ```
 
@@ -57,7 +57,7 @@ Check the official installation guide:
 
 Alternatively, you can download the following GitHub repositories as ZIP files and extract them manually:
 
-- [Leaf Shape Analysis Tool - GitHub](https://github.com/maple60/morphometrics-tool)
+- [LeafContourEFD - GitHub](https://github.com/maple60/leaf-contour-efd)
 - [SAM 2: Segment Anything in Images and Videos - GitHub](https://github.com/facebookresearch/sam2)
 
 ---
@@ -82,7 +82,7 @@ On macOS / Linux, `wget` or `curl` can be used instead of PowerShell.
 ### 2. Move to the Project Directory
 
 ```bash
-cd path/to/morphometrics-tool
+cd path/to/leaf-contour-efd
 ```
 
 ::: {.callout-tip}
@@ -182,12 +182,12 @@ cd checkpoints && \
 cd ..
 ```
 
-### 7. Launch the Leaf Shape Tool
+### 7. Launch the LeafContourEFD
 
 Once the environment is ready, launch the tool with:
 
 ```bash
-leaf-shape-tool
+leaf-contour-efd
 ```
 
 Or, run it directly from the source directory:

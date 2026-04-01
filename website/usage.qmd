@@ -17,7 +17,7 @@ number-sections: true
 Please see the [Japanese version](usage_ja.qmd) for reading in Japanese.
 :::
 
-This section describes how to use the **Leaf Shape Analysis Tool** through its graphical user interface (GUI).  
+This section describes how to use the **LeafContourEFD** through its graphical user interface (GUI).  
 All steps — from ROI cropping to EFD export — can be performed interactively within a single window.
 
 ---

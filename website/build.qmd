@@ -38,10 +38,10 @@ Starting from **v1.0.0**, this repository provides a GitHub Actions release work
   - `pull_request` / push to `main`: build verification only
   - tag push such as `v1.0.0`: build + GitHub Release publishing
 - Outputs:
-  - `LeafShapeTool-windows-x64.zip`
-  - `LeafShapeTool-macos-arm64.tar.gz`
-  - `LeafShapeTool-macos-x64.tar.gz`
-  - `LeafShapeTool-ubuntu-x64.tar.gz`
+  - `LeafContourEFD-windows-x64.zip`
+  - `LeafContourEFD-macos-arm64.tar.gz`
+  - `LeafContourEFD-macos-x64.tar.gz`
+  - `LeafContourEFD-ubuntu-x64.tar.gz`
 
 All generated assets are attached to the corresponding GitHub Release.
 The Release notes also include an auto-generated table showing the executable architecture detected from each archive.
@@ -70,15 +70,15 @@ If the build completes successfully, the following directory structure will be g
 project/
 ├─ build/
 └─ dist/
-   └─ LeafShapeTool/
-      ├─ LeafShapeTool(.exe)
+   └─ LeafContourEFD/
+      ├─ LeafContourEFD(.exe)
       └─ _internal/
          └─ (library files)
 ```
 
-The main executable is located under `dist/LeafShapeTool/`.
+The main executable is located under `dist/LeafContourEFD/`.
 
 ::: {.callout-caution}
 To improve stability, the application is built in `onedir` mode instead of `onefile` mode.  
-Therefore, the entire `dist/LeafShapeTool/` folder must be distributed together.
+Therefore, the entire `dist/LeafContourEFD/` folder must be distributed together.
 :::

@@ -41,6 +41,7 @@ for pkg in [
     "napari",
     "napari_builtins",
     "vispy",
+    "OpenGL",
     "magicgui",
     "imageio",
     "PIL",
@@ -65,6 +66,9 @@ if is_windows:
 
 # Additional hidden imports for readers and SAM2 dependencies
 hiddenimports += [
+    "OpenGL",
+    "OpenGL.GL",
+    "OpenGL.platform.win32",
     "imageio.plugins.pillow",
     "imageio.plugins.tifffile",
     "PIL.JpegImagePlugin",
@@ -109,7 +113,6 @@ a = Analysis(
     hooksconfig={},
     runtime_hooks=runtime_hooks,
     excludes=[
-        "OpenGL",
         "torch.distributed",
         "torch.testing",
         "torch.distributed.elastic",

@@ -29,6 +29,20 @@ pyinstaller build.spec
 For more details on PyInstaller usage, please refer to the [official documentation](https://pyinstaller.org/en/stable/).
 
 ::: {.callout-important}
+## Documentation site deployment (GitHub Pages)
+
+The documentation website is built and published via GitHub Actions:
+
+- Workflow file: `.github/workflows/deploy-pages.yml`
+- Trigger:
+  - `pull_request`: Quarto build check only (no deploy)
+  - push to `main`: Quarto build + GitHub Pages deploy
+
+For first-time setup in the repository, an administrator needs to set:
+**Settings → Pages → Source = GitHub Actions**.
+:::
+
+::: {.callout-important}
 ## Stable standalone builds (Windows/macOS/Linux)
 
 Starting from **v1.0.0**, this repository provides a GitHub Actions release workflow:

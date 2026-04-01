@@ -23,6 +23,20 @@ pyinstaller build.spec
 ```
 
 ::: {.callout-important}
+## ドキュメントサイトの公開（GitHub Pages）
+
+ドキュメントサイトは GitHub Actions で自動ビルド・公開します。
+
+- ワークフロー: `.github/workflows/deploy-pages.yml`
+- 実行条件:
+  - `pull_request`: Quarto のビルド確認のみ（デプロイなし）
+  - `main` への push: Quarto ビルド + GitHub Pages デプロイ
+
+初回設定として、リポジトリ管理者が以下を設定してください。
+**Settings → Pages → Source = GitHub Actions**
+:::
+
+::: {.callout-important}
 ## 安定版スタンドアローン配布（Windows/macOS/Linux）
 
 **v1.0.0** 以降は、GitHub Actions で 3OS 向けの配布物を自動生成します。

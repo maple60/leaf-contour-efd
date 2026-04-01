@@ -1,0 +1,160 @@
+name: Build standalone app (Windows/macOS/Linux)
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "v*"
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build (${{ matrix.name }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: windows-x64
+            os: windows-latest
+            archive_name: LeafShapeTool-windows-x64.zip
+          - name: macos-arm64
+            os: macos-15
+            archive_name: LeafShapeTool-macos-arm64.tar.gz
+          - name: macos-x64
+            os: macos-15-intel
+            archive_name: LeafShapeTool-macos-x64.tar.gz
+          - name: ubuntu-x64
+            os: ubuntu-latest
+            archive_name: LeafShapeTool-ubuntu-x64.tar.gz
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install system dependencies (Linux)
+        if: startsWith(matrix.os, 'ubuntu')
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libegl1 libgl1 libxkbcommon-x11-0 libxcb-cursor0
+
+      - name: Install project dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install .
+          pip install pyinstaller==6.16.0
+
+      - name: Build with PyInstaller
+        run: pyinstaller build.spec --clean
+
+      - name: Archive build output (Windows)
+        if: startsWith(matrix.os, 'windows')
+        shell: pwsh
+        run: |
+          Compress-Archive -Path dist/LeafShapeTool/* -DestinationPath ${{ matrix.archive_name }}
+
+      - name: Archive build output (macOS/Linux)
+        if: ${{ !startsWith(matrix.os, 'windows') }}
+        run: |
+          tar -C dist -czf "${{ matrix.archive_name }}" LeafShapeTool
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: LeafShapeTool-${{ matrix.name }}
+          path: ${{ matrix.archive_name }}
+
+  release:
+    name: Publish GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Prepare release assets (split files over 2GB)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p release-assets
+
+          shopt -s globstar nullglob
+          for file in artifacts/**/LeafShapeTool-*.zip artifacts/**/LeafShapeTool-*.tar.gz; do
+            [ -f "$file" ] || continue
+            base="$(basename "$file")"
+            size_bytes="$(stat -c%s "$file")"
+
+            # GitHub release asset size limit is < 2 GiB
+            if [ "$size_bytes" -ge 2147483648 ]; then
+              echo "File is too large for a single release asset: $base (${size_bytes} bytes)"
+              echo "Splitting into 1900MiB chunks..."
+              split -b 1900m -d -a 3 "$file" "release-assets/${base}.part-"
+            else
+              cp "$file" "release-assets/$base"
+            fi
+          done
+
+      - name: Generate release notes with executable architecture
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p release-notes _release_inspect
+
+          notes_file="release-notes/auto-generated-notes.md"
+          {
+            echo "## Standalone artifacts"
+            echo
+            echo "Please download the archive matching your platform and CPU architecture."
+            echo
+            echo "| Asset | Executable | Detected architecture |"
+            echo "|---|---|---|"
+          } > "$notes_file"
+
+          shopt -s nullglob
+          for asset in release-assets/LeafShapeTool-*.zip release-assets/LeafShapeTool-*.tar.gz; do
+            [ -f "$asset" ] || continue
+            base="$(basename "$asset")"
+
+            workdir="_release_inspect/${base}"
+            rm -rf "$workdir"
+            mkdir -p "$workdir"
+
+            if [[ "$asset" == *.zip ]]; then
+              unzip -q "$asset" -d "$workdir"
+              exe_path="$(find "$workdir" -type f -name 'LeafShapeTool.exe' | head -n 1 || true)"
+            else
+              tar -xzf "$asset" -C "$workdir"
+              exe_path="$(find "$workdir" -type f -name 'LeafShapeTool' | head -n 1 || true)"
+            fi
+
+            if [ -n "$exe_path" ] && [ -f "$exe_path" ]; then
+              arch="$(file -b "$exe_path" | sed 's/|/\\|/g')"
+              exe_name="$(basename "$exe_path")"
+            else
+              arch="(executable not found)"
+              exe_name="(not found)"
+            fi
+
+            printf "| %s | %s | %s |\n" "$base" "$exe_name" "$arch" >> "$notes_file"
+          done
+
+      - name: Publish release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: release-notes/auto-generated-notes.md
+          files: release-assets/**
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

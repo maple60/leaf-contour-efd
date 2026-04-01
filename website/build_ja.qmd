@@ -18,137 +18,54 @@ For the English version, please refer to the [Build Instructions](build.qmd) pag
 本ページでは、アプリケーションのビルド手順について説明します。  
 本アプリケーションは [PyInstaller](https://pyinstaller.org/en/stable/) を用いてビルドしています。
 
-すでに `spec` ファイルを用意しているため、以下のコマンドを実行することでアプリケーションをビルドできます。  
-この処理には時間がかかる場合があります（目安：約10分）。
-
-
 ```bash
 pyinstaller build.spec
 ```
 
-PyInstaller の詳細な使用方法については、[公式ドキュメント](https://pyinstaller.org/en/stable/)を参照してください。
+::: {.callout-important}
+## 安定版スタンドアローン配布（Windows/macOS/Linux）
 
-::: {.callout-caution}
-## 注意事項
+**v1.0.0** 以降は、GitHub Actions で 3OS 向けの配布物を自動生成します。
 
-- 現在、ビルドは **Windows** 環境のみで動作確認しています。将来的に他の OS への対応を検討しています。
-- 提供している `spec` ファイルはエラーのない状態ですが、**リファクタリング**や**最適化**の余地があります。今後のアップデートで改善していく予定です。
-- `spec` ファイルの詳細については、[Using Spec FIles - PyInstaller](https://pyinstaller.org/en/stable/spec-files.html) を参照してください。
+- ワークフロー: `.github/workflows/release-standalone.yml`
+- 実行条件:
+  - `pull_request` / `main` への push: ビルド検証のみ
+  - `v1.0.0` のようなタグ push: ビルド + GitHub Release 公開
+- 生成物:
+  - `LeafShapeTool-windows-x64.zip`
+  - `LeafShapeTool-macos-arm64.tar.gz`
+  - `LeafShapeTool-macos-x64.tar.gz`
+  - `LeafShapeTool-ubuntu-x64.tar.gz`
+
+生成物は GitHub Release に添付されます。
+Releaseノートには、各アーカイブ内の実行ファイルから自動検出したCPUアーキテクチャ一覧も追記されます。
 :::
 
 ::: {.callout-tip}
 ## 古いビルド成果物の削除
 
-PyInstaller を実行する前に、以前のビルド成果物を削除することを推奨します。
-
 ```bash
+# PowerShell
 Remove-Item -Recurse -Force build, dist
-```
 
+# Bash
+rm -rf build dist
+```
 :::
 
 ## ビルド後の構成
-
-ビルドが成功すると、プロジェクトのルートディレクトリに以下のようなフォルダ構成が生成されます。
 
 ```text
 project/
 ├─ build/
 └─ dist/
    └─ LeafShapeTool/
-      ├─ LeafShapeTool.exe
+      ├─ LeafShapeTool(.exe)
       └─ _internal/
          └─ (ライブラリ群)
 ```
 
-実行ファイルは次の場所に生成されます。
-
-```bash
-dist/LeafShapeTool/LeafShapeTool.exe
-```
-
-このファイルをダブルクリックするか、コマンドプロンプトから以下のように実行することでアプリを起動できます。
-
-```bash
-cd dist/LeafShapeTool/
-LeafShapeTool.exe
-```
-
-::: {.callout-tip}
-## ダブルクリック起動とコマンドプロンプト起動の違い
-
-ダブルクリックで起動すると、ログやエラーメッセージを表示するためのコンソールウィンドウが開きます。
-ただし、**実行終了後に自動的に閉じてしまう**ため、メッセージを確認しづらい場合があります。
-そのような場合は、コマンドプロンプトから実行することを推奨します。
-
-:::
-
 ::: {.callout-caution}
-安定性を重視し、`onefile` モードではなく `onedir` モードでビルドしています。
-そのため、**`dist/LeafShapeTool/` フォルダ全体を配布**する必要があります。
-
-`LeafShapeTool.exe` のみを**単体で配布しても、正しく動作しません**。
-:::
-
-::: {.callout-caution}
-## SAM2 モジュールについて
-
-`spec` ファイルからビルドした場合、[Segment Anything Model 2](https://ai.meta.com/sam2/) (SAM2) [@ravi2024sam2segmentimages] モジュールはデフォルトで含まれません。
-
-spec ファイルからビルドをした場合、デフォルトでは [Segment Anything Model 2](https://ai.meta.com/sam2/) (SAM2) は使用できません。
-SAM2 を有効化するには、[次節](@sec-enable-sam2)の手順を実行してください。
-:::
-
-## SAM2 モジュールの有効化 {#sec-enable-sam2}
-
-ファイルサイズやビルド時間、依存関係の複雑さを軽減するため、SAM2 フォルダは**デフォルトではビルド対象に含めていません**。
-ただし、[Releases ページ](https://github.com/maple60/morphometrics-tool/releases)で配布している実行ファイルには、SAM2 モジュールがあらかじめ含まれています。
-
-手動で SAM2 を有効化する場合は、以下の手順を実行してください。
-
-### 1. SAM2 リポジトリのクローン
-
-GitHub から SAM2 リポジトリをクローンします。
-
-```bash
-cd dist/LeafShapeTool/
-git clone https://github.com/facebookresearch/sam2.git
-```
-
-### 2. SAM2 チェックポイントのダウンロード
-
-SAM2 モデルを使用するためには、複数のチェックポイントファイルが必要です。  
-以下のリンクから手動でダウンロードし、`sam2/checkpoints/` ディレクトリに配置してください。
-
-モデルの詳細については、次の公式ドキュメントを参照してください。
-
-- [Model Description - facebookresearch/sam2](https://github.com/facebookresearch/sam2#:~:text=(state)%3A%0A%20%20%20%20%20%20%20%20...-,Model%20Description,-SAM%202.1%20checkpoints)
-
-**macOS** / **Linux**、または **Bash** を使用可能な Windows 環境では、次のコマンドにより自動でチェックポイントを取得できます。
-
-```bash
-cd checkpoints && \
-./download_ckpts.sh && \
-cd ..
-```
-
-これで、SAM2 モジュールが有効になります。
-
-## 現状の課題
-
-生成される**実行ファイルのサイズが非常に大きくなります**。これは、PyInstaller が**すべての依存関係を含めるため**です。
-
-代替のビルドツールとして [Nuitka](https://nuitka.net/) の使用を検討していますが、Nuitka は **PyQt との互換性に課題**があり、現時点では正常に動作しませんでした。
-
-- 参考: [Nuitka PyQt5 support](https://nuitka.net/pages/pyqt5.html)
-
-## ビルドやエラーに関する参考情報
-
-- [[WinError 1114] A dynamic link library (DLL) initialization routine failed #166628 - pytorch/pytorch](https://github.com/pytorch/pytorch/issues/166628)
-- [How to use SAM2 if my own project already initialized Hydra? #179 - facebookresearch/sam2](https://github.com/facebookresearch/sam2/issues/179)
-- [pyinstaller failed to package sam2 (segment anything model2) #8966 - pyinstaller/pyinstaller](https://github.com/pyinstaller/pyinstaller/issues/8966)
-
-## 参考文献
-
-::: {#refs}
+安定性のため `onefile` ではなく `onedir` モードで配布しています。  
+`dist/LeafShapeTool/` フォルダ全体を配布してください。
 :::

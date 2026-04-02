@@ -24,6 +24,7 @@ from PIL import Image as PILImage
 from typing import Sequence
 
 from qtpy.QtCore import QTimer
+from leaf_contour_efd.utils.paths import get_output_dir
 
 
 def _clear_except_async(viewer, keep_names: set[str], on_done=None):
@@ -151,7 +152,7 @@ def make_clear_viewer_widget(viewer: "napari.Viewer", on_hard_reset=None):
 
     # ---- create FileEdit with dynamic default path ----
     default_image_id = _get_base_image_id()
-    default_dir = Path("output/rois")
+    default_dir = get_output_dir("rois")
     # default_dir.mkdir(parents=True, exist_ok=True)
     default_path = default_dir / f"{default_image_id}.png"
 

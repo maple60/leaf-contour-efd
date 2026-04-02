@@ -27,6 +27,7 @@ import numpy as np
 from pathlib import Path
 from numbers import Integral
 import copy
+from leaf_contour_efd.utils.paths import get_output_dir
 
 
 # -------------------------------------------------------------------------
@@ -289,7 +290,7 @@ def make_points_metadata_widget(
     def points_metadata_widget(
         viewer: "napari.Viewer",
         save_rotated: bool = True,
-        save_dir: str = "output/rotated_images",
+        save_dir: Path = get_output_dir("rotated_images"),
     ) -> dict[str, Any]:
         """Rotate the image corresponding to the current Points layer."""
         try:

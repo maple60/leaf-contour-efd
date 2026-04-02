@@ -26,6 +26,7 @@ import copy
 from napari.layers import Image
 from napari.utils.colormaps import DirectLabelColormap
 from pathlib import Path
+from leaf_contour_efd.utils.paths import get_output_dir
 
 
 def make_binarize_image_widget(viewer: "napari.Viewer"):
@@ -223,7 +224,7 @@ def make_binarize_image_widget(viewer: "napari.Viewer"):
         method: str = "Otsu",
         threshold: int = 128,
         save_check: bool = True,
-        save_dir: Path = Path("./output/binarized_images"),
+        save_dir: Path = get_output_dir("binarized_images"),
     ):
         """
         Run the selected binarization method

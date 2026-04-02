@@ -26,6 +26,7 @@ import cv2
 from pathlib import Path
 import napari
 from qtpy.QtCore import QTimer
+from leaf_contour_efd.utils.paths import get_output_dir
 
 COLOR_CYCLE = ["#FF4B00", "#005AFF"]  # base(orange), tip(blue)
 LABELS = ("base", "tip")
@@ -243,7 +244,7 @@ def make_add_roi_widget(viewer, labels=LABELS, point_size=30, show_text=True):
     def add_roi(
         roi_index: int = 1,
         save_cropped: bool = True,
-        save_dir: str = "output/cropped_images",
+        save_dir: Path = get_output_dir("cropped_images"),
     ):
         """Add a cropped ROI image and its landmark layer."""
         ROIs_layer = viewer.layers["ROIs"]

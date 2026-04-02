@@ -29,6 +29,7 @@ import json
 from datetime import datetime
 from napari.utils.colormaps import DirectLabelColormap
 from qtpy.QtCore import QTimer
+from leaf_contour_efd.utils.paths import get_output_dir
 
 
 def make_extract_contour_widget(viewer: "napari.Viewer"):
@@ -76,9 +77,9 @@ def make_extract_contour_widget(viewer: "napari.Viewer"):
         call_button="Extract Contour",
     )
     def extract_contour(
-        folder_csv=Path("./output/contour"),
-        folder_final_mask=Path("./output/binarized_image_final"),
-        folder_blob_mask=Path("./output/contour_image"),
+        folder_csv=Path(get_output_dir("contour")),
+        folder_final_mask=Path(get_output_dir("binarized_image_final")),
+        folder_blob_mask=Path(get_output_dir("contour_image")),
         save_final_mask=True,
         save_blob_mask=True,
     ):

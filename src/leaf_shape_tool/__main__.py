@@ -1,9 +1,16 @@
-# src/leaf_shape_tool/__main__.py
+"""Backward-compatible module runner for ``python -m leaf_shape_tool``."""
 
-"""
-Command-line entry point for the LeafContourEFD.
-"""
+from __future__ import annotations
 
-from leaf_shape_tool.main import main
+import warnings
 
-main()
+from leaf_contour_efd.main import main
+
+
+if __name__ == "__main__":
+    warnings.warn(
+        "`python -m leaf_shape_tool` is deprecated; use `python -m leaf_contour_efd`.",
+        DeprecationWarning,
+        stacklevel=1,
+    )
+    main()

@@ -30,7 +30,7 @@ dependencies = [
 ]
 
 [project.scripts]
-leaf-contour-efd = "leaf_shape_tool.main:main"
+leaf-contour-efd = "leaf_contour_efd.main:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

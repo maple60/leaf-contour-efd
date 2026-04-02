@@ -17,3 +17,7 @@ def main() -> None:
         stacklevel=2,
     )
     _main()
+
+
+if __name__ == "__main__":
+    main()

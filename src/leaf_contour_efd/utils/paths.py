@@ -28,17 +28,34 @@ def _is_writable_dir(path: Path) -> bool:
         return False
 
 
+def _frozen_portable_base_dir() -> Path | None:
+    """Return a portable base dir near the frozen app/executable when possible."""
+    executable = Path(sys.executable).resolve()
+
+    if sys.platform == "darwin":
+        # pyinstaller .app executable path example:
+        # /path/MyApp.app/Contents/MacOS/MyApp
+        app_bundle = next((p for p in executable.parents if p.suffix == ".app"), None)
+        if app_bundle is not None:
+            return app_bundle.parent
+
+    return executable.parent
+
+
 def get_output_base_dir() -> Path:
     """Return the base directory used for writing the ``output`` folder.
 
     Rules
     -----
-    - Frozen on all platforms: user-writable application data directory.
+    - Frozen: directory near app/executable when writable, otherwise user data.
     - Non-frozen: repository/application root when writable, otherwise user data.
     """
     fallback = _user_writable_base_dir()
 
     if getattr(sys, "frozen", False):
+        portable_base = _frozen_portable_base_dir()
+        if portable_base is not None and _is_writable_dir(portable_base):
+            return portable_base
         return fallback
 
     # Development mode: src/leaf_contour_efd/utils/paths.py -> repo root

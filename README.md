@@ -47,21 +47,21 @@ No Python installation is required.
 - On **macOS**: run the app bundle or binary from the downloaded archive
 - On **Linux**: extract the release archive and run `LeafContourEFD` from the `LeafContourEFD/` folder
 
-::: {.callout-warning}
-## If the app does not open on macOS
+> [!WARNING]
+> ## If the app does not open on macOS
+>
+> On macOS, a warning dialog may appear the first time you launch the app, and the app may not open.
+>
+> If this happens, run the following command in Terminal:
+> 
+> ```bash
+> /usr/bin/xattr -dr com.apple.quarantine ~/path/to/LeafContourEFD
+> ```
+> 
+> Replace `~/path/to/LeafContourEFD` with the path to the downloaded app.
+>
+> After running the command, try launching the app again.
 
-On macOS, a warning dialog may appear the first time you launch the app, and the app may not open.
-
-If this happens, run the following command in Terminal:
-
-```bash
-/usr/bin/xattr -dr com.apple.quarantine ~/path/to/LeafContourEFD
-```
-
-Replace `~/path/to/LeafContourEFD` with the path to the downloaded app.
-
-After running the command, try launching the app again.
-:::
 
 ### 2. Setup Script
 

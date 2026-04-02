@@ -149,6 +149,7 @@ flowchart LR
 
 Each processing step corresponds to a dedicated GUI widget,  
 and all results (images, contours, metadata, EFDs) are automatically exported to the `output/` directory.
+For standalone builds, `output/` is created next to the app/executable when writable; otherwise it falls back to the OS user data directory.
 
 For a detailed step-by-step guide, please refer to the [Usage page](https://maple60.github.io/leaf-contour-efd/usage.html).
 

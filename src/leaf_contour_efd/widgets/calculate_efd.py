@@ -15,6 +15,7 @@ import numpy as np
 import pandas as pd
 from pathlib import Path
 import copy
+from leaf_contour_efd.utils.paths import get_output_dir
 
 
 def close_contour(df_contour: pd.DataFrame) -> np.ndarray:
@@ -391,10 +392,8 @@ def calculate_efd_and_save(payload) -> None:
         # fallback to plain string
         leaf_id = str(leaf_id)
 
-    output_dir_ef = Path("output/coefficients_efd")
-    output_dir_ef_normalized = Path("output/coefficients_efd_normalized")
-    output_dir_ef.mkdir(parents=True, exist_ok=True)
-    output_dir_ef_normalized.mkdir(parents=True, exist_ok=True)
+    output_dir_ef = get_output_dir("coefficients_efd")
+    output_dir_ef_normalized = get_output_dir("coefficients_efd_normalized")
     ef_file = output_dir_ef / f"{id}_{leaf_id}.csv"
     ef_normalized_file = output_dir_ef_normalized / f"{id}_{leaf_id}.csv"
     df_ef.to_csv(ef_file, index=False)

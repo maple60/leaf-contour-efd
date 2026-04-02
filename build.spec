@@ -104,7 +104,7 @@ runtime_hooks = [
 ]
 
 a = Analysis(
-    [os.path.join("src", "leaf_shape_tool", "__main__.py")],
+    [os.path.join("src", "leaf_contour_efd", "__main__.py")],
     pathex=[],
     binaries=binaries,
     datas=datas,

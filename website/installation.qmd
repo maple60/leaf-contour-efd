@@ -193,7 +193,7 @@ leaf-contour-efd
 Or, run it directly from the source directory:
 
 ```bash
-python -m leaf_shape_tool
+python -m leaf_contour_efd
 ```
 
 ### If uv Is Not Installed

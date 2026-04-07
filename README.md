@@ -1,5 +1,7 @@
 # LeafContourEFD
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19449129.svg)](https://doi.org/10.5281/zenodo.19449129)
+
 [**日本語のREADMEはこちら (Japanese README is here)**](README_ja.md)
 
 **Full documentation:** [https://maple60.github.io/leaf-contour-efd/](https://maple60.github.io/leaf-contour-efd/)
@@ -155,7 +157,15 @@ For a detailed step-by-step guide, please refer to the [Usage page](https://mapl
 
 ## Citation
 
-Currently **in preparation**
+If you use LeafContourED in your work, please cite the software release you used:
+
+Software DOI: [10.5281/zenodo.19449129](https://doi.org/10.5281/zenodo.19449129)
+
+If you discuss the method, implementation details, or validation, please also cite:
+
+Paper citation: In preparation.
+
+If the journal article is not yet available, you may cite the preprint instead.
 
 ## Acknowledgements
 

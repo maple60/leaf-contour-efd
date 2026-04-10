@@ -1,6 +1,10 @@
 # LeafContourEFD
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19449129.svg)](https://doi.org/10.5281/zenodo.19449129)
+![GitHub License](https://img.shields.io/github/license/maple60/leaf-contour-efd)
+![GitHub Release](https://img.shields.io/github/v/release/maple60/leaf-contour-efd)
+[![Build standalone app (Windows/macOS/Linux)](https://github.com/maple60/leaf-contour-efd/actions/workflows/release-standalone.yml/badge.svg)](https://github.com/maple60/leaf-contour-efd/actions/workflows/release-standalone.yml)
+[![Build and deploy documentation (GitHub Pages)](https://github.com/maple60/leaf-contour-efd/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/maple60/leaf-contour-efd/actions/workflows/deploy-pages.yml)
 
 [**日本語のREADMEはこちら (Japanese README is here)**](README_ja.md)
 
